@@ -14,14 +14,7 @@ const Resume = () => {
       <section className="mb-8">
         <h2 className="section-h2">SUMMARY</h2>
         <p className="p-header">
-          Results-driven Cloud Engineer pursuing AWS Solutions Architect
-          certification, complemented by extensive experience as a Software
-          Engineer. Skilled in designing and deploying cloud-native applications
-          using Azure DevOps and OpenShift, with a strong foundation in Python,
-          JavaScript, and automation. Proven ability to lead teams and
-          streamline development workflows by implementing CI/CD pipelines.
-          Seeking to apply my cloud expertise to architect and build robust,
-          scalable solutions.
+        Results-driven Cloud Engineer with extensive experience as a Software Engineer. Proficient in designing and deploying cloud-native applications on AWS, Azure, and OpenShift, leveraging Azure DevOps and infrastructure-as-code principles. Expertise in Python, JavaScript, and automation drives streamlined development workflows and CI/CD pipeline implementation. Proven ability to architect robust, scalable cloud solutions and lead teams to deliver impactful results.
         </p>
       </section>
 

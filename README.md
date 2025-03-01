@@ -100,9 +100,11 @@ src/
 
 The site is automatically deployed to Netlify when changes are pushed to the main branch.
 
-## License
+## Copyright
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+© 2020-2025 Ralph King Jr. All rights reserved.
+
+This is a personal portfolio website. The content, design, and code of this website are protected by copyright law. While visitors are welcome to view and draw inspiration from the site, unauthorized copying, modification, or distribution of the content or code is prohibited without express written permission.
 
 ## Author
 

@@ -1,24 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-@tailwind utilities;
-
-@import './styles/fonts.css';
 @import "tailwindcss";
 
+@layer base {
+  html {
+    font-family: 'Roboto Slab', system-ui, sans-serif;
+  }
+}
+
+/* Global styles */
+ul.ul-job-points,
+ul.list-adaptive {
+    list-style-type: disc !important;
+    padding-left: 2rem !important;
+}
+
+ul.ul-job-points li::marker,
+ul.list-adaptive li::marker {
+    color: currentColor;
+}
 
 @layer components {
     .section-h2 {
-        @apply text-2xl font-bold mb-4;
+        @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white uppercase tracking-wider;
     }
-    
+
     .p-header {
-        @apply text-gray-800 text-left;
+        @apply text-gray-600 dark:text-gray-100 text-left text-lg mb-12;
     }
 
     .p-job-summary {
-        @apply text-gray-600 mb-1 text-left
+        @apply text-gray-600 dark:text-gray-100 mb-4 text-left text-lg;
     }
 
     .ul-job-points {
-        @apply list-disc pl-5 text-gray-700 space-y-1 text-left mb-10
+        @apply text-gray-600 dark:text-gray-100 space-y-2 text-left mb-12 text-lg;
+    }
+
+    .text-adaptive {
+        @apply text-gray-600 dark:text-gray-100;
+    }
+
+    .text-adaptive-bold {
+        @apply text-gray-900 dark:text-white font-semibold;
+    }
+
+    .list-adaptive {
+        @apply text-gray-600 dark:text-gray-100 space-y-3 text-left mb-12 text-lg;
+    }
+}
+
+@layer utilities {
+    .text-adaptive {
+        @apply text-gray-600 dark:text-gray-100;
+    }
+
+    .text-adaptive-bold {
+        @apply text-gray-900 dark:text-white font-semibold;
     }
 }

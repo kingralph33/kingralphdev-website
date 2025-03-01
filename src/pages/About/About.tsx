@@ -3,24 +3,24 @@ const About = () => {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">About Me</h1>
       <p className="text-lg text-gray-600 dark:text-gray-100 text-left mb-6">
-        Hi there!
+        Welcome to my portfolio.
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-2">
-        I'm a software developer with a passion for building and
-        problem-solving. My journey into tech began in 2016, transitioning from
-        a background in retail and small business banking. Since then, I've
-        gained experience in software quality assurance, full-stack development
-        (Python/Flask/Django and MEAN stack), and DevOps, working with
-        technologies like Java, JavaScript, PHP, and cloud platforms like
-        OpenShift and Azure. Currently, I'm contributing to projects at the
-        Federal Government.
+        I'm a software developer specializing in cloud solutions and full-stack
+        development. My journey into technology began in 2016, transitioning
+        from a background in retail and small business banking. Since then, I've
+        developed expertise in software quality assurance, full-stack
+        development (Python/Flask/Django and MEAN stack), and DevOps. I work
+        extensively with Java, JavaScript, PHP, and cloud platforms including
+        OpenShift and Azure. Currently, I'm leveraging these skills on impactful
+        projects at the Federal Government level.
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-12">
-        Outside of work, I enjoy spending time with my wonderful wife and
-        daughter. We love exploring new restaurants and new construction
-        residential communities. I'm also currently on a fitness journey,
-        balancing my lifelong love of strength training with a newfound
-        appreciation for cardio.
+        Beyond my professional work, I maintain a balanced lifestyle that
+        includes family time and personal development. I'm passionate about
+        continuous learning in technology and maintain an active fitness
+        routine, combining strength training with cardiovascular exercise. This
+        balanced approach helps me stay sharp and creative in my technical work.
       </p>
 
       {/* Divider */}
@@ -31,35 +31,36 @@ const About = () => {
         {/* Left Column */}
         <div className="text-center">
           <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Favorite Sports
+            Technical Interests
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>American Football</li>
-            <li>Mixed Martial Arts</li>
-            <li>Basketball</li>
+            <li>Cloud Architecture</li>
+            <li>DevOps Practices</li>
+            <li>Software Testing</li>
           </ul>
         </div>
 
         {/* Middle Column */}
         <div className="text-center">
           <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Favorite Foods
+            Current Focus
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>Pizza</li>
-            <li>Jerk Chicken</li>
-            <li>Steak & Cheese</li>
+            <li>AWS Solutions</li>
+            <li>CI/CD Pipelines</li>
+            <li>Test Automation</li>
           </ul>
         </div>
 
         {/* Right Column */}
         <div className="text-center">
           <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Favorite Teams
+            Professional Interests
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>Philadelphia Eagles</li>
-            <li>Maryland Basketball</li>
+            <li>Tech Mentoring</li>
+            <li>Process Optimization</li>
+            <li>Team Collaboration</li>
           </ul>
         </div>
       </div>

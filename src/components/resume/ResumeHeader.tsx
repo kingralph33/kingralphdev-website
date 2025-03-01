@@ -2,7 +2,7 @@ import React from "react";
 
 const ResumeHeader: React.FC = () => {
   return (
-    <header className="text-center mb-8">
+    <header className="text-center mb-12">
       <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
         RALPH KING JR
       </h1>

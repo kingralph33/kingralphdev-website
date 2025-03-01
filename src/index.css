@@ -7,18 +7,31 @@
 
 @layer components {
     .section-h2 {
-        @apply text-2xl font-bold mb-4;
+        @apply text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100;
     }
-    
+
     .p-header {
-        @apply text-gray-800 text-left;
+        @apply text-gray-600 dark:text-gray-100 text-left;
     }
 
     .p-job-summary {
-        @apply text-gray-600 mb-1 text-left
+        @apply text-gray-600 dark:text-gray-100 mb-1 text-left;
     }
 
     .ul-job-points {
-        @apply list-disc pl-5 text-gray-700 space-y-1 text-left mb-10
+        @apply list-disc pl-5 text-gray-600 dark:text-gray-100 space-y-1 text-left mb-10;
+    }
+
+    /* New utility classes */
+    .text-adaptive {
+        @apply text-gray-600 dark:text-gray-100;
+    }
+
+    .text-adaptive-bold {
+        @apply text-gray-900 dark:text-white;
+    }
+
+    .list-adaptive {
+        @apply list-disc pl-5 space-y-1 text-left text-adaptive;
     }
 }

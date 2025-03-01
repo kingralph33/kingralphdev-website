@@ -3,24 +3,27 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 bg-white z-10">
+    <nav className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10">
       <div className="max-w-screen mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-xl font-semibold font-sans">
+            <Link
+              to="/"
+              className="text-xl font-semibold font-sans text-gray-900 dark:text-gray-100"
+            >
               KingRalph.dev
             </Link>
           </div>
           <div className="flex space-x-4 items-center">
             <Link
               to="/about"
-              className="text-[oklch(0.32_0.03_270.43)] hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
             >
               About
             </Link>
             <Link
               to="/resume"
-              className="text-[oklch(0.32_0.03_270.43)] hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
             >
               Resume
             </Link>
@@ -28,7 +31,7 @@ const Navbar = () => {
               href="https://github.com/kingralph33"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[oklch(0.32_0.03_270.43)] hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
             >
               <FaGithub size={24} />
             </a>
@@ -36,7 +39,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/ralphkingjr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[oklch(0.32_0.03_270.43)] hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
             >
               <FaLinkedin size={24} />
             </a>

@@ -25,7 +25,7 @@ ul.list-adaptive li::marker {
     }
 
     .p-header {
-        @apply text-gray-600 dark:text-gray-100 text-left text-lg mb-12;
+        @apply text-gray-600 dark:text-gray-100 text-left text-lg;
     }
 
     .p-job-summary {

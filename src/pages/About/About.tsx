@@ -6,14 +6,18 @@ const About = () => {
         Welcome to my portfolio.
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-2">
-        I'm a software developer specializing in cloud solutions and full-stack
-        development. My journey into technology began in 2016, transitioning
-        from a background in retail and small business banking. Since then, I've
-        developed expertise in software quality assurance, full-stack
-        development (Python/Flask/Django and MEAN stack), and DevOps. I work
-        extensively with Java, JavaScript, PHP, and cloud platforms including
-        OpenShift and Azure. Currently, I'm leveraging these skills on impactful
-        projects at the Federal Government level.
+        My journey into tech wasn't a straight line. I started in retail
+        banking, but I was always fascinated by how technology could solve
+        problems and make things more efficient. In 2016, I decided to make a
+        career change and never looked back. I immersed myself in coding,
+        completing a bootcamp and quickly gaining experience in software quality
+        assurance and full-stack development. Now, I'm passionate about building
+        scalable and reliable cloud solutions, and I'm particularly excited
+        about the potential of Machine Learning Cloud Engineering. I'm currently
+        working on getting my AWS Solutions Architect Certification. I'm always
+        eager to learn new things and collaborate with other passionate
+        developers. If you'd like to connect, please don't hesitate to reach
+        out!
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-12">
         Beyond my professional work, I maintain a balanced lifestyle that

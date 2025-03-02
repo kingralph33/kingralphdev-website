@@ -68,13 +68,13 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 ## Testing
 
-The project includes comprehensive test coverage using Jest and React Testing Library. Tests cover:
+The project includes comprehensive test coverage using Jest and React Testing Library. We aim to achieve high code coverage, with tests for all core components and critical user interactions. The project uses a mix of unit and integration tests to ensure the reliability of the application. Tests are located next to the component they are testing. Test cover:
 
-- Component rendering
-- User interactions
-- Navigation
-- Dark mode functionality
-- Accessibility features
+- Component rendering (all key components are rendered)
+- User interactions (the buttons, forms, and other interactive elements)
+- Navigation (all routes can be reached)
+- Dark mode functionality (that it switches properly)
+- Accessibility features (alt text, and button labels)
 
 Run tests with:
 

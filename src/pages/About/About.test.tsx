@@ -12,7 +12,7 @@ describe("About Page", () => {
 
   it("renders introduction text", () => {
     expect(screen.getByText("Welcome to my portfolio.")).toBeInTheDocument();
-    expect(screen.getByText(/I'm a software developer/)).toBeInTheDocument();
+    expect(screen.getByText(/My journey into tech/)).toBeInTheDocument();
   });
 
   it("renders all section headings", () => {

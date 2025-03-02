@@ -11,30 +11,36 @@ describe("About Page", () => {
   });
 
   it("renders introduction text", () => {
-    expect(screen.getByText(/Hi there!/)).toBeInTheDocument();
+    expect(screen.getByText("Welcome to my portfolio.")).toBeInTheDocument();
     expect(screen.getByText(/I'm a software developer/)).toBeInTheDocument();
   });
 
   it("renders all section headings", () => {
-    expect(screen.getByText("Favorite Sports")).toBeInTheDocument();
-    expect(screen.getByText("Favorite Foods")).toBeInTheDocument();
-    expect(screen.getByText("Favorite Teams")).toBeInTheDocument();
+    expect(screen.getByText("Technical Interests")).toBeInTheDocument();
+    expect(screen.getByText("Current Focus")).toBeInTheDocument();
+    expect(screen.getByText("Professional Interests")).toBeInTheDocument();
   });
 
-  it("renders all favorite sports", () => {
-    expect(screen.getByText("American Football")).toBeInTheDocument();
-    expect(screen.getByText("Mixed Martial Arts")).toBeInTheDocument();
-    expect(screen.getByText("Basketball")).toBeInTheDocument();
+  it("renders technical interests", () => {
+    expect(screen.getByText("Software Engineering")).toBeInTheDocument();
+    expect(
+      screen.getAllByText("Machine Learning Cloud Engineering")
+    ).toHaveLength(2);
+    expect(screen.getByText("Cloud Solutions")).toBeInTheDocument();
   });
 
-  it("renders all favorite foods", () => {
-    expect(screen.getByText("Pizza")).toBeInTheDocument();
-    expect(screen.getByText("Jerk Chicken")).toBeInTheDocument();
-    expect(screen.getByText("Steak & Cheese")).toBeInTheDocument();
+  it("renders current focus items", () => {
+    expect(
+      screen.getByText("AWS Solutions Architecture Certification")
+    ).toBeInTheDocument();
+    expect(screen.getByText("System Design")).toBeInTheDocument();
   });
 
-  it("renders all favorite teams", () => {
-    expect(screen.getByText("Philadelphia Eagles")).toBeInTheDocument();
-    expect(screen.getByText("Maryland Basketball")).toBeInTheDocument();
+  it("renders professional interests", () => {
+    expect(screen.getByText("Automation and Efficiency")).toBeInTheDocument();
+    expect(screen.getByText("Process Optimization")).toBeInTheDocument();
+    expect(
+      screen.getByText("Scalable and Reliable Systems")
+    ).toBeInTheDocument();
   });
 });

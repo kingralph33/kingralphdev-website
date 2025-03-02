@@ -34,9 +34,9 @@ const About = () => {
             Technical Interests
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>Cloud Architecture</li>
-            <li>DevOps Practices</li>
-            <li>Software Testing</li>
+            <li>Software Engineering</li>
+            <li>Machine Learning Cloud Engineering</li>
+            <li>Cloud Solutions</li>
           </ul>
         </div>
 
@@ -46,9 +46,9 @@ const About = () => {
             Current Focus
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>AWS Solutions</li>
-            <li>CI/CD Pipelines</li>
-            <li>Test Automation</li>
+            <li>Machine Learning Cloud Engineering</li>
+            <li>AWS Solutions Architecture Certification</li>
+            <li>System Design</li>
           </ul>
         </div>
 
@@ -58,9 +58,9 @@ const About = () => {
             Professional Interests
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>Tech Mentoring</li>
+            <li>Automation and Efficiency</li>
             <li>Process Optimization</li>
-            <li>Team Collaboration</li>
+            <li>Scalable and Reliable Systems</li>
           </ul>
         </div>
       </div>

@@ -5,7 +5,6 @@ import App from "./App";
 // These tests verify the Home page functionality
 describe("App Home Page", () => {
   beforeEach(() => {
-    // Create a new render for each test
     render(<App />);
   });
 
@@ -59,10 +58,8 @@ describe("App Home Page", () => {
   });
 });
 
-// This test verifies navigation between pages
 describe("App Navigation", () => {
   it("navigates to About page when clicking 'Find out more about me'", async () => {
-    // Create a fresh render for the navigation test
     render(<App />);
     const user = userEvent.setup();
     const aboutLink = screen.getByText("Find out more about me");

@@ -47,6 +47,10 @@ ul.list-adaptive li::marker {
     .list-adaptive {
         @apply text-gray-600 dark:text-gray-100 space-y-3 text-left mb-12 text-lg;
     }
+    
+    .nav-link {
+        @apply text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100;
+    }
 }
 
 @layer utilities {

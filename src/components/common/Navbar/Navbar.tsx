@@ -2,10 +2,6 @@ import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { memo } from "react";
 
-// Extract common styles to reduce duplication
-const linkStyles = "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100";
-const socialLinkStyles = `${linkStyles}`;
-
 const Navbar = () => {
   return (
     <nav 
@@ -25,7 +21,7 @@ const Navbar = () => {
           <div className="flex space-x-4 items-center">
             <Link
               to="/about"
-              className={linkStyles}
+              className="nav-link"
             >
               About
             </Link>
@@ -33,7 +29,7 @@ const Navbar = () => {
               href="https://kingralphresume.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`${linkStyles} flex items-center`}
+              className="nav-link flex items-center"
               aria-label="Resume, opens in new tab"
             >
               Resume
@@ -43,7 +39,7 @@ const Navbar = () => {
               href="https://github.com/kingralph33"
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkStyles}
+              className="nav-link"
               aria-label="GitHub profile, opens in new tab"
             >
               <FaGithub size={24} />
@@ -52,7 +48,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/ralphkingjr/"
               target="_blank"
               rel="noopener noreferrer"
-              className={socialLinkStyles}
+              className="nav-link"
               aria-label="LinkedIn profile, opens in new tab"
             >
               <FaLinkedin size={24} />
@@ -64,5 +60,4 @@ const Navbar = () => {
   );
 };
 
-// Memoize the component to prevent unnecessary re-renders
 export default memo(Navbar);

@@ -4,7 +4,6 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import About from "./pages/About/About";
-import Resume from "./pages/Resume/Resume";
 
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
@@ -73,7 +72,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
         </Routes>
       </MainLayout>
     </Router>

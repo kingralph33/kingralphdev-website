@@ -7,7 +7,6 @@ const renderWithRouter = (component: React.ReactElement) => {
 };
 
 describe("MainLayout", () => {
-  // Set up component before each test to reduce repetition
   beforeEach(() => {
     renderWithRouter(
       <MainLayout>

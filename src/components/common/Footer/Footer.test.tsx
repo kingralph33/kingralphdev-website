@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import Footer from "./Footer";
 
 describe("Footer", () => {
-  // Set up component before each test to reduce repetition
   beforeEach(() => {
     render(<Footer />);
   });

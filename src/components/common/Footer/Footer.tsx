@@ -1,7 +1,6 @@
 import { memo } from "react";
 
 const Footer = () => {
-  // Memoize this value so it's not recalculated on every render
   const currentYear = new Date().getFullYear();
 
   return (

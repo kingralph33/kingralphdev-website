@@ -7,7 +7,6 @@ const renderWithRouter = (component: React.ReactElement) => {
 };
 
 describe("Navbar", () => {
-  // Set up component before each test to reduce repetition
   beforeEach(() => {
     renderWithRouter(<Navbar />);
   });
@@ -19,7 +18,7 @@ describe("Navbar", () => {
   it("renders navigation links", () => {
     expect(screen.getByText("About")).toBeInTheDocument();
     
-    // Get the Resume link element (which now contains both text and icon)
+    // Get the Resume link element
     const resumeLink = screen.getByText("Resume").closest('a');
     expect(resumeLink).toBeInTheDocument();
     expect(resumeLink).toHaveAttribute('href', 'https://kingralphresume.com/');

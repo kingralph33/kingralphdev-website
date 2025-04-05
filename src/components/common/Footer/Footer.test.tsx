@@ -10,8 +10,7 @@ describe("Footer", () => {
     const currentYear = new Date().getFullYear();
     expect(
       screen.getByText(
-        `© 2020 - ${currentYear} Ralph King. All rights reserved.`,
-        { normalizeWhitespace: true }
+        `© 2020 - ${currentYear} Ralph King. All rights reserved.`
       )
     ).toBeInTheDocument();
   });

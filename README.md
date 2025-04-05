@@ -4,7 +4,7 @@
 
 [![Tests](https://github.com/kingralph33/kingralphdev-website/actions/workflows/test.yml)](https://github.com/kingralph33/kingralphdev-website/actions/workflows/test.yml)
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This site showcases my professional experience, skills, and projects.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This site showcases my professional experience, skills, and projects. My resume is available via an external link.
 
 ## Features
 
@@ -104,19 +104,10 @@ src/
 │   ├── common/           # Shared components
 │   │   ├── Footer/       # Footer component with tests
 │   │   └── Navbar/       # Navigation component with tests
-│   └── resume/           # Resume-specific components
-│       ├── __tests__/    # Resume component tests
-│       ├── ResumeEducation.tsx
-│       ├── ResumeExperience.tsx
-│       ├── ResumeHeader.tsx
-│       ├── ResumeJobEntry.tsx
-│       ├── ResumeSummary.tsx
-│       └── ResumeTechnicalSkills.tsx
 ├── layouts/              # Layout components
 │   └── MainLayout/       # Main layout with tests
 ├── pages/                # Page components
-│   ├── About/            # About page with tests
-│   └── Resume/           # Resume page with tests
+│   └── About/            # About page with tests
 ├── styles/               # Global styles
 │   └── fonts.css         # Font definitions
 ├── assets/               # Static assets

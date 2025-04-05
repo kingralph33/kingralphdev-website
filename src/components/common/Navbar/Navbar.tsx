@@ -1,9 +1,13 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10">
+    <nav 
+      className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10"
+      aria-label="Main navigation"
+    >
       <div className="max-w-screen mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -17,21 +21,26 @@ const Navbar = () => {
           <div className="flex space-x-4 items-center">
             <Link
               to="/about"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+              className="nav-link"
             >
               About
             </Link>
-            <Link
-              to="/resume"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+            <a
+              href="https://kingralphresume.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link flex items-center"
+              aria-label="Resume, opens in new tab"
             >
               Resume
-            </Link>
+              <FaExternalLinkAlt className="ml-1" size={14} />
+            </a>
             <a
               href="https://github.com/kingralph33"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+              className="nav-link"
+              aria-label="GitHub profile, opens in new tab"
             >
               <FaGithub size={24} />
             </a>
@@ -39,7 +48,8 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/ralphkingjr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+              className="nav-link"
+              aria-label="LinkedIn profile, opens in new tab"
             >
               <FaLinkedin size={24} />
             </a>
@@ -50,4 +60,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

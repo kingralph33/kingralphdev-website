@@ -7,30 +7,44 @@ const renderWithRouter = (component: React.ReactElement) => {
 };
 
 describe("Navbar", () => {
-  it("renders the logo/site name", () => {
+  beforeEach(() => {
     renderWithRouter(<Navbar />);
+  });
+
+  it("renders the logo/site name", () => {
     expect(screen.getByText("KingRalph.dev")).toBeInTheDocument();
   });
 
   it("renders navigation links", () => {
-    renderWithRouter(<Navbar />);
     expect(screen.getByText("About")).toBeInTheDocument();
-    expect(screen.getByText("Resume")).toBeInTheDocument();
+    
+    // Get the Resume link element
+    const resumeLink = screen.getByText("Resume").closest('a');
+    expect(resumeLink).toBeInTheDocument();
+    expect(resumeLink).toHaveAttribute('href', 'https://kingralphresume.com/');
+    expect(resumeLink).toHaveAttribute('target', '_blank');
+    expect(resumeLink).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(resumeLink).toHaveAttribute('aria-label', 'Resume, opens in new tab');
   });
 
-  it("renders social media links", () => {
-    renderWithRouter(<Navbar />);
-    const links = screen.getAllByRole("link");
-
-    const githubLink = links.find(
-      (link) => link.getAttribute("href") === "https://github.com/kingralph33"
-    );
-    const linkedinLink = links.find(
-      (link) =>
-        link.getAttribute("href") === "https://www.linkedin.com/in/ralphkingjr/"
-    );
-
+  it("renders social media links with proper accessibility attributes", () => {
+    // Test GitHub link
+    const githubLink = screen.getByLabelText('GitHub profile, opens in new tab');
     expect(githubLink).toBeInTheDocument();
+    expect(githubLink).toHaveAttribute('href', 'https://github.com/kingralph33');
+    expect(githubLink).toHaveAttribute('target', '_blank');
+    expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
+    
+    // Test LinkedIn link
+    const linkedinLink = screen.getByLabelText('LinkedIn profile, opens in new tab');
     expect(linkedinLink).toBeInTheDocument();
+    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/ralphkingjr/');
+    expect(linkedinLink).toHaveAttribute('target', '_blank');
+    expect(linkedinLink).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it("includes proper navigation ARIA attributes", () => {
+    const nav = screen.getByRole('navigation');
+    expect(nav).toHaveAttribute('aria-label', 'Main navigation');
   });
 });

@@ -4,7 +4,7 @@ This document outlines the accessibility features and standards implemented in t
 
 ## Accessibility Standards
 
-This website aims to conform to the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA**. We follow these principles:
+This website aims to conform to the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA**. I follow these principles:
 
 1. **Perceivable** - Information and user interface components must be presentable to users in ways they can perceive
 2. **Operable** - User interface components and navigation must be operable
@@ -46,7 +46,7 @@ This website aims to conform to the **Web Content Accessibility Guidelines (WCAG
 
 ## Testing Methodology
 
-We test accessibility using a combination of:
+I test accessibility using a combination of:
 
 1. **Automated Testing**
    - Lighthouse Accessibility audits

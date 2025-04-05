@@ -82,7 +82,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 ## Testing
 
-The project includes comprehensive test coverage using Jest and React Testing Library. We aim to achieve high code coverage, with tests for all core components and critical user interactions. The project uses a mix of unit and integration tests to ensure the reliability of the application. Tests are located next to the component they are testing. Test cover:
+The project includes comprehensive test coverage using Jest and React Testing Library. I aim to achieve high code coverage, with tests for all core components and critical user interactions. The project uses a mix of unit and integration tests to ensure the reliability of the application. Tests are located next to the component they are testing. Test cover:
 
 - Component rendering (all key components are rendered)
 - User interactions (the buttons, forms, and other interactive elements)
@@ -126,18 +126,6 @@ This website is optimized for the following browsers:
 - Safari (latest 2 versions)
 - iOS Safari (latest 2 versions)
 - Android Chrome (latest 2 versions)
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute, please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-Please make sure your code follows the project's coding standards and passes all tests.
 
 ## Deployment
 

@@ -51,6 +51,14 @@ ul.list-adaptive li::marker {
     .nav-link {
         @apply text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100;
     }
+
+    .homepage-column-headers {
+        @apply text-2xl font-bold mb-4 text-left;
+    }
+    
+    .homepage-column-content {
+        @apply text-gray-600 dark:text-gray-100 text-left;
+    }
 }
 
 @layer utilities {

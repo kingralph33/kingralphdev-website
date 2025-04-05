@@ -35,30 +35,30 @@ const Home = memo(() => (
     {/* Two Column Section */}
     <div className="grid md:grid-cols-2 gap-8">
       {/* Left Column */}
-      <div className="text-center">
-        <h2 className="text-2xl font-bold mb-4 text-left">
-          Fullstack Developer
+      <div>
+        <h2 className="homepage-column-headers">
+          Full-stack Engineering
         </h2>
-        <p className="text-gray-600 dark:text-gray-100 text-left">
-          Full-stack developer proficient in building and deploying
-          web applications using JavaScript frameworks, Node.js, and
-          Python/Django. I design and implement all aspects of an
-          application, from user interface to database, and am
-          skilled in testing, deployment, and maintenance.
+        <p className="homepage-column-content">
+          Specializing in modern JavaScript/TypeScript
+          ecosystems (React, Node.js) and Python/Django frameworks. I architect and
+          implement end-to-end solutions, from responsive front-end interfaces to
+          scalable backend systems and databases. Strong focus on code quality,
+          testing practices, and performance optimization.
         </p>
       </div>
 
       {/* Right Column */}
-      <div className="text-center">
-        <h2 className="text-2xl font-bold mb-4 text-left">
-          Cloud Engineer
+      <div>
+        <h2 className="homepage-column-headers">
+          Cloud Engineering
         </h2>
-        <p className="text-gray-600 dark:text-gray-100 text-left">
-          Proficient in designing, developing, and deploying
-          applications and infrastructure on platforms like Azure
-          and OpenShift. Expertise includes CI/CD implementation and
-          management for automated software delivery, along with
-          building and maintaining automated testing frameworks.
+        <p className="homepage-column-content">
+          Expertise in AWS and OpenShift platforms, focusing on
+          cloud-native application architecture and deployment. Skilled in implementing
+          robust CI/CD pipelines, infrastructure as code (IaC), and automated testing
+          frameworks. Experience in optimizing application performance, security, and
+          scalability in cloud environments.
         </p>
       </div>
     </div>

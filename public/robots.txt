@@ -1,0 +1,6 @@
+# robots.txt for https://kingralph.dev/
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://kingralph.dev/sitemap.xml

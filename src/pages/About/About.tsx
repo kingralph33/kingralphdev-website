@@ -5,7 +5,7 @@ const About = () => {
       <p className="text-lg text-gray-600 dark:text-gray-100 text-left mb-6">
         Welcome to my site!
       </p>
-      <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-2">
+      <p className="text-lg text-gray-600 dark:text-gray-100 text-left mb-2">
         My journey into tech wasn't a straight line. I started in retail
         banking, but I was always fascinated by how technology could solve
         problems and make things more efficient. In 2016, I decided to make a
@@ -19,7 +19,7 @@ const About = () => {
         developers. If you'd like to connect, please don't hesitate to reach
         out!
       </p>
-      <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-12">
+      <p className="text-lg text-gray-600 dark:text-gray-100 text-left mb-12">
         Beyond my professional work, I maintain a balanced lifestyle that
         includes family time and personal development. I'm passionate about
         continuous learning in technology and maintain an active fitness

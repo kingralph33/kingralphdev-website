@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Link } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";

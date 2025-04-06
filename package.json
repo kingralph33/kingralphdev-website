@@ -15,7 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc -b --noEmit",
+    "prebuild": "npm run type-check"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

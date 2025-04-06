@@ -3,7 +3,7 @@ const About = () => {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">About Me</h1>
       <p className="text-lg text-gray-600 dark:text-gray-100 text-left mb-6">
-        Welcome to my portfolio.
+        Welcome to my site!
       </p>
       <p className="text-lg text-gray-600 dark:text-gray-100 indent-8 text-left mb-2">
         My journey into tech wasn't a straight line. I started in retail
@@ -39,7 +39,7 @@ const About = () => {
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
             <li>Software Engineering</li>
-            <li>Machine Learning Cloud Engineering</li>
+            <li>AI & ML Engineering</li>
             <li>Cloud Solutions</li>
           </ul>
         </div>
@@ -50,8 +50,8 @@ const About = () => {
             Current Focus
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
-            <li>Machine Learning Cloud Engineering</li>
-            <li>AWS Solutions Architecture Certification</li>
+            <li>AI Engineering</li>
+            <li>AWS Certified Solutions Architect - Associate Exam</li>
             <li>System Design</li>
           </ul>
         </div>

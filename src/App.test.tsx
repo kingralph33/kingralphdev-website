@@ -136,9 +136,6 @@ describe("App Home Page", () => {
 
 describe("App Navigation", () => {
   it("navigates to About page when clicking 'Find out more about me'", async () => {
-    // Create a test-specific setup to handle navigation
-    const user = userEvent.setup();
-    
     // Render with routes for navigation testing
     render(
       <MemoryRouter initialEntries={['/']}>
@@ -152,6 +149,5 @@ describe("App Navigation", () => {
     
     // Just verify the link has the correct href
     expect(aboutLink.closest('a')).toHaveAttribute('href', '/about');
-    // We're not using the user variable in this test currently
   });
 });

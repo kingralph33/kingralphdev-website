@@ -1,11 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
-import React from "react";
 import { MemoryRouter, Link } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import About from "./pages/About/About";
 
 // Create a mock Home component that matches the one in App.tsx
 const MockHome = () => (
@@ -155,5 +152,6 @@ describe("App Navigation", () => {
     
     // Just verify the link has the correct href
     expect(aboutLink.closest('a')).toHaveAttribute('href', '/about');
+    // We're not using the user variable in this test currently
   });
 });

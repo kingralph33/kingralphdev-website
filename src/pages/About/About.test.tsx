@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import About from "./About";
-import React from "react";
 
 describe("About Page", () => {
   beforeEach(() => {

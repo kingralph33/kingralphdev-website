@@ -39,7 +39,7 @@ const About = () => {
           </h2>
           <ul className="space-y-2 text-gray-600 dark:text-gray-100">
             <li>Software Engineering</li>
-            <li>AI Engineering</li>
+            <li>AI & ML Engineering</li>
             <li>Cloud Solutions</li>
           </ul>
         </div>

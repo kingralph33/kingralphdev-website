@@ -7,7 +7,7 @@ import About from "./pages/About/About";
 
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
-  <div className="max-w-6xl mx-auto px-4 py-8 self-center">
+  <div className="max-w-6xl mx-auto px-4 py-8">
     {/* Profile Section */}
     <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-center mb-8">
       <img

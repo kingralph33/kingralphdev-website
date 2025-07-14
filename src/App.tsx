@@ -9,19 +9,27 @@ import About from "./pages/About/About";
 const Home = memo(() => (
   <div className="max-w-6xl mx-auto px-4 py-8">
     {/* Profile Section */}
-    <div className="flex flex-col items-center mb-12">
+    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-center mb-8">
       <img
         src="/images/profile.webp"
         alt="Ralph King Jr an 'AI ML Engineer'"
         width="320"
         height="320"
-        className="w-80 h-80 rounded-full object-cover mb-6"
+        className="w-80 h-80 rounded-full object-cover"
         loading="eager"
         fetchPriority="high"
       />
-      <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
-      <p className="text-xl text-gray-600 dark:text-gray-100 mb-6">
-        AI/ML Engineer in the Baltimore/Washington DC Metro Area
+      <div className="text-center md:text-left md:ml-4">
+        <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
+        <h2 className="text-xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
+          AI/ML Engineer & Builder
+        </h2>
+      </div>
+    </div>
+    <div>
+      <p className="text-justify md:text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+        I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
+        Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
       </p>
       <Link
         to="/about"
@@ -31,21 +39,6 @@ const Home = memo(() => (
         Find out more about me
         <ArrowRightIcon className="h-5 w-5" aria-hidden="true" data-testid="arrow-icon" />
       </Link>
-    </div>
-
-    {/* Divider */}
-    <hr className="border-gray-200 dark:border-gray-700 mb-12" />
-
-    <div className="col-span-full">
-      <div>
-        <h1 className="homepage-hero-headers">
-          AI/ML Engineer & Builder
-        </h1>
-        <p className="homepage-hero-content">
-          I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
-          Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
-        </p>
-      </div>
     </div>
   </div>
 ));

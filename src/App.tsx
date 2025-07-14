@@ -12,7 +12,7 @@ const Home = memo(() => (
     <div className="flex flex-col items-center mb-12">
       <img
         src="/images/profile.webp"
-        alt="Ralph King Jr"
+        alt="Ralph King Jr an 'AI ML Engineer'"
         width="320"
         height="320"
         className="w-80 h-80 rounded-full object-cover mb-6"
@@ -21,7 +21,7 @@ const Home = memo(() => (
       />
       <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
       <p className="text-xl text-gray-600 dark:text-gray-100 mb-6">
-        Software Engineer in the Washington DC Metro Area
+        AI/ML Engineer in the Baltimore/Washington DC Metro Area
       </p>
       <Link
         to="/about"

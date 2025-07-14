@@ -1,9 +1,5 @@
 # KingRalph.dev - Personal Portfolio Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/986f586a-2b5f-45d3-ab7d-7876363a41a6/deploy-status)](https://app.netlify.com/sites/mystifying-easley-c1f16f/deploys)
-
-[![Tests](https://github.com/kingralph33/kingralphdev-website/actions/workflows/test.yml)](https://github.com/kingralph33/kingralphdev-website/actions/workflows/test.yml)
-
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This site showcases my professional experience, skills, and projects. My resume is available via an external link.
 
 ## Features
@@ -38,7 +34,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - **Testing:** Jest + React Testing Library
 - **Routing:** React Router v7
 - **Icons:** Heroicons + React Icons
-- **Deployment:** Netlify
+- **Deployment:** Cloudflare Pages
 
 ## Getting Started
 

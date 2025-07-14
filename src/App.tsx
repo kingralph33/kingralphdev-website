@@ -20,9 +20,17 @@ const Home = memo(() => (
         fetchPriority="high"
       />
       <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
-      <p className="text-xl text-gray-600 dark:text-gray-100 mb-6">
-        AI/ML Engineer in the Baltimore/Washington DC Metro Area
-      </p>
+      <div className="col-span-full">
+      <div>
+        <h2 className="homepage-hero-headers">
+          AI/ML Engineer & Builder
+        </h2>
+        <p className="homepage-hero-content">
+          I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
+          Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
+        </p>
+      </div>
+    </div>
       <Link
         to="/about"
         className="bg-[oklch(0.32_0.03_270.43)] text-white px-6 py-3 rounded-md hover:opacity-90 transition-colors inline-flex items-center gap-2"
@@ -31,22 +39,7 @@ const Home = memo(() => (
         Find out more about me
         <ArrowRightIcon className="h-5 w-5" aria-hidden="true" data-testid="arrow-icon" />
       </Link>
-    </div>
-
-    {/* Divider */}
-    <hr className="border-gray-200 dark:border-gray-700 mb-12" />
-
-    <div className="col-span-full">
-      <div>
-        <h1 className="homepage-hero-headers">
-          AI/ML Engineer & Builder
-        </h1>
-        <p className="homepage-hero-content">
-          I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
-          Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
-        </p>
-      </div>
-    </div>
+    </div>    
   </div>
 ));
 

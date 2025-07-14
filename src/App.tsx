@@ -20,16 +20,13 @@ const Home = memo(() => (
         fetchPriority="high"
       />
       <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
-      <div className="col-span-full">
-      <div>
-        <h2 className="homepage-hero-headers">
-          AI/ML Engineer & Builder
-        </h2>
-        <p className="homepage-hero-content">
-          I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
-          Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
-        </p>
-      </div>
+      <h2 className="font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
+        AI/ML Engineer & Builder
+      </h2>
+      <p className="dark:text-gray-100 text-justify">
+        I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
+        Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
+      </p>
     </div>
       <Link
         to="/about"

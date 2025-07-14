@@ -50,14 +50,6 @@ ul.list-adaptive li::marker {
     .nav-link {
         @apply text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100;
     }
-
-    .homepage-hero-headers {
-        @apply font-bold mb-4 text-center text-gray-900 dark:text-white uppercase tracking-wider;
-    }
-    
-    .homepage-hero-content {
-        @apply text-gray-600 dark:text-gray-100 text-justify;
-    }
 }
 
 @layer utilities {

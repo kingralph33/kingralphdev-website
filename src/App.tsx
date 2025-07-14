@@ -21,7 +21,7 @@ const Home = memo(() => (
       />
       <div class="text-center md:text-left">
         <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
-        <h2 className="text-2xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
+        <h2 className="text-xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
           AI/ML Engineer & Builder
         </h2>
       </div>

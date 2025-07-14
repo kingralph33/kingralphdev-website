@@ -15,11 +15,11 @@ const Home = memo(() => (
         alt="Ralph King Jr an 'AI ML Engineer'"
         width="320"
         height="320"
-        className="w-80 h-80 rounded-full object-cover mb-6"
+        className="w-80 h-80 rounded-full object-cover"
         loading="eager"
         fetchPriority="high"
       />
-      <div class="text-center md:text-left">
+      <div className="text-center md:text-left">
         <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
         <h2 className="text-xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
           AI/ML Engineer & Builder

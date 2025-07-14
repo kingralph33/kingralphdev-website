@@ -12,16 +12,16 @@ const Home = memo(() => (
     <div className="flex flex-col items-center mb-12">
       <img
         src="/images/profile.webp"
-        alt="Ralph King Jr"
+        alt="Ralph King Jr an 'AI ML Engineer'"
         width="320"
         height="320"
         className="w-80 h-80 rounded-full object-cover mb-6"
         loading="eager"
         fetchPriority="high"
       />
-      <h1 className="text-3xl font-bold mb-2">Ralph King Jr</h1>
+      <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
       <p className="text-xl text-gray-600 dark:text-gray-100 mb-6">
-        Software Engineer in the Washington DC Metro Area
+        AI/ML Engineer in the Baltimore/Washington DC Metro Area
       </p>
       <Link
         to="/about"
@@ -36,12 +36,10 @@ const Home = memo(() => (
     {/* Divider */}
     <hr className="border-gray-200 dark:border-gray-700 mb-12" />
 
-    {/* Two Column Section */}
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Left Column */}
+    <div className="col-span-full">
       <div>
         <h2 className="homepage-hero-headers">
-          AI Engineer & Builder
+          AI/ML Engineer & Builder
         </h2>
         <p className="homepage-hero-content">
           I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.

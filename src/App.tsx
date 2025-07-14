@@ -36,9 +36,7 @@ const Home = memo(() => (
     {/* Divider */}
     <hr className="border-gray-200 dark:border-gray-700 mb-12" />
 
-    {/* Two Column Section */}
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Left Column */}
+    <div className="col-span-full">
       <div>
         <h2 className="homepage-hero-headers">
           AI Engineer & Builder

@@ -36,7 +36,6 @@ const Home = memo(() => (
         Find out more about me
         <ArrowRightIcon className="h-5 w-5" aria-hidden="true" data-testid="arrow-icon" />
       </Link>
-    </div>    
   </div>
 ));
 

@@ -19,7 +19,7 @@ const Home = memo(() => (
         loading="eager"
         fetchPriority="high"
       />
-      <div className="text-center md:text-left">
+      <div className="text-center md:text-left mr-4">
         <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
         <h2 className="text-xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
           AI/ML Engineer & Builder
@@ -27,7 +27,7 @@ const Home = memo(() => (
       </div>
     </div>
     <div>
-      <p className="dark:text-gray-100 text-justify">
+      <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-6">
         I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
         Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
       </p>

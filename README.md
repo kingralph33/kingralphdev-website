@@ -34,7 +34,7 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - **Testing:** Jest + React Testing Library
 - **Routing:** React Router v7
 - **Icons:** Heroicons + React Icons
-- **Deployment:** Netlify
+- **Deployment:** Cloudflare Pages
 
 ## Getting Started
 

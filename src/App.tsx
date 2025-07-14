@@ -7,7 +7,7 @@ import About from "./pages/About/About";
 
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
-  <div className="max-w-6xl mx-auto px-4 py-8">
+  <div className="max-w-6xl mx-auto px-4 py-8 items-center">
     {/* Profile Section */}
     <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-center mb-8">
       <img
@@ -19,7 +19,7 @@ const Home = memo(() => (
         loading="eager"
         fetchPriority="high"
       />
-      <div className="text-center md:text-left mr-8">
+      <div className="text-center md:text-left md:ml-8">
         <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
         <h2 className="text-xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
           AI/ML Engineer & Builder

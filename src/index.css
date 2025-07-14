@@ -52,7 +52,7 @@ ul.list-adaptive li::marker {
     }
 
     .homepage-hero-headers {
-        @apply text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white uppercase tracking-wider;
+        @apply text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white uppercase tracking-wider;
     }
     
     .homepage-hero-content {

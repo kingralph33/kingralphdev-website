@@ -19,7 +19,7 @@ const Home = memo(() => (
         loading="eager"
         fetchPriority="high"
       />
-      <h1 className="text-3xl font-bold mb-2">Ralph King Jr</h1>
+      <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
       <p className="text-xl text-gray-600 dark:text-gray-100 mb-6">
         Software Engineer in the Washington DC Metro Area
       </p>

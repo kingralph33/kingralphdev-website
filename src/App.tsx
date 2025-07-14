@@ -9,7 +9,7 @@ import About from "./pages/About/About";
 const Home = memo(() => (
   <div className="max-w-6xl mx-auto px-4 py-8">
     {/* Profile Section */}
-    <div className="flex items-center mb-12">
+    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:items-center mb-8">
       <img
         src="/images/profile.webp"
         alt="Ralph King Jr an 'AI ML Engineer'"
@@ -19,7 +19,7 @@ const Home = memo(() => (
         loading="eager"
         fetchPriority="high"
       />
-      <div>
+      <div class="text-center md:text-left">
         <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">Ralph King Jr</h1>
         <h2 className="text-2xl font-bold mb-4 text-center dark:text-white uppercase tracking-wider">
           AI/ML Engineer & Builder

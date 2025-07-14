@@ -38,9 +38,9 @@ const Home = memo(() => (
 
     <div className="col-span-full">
       <div>
-        <h2 className="homepage-hero-headers">
+        <h1 className="homepage-hero-headers">
           AI/ML Engineer & Builder
-        </h2>
+        </h1>
         <p className="homepage-hero-content">
           I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
           Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.

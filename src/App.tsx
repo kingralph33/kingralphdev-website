@@ -40,29 +40,12 @@ const Home = memo(() => (
     <div className="grid md:grid-cols-2 gap-8">
       {/* Left Column */}
       <div>
-        <h2 className="homepage-column-headers">
-          Full-stack Engineering
+        <h2 className="homepage-hero-headers">
+          AI Engineer & Builder
         </h2>
-        <p className="homepage-column-content">
-          Specializing in modern JavaScript/TypeScript
-          ecosystems (React, Node.js) and Python/Django frameworks. I architect and
-          implement end-to-end solutions, from responsive front-end interfaces to
-          scalable backend systems and databases. Strong focus on code quality,
-          testing practices, and performance optimization.
-        </p>
-      </div>
-
-      {/* Right Column */}
-      <div>
-        <h2 className="homepage-column-headers">
-          Cloud Engineering
-        </h2>
-        <p className="homepage-column-content">
-          Expertise in AWS and OpenShift platforms, focusing on
-          cloud-native application architecture and deployment. Skilled in implementing
-          robust CI/CD pipelines, infrastructure as code (IaC), and automated testing
-          frameworks. Experience in optimizing application performance, security, and
-          scalability in cloud environments.
+        <p className="homepage-hero-content">
+          I design, train, and deploy machine learning models and LLM-powered systems using Python, FastAPI, and cloud platforms like Azure and AWS.
+          Currently focused on applied AI, infrastructure automation, and building intelligent tools that scale.
         </p>
       </div>
     </div>

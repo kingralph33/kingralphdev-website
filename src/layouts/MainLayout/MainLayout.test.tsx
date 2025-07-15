@@ -38,4 +38,35 @@ describe("MainLayout", () => {
     const container = screen.getByText("Test Content").closest('div.min-h-screen');
     expect(container).toHaveClass("dark:bg-gray-900", "dark:text-white");
   });
+
+  // Additional comprehensive tests
+  it("has proper flex layout structure", () => {
+    const container = screen.getByText("Test Content").closest('div.min-h-screen');
+    expect(container).toHaveClass("min-h-screen", "flex", "flex-col");
+  });
+
+  it("ensures main content area has proper flex properties", () => {
+    const mainContent = screen.getByRole("main");
+    expect(mainContent).toHaveClass("flex-grow", "flex", "flex-col", "justify-center", "items-center");
+  });
+
+  it("has responsive container constraints", () => {
+    const mainContent = screen.getByRole("main");
+    expect(mainContent).toHaveClass("max-w-7xl", "mx-auto");
+  });
+
+  it("has responsive padding classes", () => {
+    const mainContent = screen.getByRole("main");
+    expect(mainContent).toHaveClass("px-4", "sm:px-6", "lg:px-8", "xl:px-12", "2xl:px-20");
+  });
+
+  it("provides top padding to account for fixed navbar", () => {
+    const mainContent = screen.getByRole("main");
+    expect(mainContent).toHaveClass("pt-16");
+  });
+
+  it("renders footer at the bottom with proper styling", () => {
+    const footer = screen.getByRole("contentinfo");
+    expect(footer).toHaveClass("mt-auto");
+  });
 });

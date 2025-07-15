@@ -103,6 +103,44 @@ describe("Navbar", () => {
     }
   });
 
+  it("closes mobile menu when external links are clicked", () => {
+    const menuButton = screen.getByLabelText('Toggle navigation menu');
+    
+    // Open the mobile menu
+    fireEvent.click(menuButton);
+    const mobileMenu = screen.getByTestId('mobile-menu');
+    expect(mobileMenu).toHaveClass('block');
+    
+    // Click Resume link in mobile menu
+    const resumeLink = mobileMenu.querySelector('a[href="https://kingralphresume.com/"]');
+    if (resumeLink) {
+      fireEvent.click(resumeLink);
+      expect(mobileMenu).toHaveClass('hidden');
+    }
+    
+    // Re-open menu to test GitHub link
+    fireEvent.click(menuButton);
+    expect(mobileMenu).toHaveClass('block');
+    
+    // Click GitHub link in mobile menu
+    const githubLink = mobileMenu.querySelector('a[href="https://github.com/kingralph33"]');
+    if (githubLink) {
+      fireEvent.click(githubLink);
+      expect(mobileMenu).toHaveClass('hidden');
+    }
+    
+    // Re-open menu to test LinkedIn link
+    fireEvent.click(menuButton);
+    expect(mobileMenu).toHaveClass('block');
+    
+    // Click LinkedIn link in mobile menu
+    const linkedinLink = mobileMenu.querySelector('a[href="https://www.linkedin.com/in/ralphkingjr/"]');
+    if (linkedinLink) {
+      fireEvent.click(linkedinLink);
+      expect(mobileMenu).toHaveClass('hidden');
+    }
+  });
+
   it("makes menu button toggle between hamburger and X icon", () => {
     const menuButton = screen.getByLabelText('Toggle navigation menu');
     
@@ -116,5 +154,53 @@ describe("Navbar", () => {
     // After clicking again, should revert to hamburger icon
     fireEvent.click(menuButton);
     expect(menuButton.innerHTML).toContain('M4 6h16M4 12h16M4 18h16');
+  });
+
+  // Additional comprehensive tests for better coverage
+  it("supports keyboard navigation", () => {
+    const menuButton = screen.getByLabelText('Toggle navigation menu');
+    
+    // Test Tab navigation
+    menuButton.focus();
+    expect(document.activeElement).toBe(menuButton);
+  });
+
+  it("has proper ARIA state management", () => {
+    const menuButton = screen.getByLabelText('Toggle navigation menu');
+    const mobileMenu = screen.getByTestId('mobile-menu');
+    
+    // Initially closed
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    expect(mobileMenu).toHaveClass('hidden');
+    
+    // After opening
+    fireEvent.click(menuButton);
+    expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    expect(mobileMenu).toHaveClass('block');
+  });
+
+  it("renders correct number of navigation links", () => {
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const mobileMenu = screen.getByTestId("mobile-menu");
+    
+    // Desktop should have About link, Resume link, GitHub link, LinkedIn link
+    expect(desktopNav.querySelectorAll('a')).toHaveLength(4);
+    
+    // Mobile should have About link, Resume link, GitHub link, LinkedIn link
+    expect(mobileMenu.querySelectorAll('a')).toHaveLength(4);
+  });
+
+  it("has responsive sizing classes", () => {
+    const logo = screen.getByText("KingRalph.dev");
+    expect(logo).toHaveClass("text-xl", "lg:text-2xl", "xl:text-3xl");
+    
+    const menuButton = screen.getByLabelText('Toggle navigation menu');
+    const svg = menuButton.querySelector('svg');
+    expect(svg).toHaveClass("h-6", "w-6", "lg:h-8", "lg:w-8", "xl:h-10", "xl:w-10");
+  });
+
+  it("maintains fixed positioning for sticky navigation", () => {
+    const nav = screen.getByRole('navigation');
+    expect(nav).toHaveClass("fixed", "top-0", "left-0", "right-0", "z-10");
   });
 });

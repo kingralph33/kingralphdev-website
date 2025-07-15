@@ -10,51 +10,62 @@ const Navbar = () => {
   };
 
   return (
-    <nav 
+    <nav
       className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10"
       aria-label="Main navigation"
     >
-      <div className="max-w-screen mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-screen mx-auto px-6 lg:px-10 xl:px-16 2xl:px-24">
+        <div className="flex justify-between items-center h-16 lg:h-20 xl:h-24">
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-xl font-semibold font-sans text-gray-900 dark:text-gray-100"
+              className="text-xl lg:text-2xl xl:text-3xl font-semibold font-sans text-gray-900 dark:text-gray-100"
             >
               KingRalph.dev
             </Link>
           </div>
-          
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
-              type="button" 
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 focus:outline-none" 
+            <button
+              type="button"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 focus:outline-none"
               aria-expanded={isMenuOpen}
               aria-label="Toggle navigation menu"
               onClick={toggleMenu}
             >
-              <svg 
-                className="h-6 w-6" 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="h-6 w-6 lg:h-8 lg:w-8 xl:h-10 xl:w-10"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </button>
           </div>
-
           {/* Desktop menu */}
-          <div className="hidden md:flex space-x-4 items-center" data-testid="desktop-menu">
+          <div
+            className="hidden md:flex space-x-4 lg:space-x-8 xl:space-x-12 items-center"
+            data-testid="desktop-menu"
+          >
             <Link
               to="/about"
-              className="nav-link"
+              className="nav-link text-base lg:text-lg xl:text-xl"
             >
               About
             </Link>
@@ -62,11 +73,11 @@ const Navbar = () => {
               href="https://kingralphresume.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link flex items-center"
+              className="nav-link flex items-center text-base lg:text-lg xl:text-xl"
               aria-label="Resume, opens in new tab"
             >
               Resume
-              <FaExternalLinkAlt className="ml-1" size={14} />
+              <FaExternalLinkAlt className="ml-1" size={18} />
             </a>
             <a
               href="https://github.com/kingralph33"
@@ -75,7 +86,7 @@ const Navbar = () => {
               className="nav-link"
               aria-label="GitHub profile, opens in new tab"
             >
-              <FaGithub size={24} />
+              <FaGithub size={28} />
             </a>
             <a
               href="https://www.linkedin.com/in/ralphkingjr/"
@@ -84,14 +95,16 @@ const Navbar = () => {
               className="nav-link"
               aria-label="LinkedIn profile, opens in new tab"
             >
-              <FaLinkedin size={24} />
+              <FaLinkedin size={28} />
             </a>
           </div>
         </div>
 
         {/* Mobile menu, show/hide based on menu state */}
-        <div 
-          className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden transition-all duration-300 ease-in-out`}
+        <div
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } md:hidden transition-all duration-300 ease-in-out`}
           id="mobile-menu"
           data-testid="mobile-menu"
           aria-label="Mobile navigation"

@@ -33,4 +33,37 @@ describe("Footer", () => {
     const copyrightText = screen.getByText(/Ralph King. All rights reserved./);
     expect(copyrightText).toHaveClass("dark:text-gray-100");
   });
+
+  // Additional comprehensive tests
+  it("has proper semantic HTML structure", () => {
+    const footer = screen.getByRole("contentinfo");
+    expect(footer.tagName).toBe("FOOTER");
+  });
+
+  it("displays copyright with correct date range", () => {
+    const currentYear = new Date().getFullYear();
+    const copyrightText = screen.getByText(
+      `© 2020 - ${currentYear} Ralph King. All rights reserved.`
+    );
+    expect(copyrightText).toBeInTheDocument();
+  });
+
+  it("has responsive padding classes", () => {
+    const container = screen.getByRole("contentinfo").firstChild;
+    expect(container).toHaveClass("py-4", "lg:py-6", "xl:py-8");
+  });
+
+  it("has responsive text sizing", () => {
+    const copyrightText = screen.getByText(/Ralph King. All rights reserved./);
+    expect(copyrightText).toHaveClass("text-sm", "lg:text-base", "xl:text-lg");
+  });
+
+  it("maintains proper layout structure", () => {
+    const footer = screen.getByRole("contentinfo");
+    const container = footer.firstChild;
+    const text = container?.firstChild;
+
+    expect(container).toHaveClass("max-w-6xl", "mx-auto", "px-4");
+    expect(text).toHaveClass("text-center");
+  });
 });

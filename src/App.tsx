@@ -11,7 +11,7 @@ const Home = memo(() => (
     {/* Profile Section */}
     <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center mb-12 lg:mb-16">
       <img
-        src="/images/profile2.JPG"
+        src="/images/profile2.webp"
         alt="Ralph King Jr an 'AI ML Engineer'"
         width="320"
         height="320"

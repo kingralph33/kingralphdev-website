@@ -4,9 +4,23 @@ import { memo, useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAffiliatesOpen, setIsAffiliatesOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleAffiliatesClick = () => {
+    setIsAffiliatesOpen((prev) => !prev);
+  };
+
+  const handleSystemDesignClick = () => {
+    window.open(
+      "https://systemdesignschool.io/?linkId=lp_110319&sourceId=ralph-king&tenantId=system-design-school",
+      "_blank",
+      "noopener noreferrer"
+    );
+    setIsAffiliatesOpen(false);
   };
 
   return (
@@ -97,6 +111,50 @@ const Navbar = () => {
             >
               <FaLinkedin size={28} />
             </a>
+            {/* Affiliates Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                className="nav-link text-base lg:text-lg xl:text-xl flex items-center focus:outline-none"
+                aria-haspopup="true"
+                aria-expanded={isAffiliatesOpen}
+                onClick={handleAffiliatesClick}
+              >
+                Affiliates
+                <svg
+                  className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                    isAffiliatesOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {isAffiliatesOpen && (
+                <div
+                  className="absolute right-0 mt-2 min-w-fit bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-20"
+                  style={{ minWidth: 'fit-content' }}
+                  role="menu"
+                  aria-label="Affiliates dropdown"
+                >
+                  <button
+                    className="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-base lg:text-md xl:text-lg whitespace-nowrap cursor-pointer"
+                    onClick={handleSystemDesignClick}
+                    role="menuitem"
+                  >
+                    Discount for systemdesignschool.io
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

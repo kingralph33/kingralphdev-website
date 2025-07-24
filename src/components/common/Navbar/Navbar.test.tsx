@@ -7,6 +7,39 @@ const renderWithRouter = (component: React.ReactElement) => {
 };
 
 describe("Navbar", () => {
+  it("renders the Affiliates button in the desktop menu", () => {
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
+    expect(affiliatesButton).toBeInTheDocument();
+    expect(desktopNav).toContainElement(affiliatesButton);
+  });
+
+  it("shows and hides the Affiliates dropdown when clicked", () => {
+    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
+    // Dropdown should not be visible initially
+    expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
+    // Click to open
+    fireEvent.click(affiliatesButton);
+    expect(screen.getByText("Discount for systemdesignschool.io")).toBeInTheDocument();
+    // Click again to close
+    fireEvent.click(affiliatesButton);
+    expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
+  });
+
+  it("opens System Design School link in a new tab when dropdown item is clicked", () => {
+    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
+    fireEvent.click(affiliatesButton);
+    const discountButton = screen.getByText("Discount for systemdesignschool.io");
+    // Mock window.open
+    const openSpy = jest.spyOn(window, "open").mockImplementation(() => null);
+    fireEvent.click(discountButton);
+    expect(openSpy).toHaveBeenCalledWith(
+      "https://systemdesignschool.io/?linkId=lp_110319&sourceId=ralph-king&tenantId=system-design-school",
+      "_blank",
+      "noopener noreferrer"
+    );
+    openSpy.mockRestore();
+  });
   beforeEach(() => {
     renderWithRouter(<Navbar />);
   });

@@ -1,9 +1,11 @@
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { memo } from "react";
+import { memo, Suspense, lazy } from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import MainLayout from "./layouts/MainLayout/MainLayout";
-import About from "./pages/About/About";
+
+// Lazy load the About page for code splitting
+const About = lazy(() => import("./pages/About/About"));
 
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
@@ -55,10 +57,12 @@ function App() {
   return (
     <Router>
       <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Suspense fallback={<div className="flex items-center justify-center min-h-[200px]">Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Suspense>
       </MainLayout>
     </Router>
   );

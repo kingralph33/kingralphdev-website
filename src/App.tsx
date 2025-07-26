@@ -10,11 +10,11 @@ const About = lazy(() => import("./pages/About/About"));
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
   <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12 xl:py-16">
-    {/* Profile Section */}
+    {/* Hero Section */}
     <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center mb-12 lg:mb-16">
       <img
         src="/images/profile2.webp"
-        alt="Ralph King Jr an 'AI ML Engineer'"
+        alt="Ralph King Jr a Software Engineer"
         width="320"
         height="320"
         className="w-80 h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-full object-cover"
@@ -25,30 +25,136 @@ const Home = memo(() => (
         <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 uppercase tracking-wider">
           Ralph King Jr
         </h1>
-        <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold mb-6 text-center dark:text-white uppercase tracking-wider">
-          AI/ML Engineer & Builder
+        <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold mb-6 text-center md:text-left dark:text-white uppercase tracking-wider">
+          Software Engineer
         </h2>
+        <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-md">
+          Building scalable solutions for government and enterprise clients with 5+ years experience
+        </p>
+        
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a
+            href="mailto:ralph@kingralph.dev"
+            className="bg-[oklch(0.32_0.03_270.43)] text-white px-6 py-3 rounded-md hover:opacity-90 transition-colors inline-flex items-center justify-center gap-2"
+          >
+            Get In Touch
+          </a>
+          <Link
+            to="/about"
+            className="border-2 border-[oklch(0.32_0.03_270.43)] text-[oklch(0.32_0.03_270.43)] px-6 py-3 rounded-md hover:bg-[oklch(0.32_0.03_270.43)] hover:text-white transition-colors inline-flex items-center justify-center gap-2"
+            aria-label="View Ralph King's detailed professional background and experience"
+          >
+            Learn More
+            <ArrowRightIcon
+              className="h-5 w-5"
+              aria-hidden="true"
+              data-testid="arrow-icon"
+            />
+          </Link>
+        </div>
       </div>
     </div>
-    <div>
-      <p className="text-justify md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-5xl mx-auto mb-8 lg:mb-12">
-        I design, train, and deploy machine learning models and LLM-powered
-        systems using Python, FastAPI, and cloud platforms like Azure and AWS.
-        Currently focused on applied AI, infrastructure automation, and building
-        intelligent tools that scale.
+
+    {/* Impact Metrics */}
+    <div className="mb-16 lg:mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="p-6">
+          <div className="text-3xl lg:text-4xl font-bold text-[oklch(0.32_0.03_270.43)] mb-2">$1M+</div>
+          <div className="text-gray-600 dark:text-gray-300">Annual Cost Savings</div>
+        </div>
+        <div className="p-6">
+          <div className="text-3xl lg:text-4xl font-bold text-[oklch(0.32_0.03_270.43)] mb-2">7,500+</div>
+          <div className="text-gray-600 dark:text-gray-300">Users Served</div>
+        </div>
+        <div className="p-6">
+          <div className="text-3xl lg:text-4xl font-bold text-[oklch(0.32_0.03_270.43)] mb-2">100%</div>
+          <div className="text-gray-600 dark:text-gray-300">Compliance Rate</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Core Technologies with Expertise Levels */}
+    <div className="mb-16 lg:mb-20">
+      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-8">Technology Expertise</h3>
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-6">
+          <h4 className="text-lg font-semibold mb-3 text-center text-gray-700 dark:text-gray-300">Backend Specialization</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Python', 'Django', 'PostgreSQL', 'REST APIs'].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 bg-[oklch(0.32_0.03_270.43)] text-white rounded-full text-sm lg:text-base font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="mb-6">
+          <h4 className="text-lg font-semibold mb-3 text-center text-gray-700 dark:text-gray-300">Cloud & DevOps</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['AWS', 'Azure', 'OpenShift', 'Docker', 'CI/CD'].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm lg:text-base"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h4 className="text-lg font-semibold mb-3 text-center text-gray-700 dark:text-gray-300">Frontend & Full-Stack</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['JavaScript', 'TypeScript', 'React', 'HTML/CSS'].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm lg:text-base"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Key Projects */}
+    <div className="mb-16 lg:mb-20">
+      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-12">Recent Impact</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg">
+          <h4 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Government Compliance System</h4>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            Replaced legacy vendor software with custom Django application, serving 7,500+ users with 100% compliance rate
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">Python</span>
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">Django</span>
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">PostgreSQL</span>
+          </div>
+        </div>
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg">
+          <h4 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Fleet Management Platform</h4>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+            Built automated workflow system managing 2,000+ vehicles, reducing processing time by 80%
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">Python</span>
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">AWS</span>
+            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">OpenShift</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Brief Value Proposition */}
+    <div className="text-center max-w-3xl mx-auto">
+      <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        I build mission-critical systems that replace expensive vendor tools, automate manual processes, and ensure regulatory compliance at enterprise scale. 
+        Ready to solve complex problems with measurable impact?
       </p>
-      <Link
-        to="/about"
-        className="bg-[oklch(0.32_0.03_270.43)] text-white px-6 py-3 rounded-md hover:opacity-90 transition-colors inline-flex items-center gap-2"
-        aria-label="View Ralph King's detailed professional background and experience"
-      >
-        Find out more about me
-        <ArrowRightIcon
-          className="h-6 w-6 lg:h-7 lg:w-7"
-          aria-hidden="true"
-          data-testid="arrow-icon"
-        />
-      </Link>
     </div>
   </div>
 ));

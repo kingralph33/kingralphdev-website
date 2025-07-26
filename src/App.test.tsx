@@ -122,8 +122,8 @@ describe("App", () => {
   });
 
   it("renders enhanced value proposition", () => {
-    expect(screen.getByText(/I build mission-critical systems that replace expensive vendor tools/)).toBeInTheDocument();
-    expect(screen.getByText(/Ready to solve complex problems with measurable impact/)).toBeInTheDocument();
+    expect(screen.getByText(/Building scalable solutions for government and enterprise clients/)).toBeInTheDocument();
+    expect(screen.getByText(/5\+ years experience/)).toBeInTheDocument();
   });
 });
 

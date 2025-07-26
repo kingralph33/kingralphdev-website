@@ -15,9 +15,16 @@ describe("About Page", () => {
     expect(screen.getByText("About Me")).toBeInTheDocument();
   });
 
-  it("renders introduction text", () => {
-    expect(screen.getByText("Welcome to my site!")).toBeInTheDocument();
-    expect(screen.getByText(/My journey into tech/)).toBeInTheDocument();
+  it("renders career transition story prominently", () => {
+    expect(screen.getByText("From Banking to Building Government Systems")).toBeInTheDocument();
+    expect(screen.getByText(/My journey into tech wasn't typical/)).toBeInTheDocument();
+    expect(screen.getByText(/I started in retail banking/)).toBeInTheDocument();
+  });
+
+  it("renders professional summary with impact metrics", () => {
+    expect(screen.getByText(/Today, I'm a software engineer with over 5 years of experience/)).toBeInTheDocument();
+    expect(screen.getByText(/I've led the development of systems that replaced expensive vendor tools/)).toBeInTheDocument();
+    expect(screen.getByText(/My work has saved organizations over \$1M annually/)).toBeInTheDocument();
   });
 
   it("renders section headings", () => {
@@ -56,12 +63,12 @@ describe("About Page", () => {
     const heading = screen.getByText("About Me");
     expect(heading).toHaveClass("text-3xl", "lg:text-4xl", "xl:text-5xl");
     
-    const introText = screen.getByText("Welcome to my site!");
+    const introText = screen.getByText(/Today, I'm a software engineer with over 5 years of experience/);
     expect(introText).toHaveClass("text-lg", "lg:text-xl", "xl:text-2xl");
   });
 
   it("has proper text indentation for paragraphs", () => {
-    const paragraphs = screen.getAllByText(/My journey into tech|Beyond my professional work/);
+    const paragraphs = screen.getAllByText(/I've led the development|While backend development|Beyond my professional work/);
     paragraphs.forEach(paragraph => {
       expect(paragraph).toHaveClass("indent-6", "lg:indent-10", "xl:indent-14");
     });
@@ -70,6 +77,11 @@ describe("About Page", () => {
   it("displays divider with correct styling", () => {
     const divider = screen.getByRole("separator");
     expect(divider).toHaveClass("border-gray-200", "dark:border-gray-700", "mb-12");
+  });
+
+  it("has prominent career transition section with proper styling", () => {
+    const careerSection = screen.getByText("From Banking to Building Government Systems").closest('div');
+    expect(careerSection).toHaveClass("bg-gray-50", "dark:bg-gray-800", "p-6", "lg:p-8", "rounded-lg");
   });
 
   it("has responsive grid layout for three columns", () => {

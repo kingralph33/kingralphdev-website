@@ -13,7 +13,7 @@ const MockHome = memo(() => (
     <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center mb-12 lg:mb-16">
       <img
         src="/images/profile2.webp"
-        alt="Ralph King Jr an 'AI ML Engineer'"
+        alt="Ralph King Jr a Software Engineer"
         width="320"
         height="320"
         className="w-80 h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-full object-cover"
@@ -24,30 +24,34 @@ const MockHome = memo(() => (
         <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 uppercase tracking-wider">
           Ralph King Jr
         </h1>
-        <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold mb-6 text-center dark:text-white uppercase tracking-wider">
-          AI/ML Engineer & Builder
+        <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold mb-6 text-center md:text-left dark:text-white uppercase tracking-wider">
+          Software Engineer
         </h2>
+        <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-md">
+          Building scalable solutions for government and enterprise clients with 5+ years experience
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a
+            href="mailto:ralph@kingralph.dev"
+            className="bg-[oklch(0.32_0.03_270.43)] text-white px-6 py-3 rounded-md hover:opacity-90 transition-colors inline-flex items-center justify-center gap-2"
+          >
+            Get In Touch
+          </a>
+          <Link
+            to="/about"
+            className="border-2 border-[oklch(0.32_0.03_270.43)] text-[oklch(0.32_0.03_270.43)] px-6 py-3 rounded-md hover:bg-[oklch(0.32_0.03_270.43)] hover:text-white transition-colors inline-flex items-center justify-center gap-2"
+            aria-label="View Ralph King's detailed professional background and experience"
+          >
+            Learn More
+            <ArrowRightIcon
+              className="h-5 w-5"
+              aria-hidden="true"
+              data-testid="arrow-icon"
+            />
+          </Link>
+        </div>
       </div>
-    </div>
-    <div>
-      <p className="text-justify md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-5xl mx-auto mb-8 lg:mb-12">
-        I design, train, and deploy machine learning models and LLM-powered
-        systems using Python, FastAPI, and cloud platforms like Azure and AWS.
-        Currently focused on applied AI, infrastructure automation, and building
-        intelligent tools that scale.
-      </p>
-      <Link
-        to="/about"
-        className="bg-[oklch(0.32_0.03_270.43)] text-white px-6 py-3 rounded-md hover:opacity-90 transition-colors inline-flex items-center gap-2"
-        aria-label="View Ralph King's detailed professional background and experience"
-      >
-        Find out more about me
-        <ArrowRightIcon
-          className="h-6 w-6 lg:h-7 lg:w-7"
-          aria-hidden="true"
-          data-testid="arrow-icon"
-        />
-      </Link>
     </div>
   </div>
 ));
@@ -68,15 +72,15 @@ describe("Integration Tests", () => {
 
       // Should be on home page initially
       expect(screen.getByText("Ralph King Jr")).toBeInTheDocument();
-      expect(screen.getByText("AI/ML Engineer & Builder")).toBeInTheDocument();
+      expect(screen.getByText("Software Engineer")).toBeInTheDocument();
 
       // Click the main CTA button
-      const ctaButton = screen.getByText("Find out more about me");
+      const ctaButton = screen.getByText("Learn More");
       fireEvent.click(ctaButton);
 
       // Should navigate to about page
       expect(screen.getByText("About Me")).toBeInTheDocument();
-      expect(screen.getByText("Welcome to my site!")).toBeInTheDocument();
+      expect(screen.getByText("From Banking to Building Government Systems")).toBeInTheDocument();
     });
 
     it("navigates using mobile menu", () => {

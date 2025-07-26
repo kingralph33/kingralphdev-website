@@ -34,7 +34,7 @@ describe("Accessibility Tests", () => {
   it("has proper alt text for images", () => {
     render(<App />);
     
-    const profileImage = screen.getByAltText("Ralph King Jr an 'AI ML Engineer'");
+    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
     expect(profileImage).toBeInTheDocument();
     expect(profileImage.getAttribute("alt")).toBeTruthy();
     expect(profileImage.getAttribute("alt")).not.toBe("");
@@ -56,8 +56,8 @@ describe("Accessibility Tests", () => {
     render(<App />);
     
     // Check that dark mode classes are present
-    const mainText = screen.getByText(/I design, train, and deploy machine learning models/);
-    expect(mainText).toHaveClass("dark:text-gray-300");
+    const heroText = screen.getByText(/Building scalable solutions for government and enterprise clients/);
+    expect(heroText).toHaveClass("dark:text-gray-300");
     
     const footer = screen.getByRole("contentinfo");
     expect(footer).toHaveClass("dark:bg-gray-900");
@@ -83,7 +83,7 @@ describe("Performance Tests", () => {
   it("loads images with proper optimization attributes", () => {
     render(<App />);
     
-    const profileImage = screen.getByAltText("Ralph King Jr an 'AI ML Engineer'");
+    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
     expect(profileImage).toHaveAttribute("loading", "eager");
     expect(profileImage).toHaveAttribute("fetchPriority", "high");
     expect(profileImage).toHaveAttribute("width");
@@ -103,7 +103,7 @@ describe("Performance Tests", () => {
   it("has efficient CSS classes for responsive design", () => {
     render(<App />);
     
-    const profileImage = screen.getByAltText("Ralph King Jr an 'AI ML Engineer'");
+    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
     // Check for responsive classes that enable efficient CSS
     expect(profileImage).toHaveClass("w-80", "h-80", "lg:w-96", "lg:h-96");
   });
@@ -118,7 +118,7 @@ describe("SEO and Meta Tests", () => {
     expect(mainHeading).toHaveTextContent("Ralph King Jr");
     
     // Secondary heading should be descriptive
-    const secondaryHeading = screen.getByText("AI/ML Engineer & Builder");
+    const secondaryHeading = screen.getByText("Software Engineer");
     expect(secondaryHeading.tagName).toBe("H2");
   });
 
@@ -126,16 +126,16 @@ describe("SEO and Meta Tests", () => {
     render(<App />);
     
     // Should have descriptive content about the person
-    expect(screen.getByText(/machine learning models/)).toBeInTheDocument();
-    expect(screen.getByText(/Python, FastAPI, and cloud platforms/)).toBeInTheDocument();
-    expect(screen.getByText(/applied AI, infrastructure automation/)).toBeInTheDocument();
+    expect(screen.getByText(/Building scalable solutions for government and enterprise clients/)).toBeInTheDocument();
+    expect(screen.getByText(/I build mission-critical systems that replace expensive vendor tools/)).toBeInTheDocument();
+    expect(screen.getByText(/Technology Expertise/)).toBeInTheDocument();
   });
 
   it("has proper link structure for navigation", () => {
     render(<App />);
     
     // Internal links should be relative
-    const aboutLink = screen.getByText("Find out more about me");
+    const aboutLink = screen.getByText("Learn More");
     expect(aboutLink.closest('a')).toHaveAttribute('href', '/about');
     
     // External links should be absolute and secure

@@ -10,25 +10,25 @@ const About = () => {
         <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">
           From Banking to Building Government Systems
         </h2>
-        <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed mb-4">
+        <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed mb-4">
           My journey into tech wasn't typical. I started in retail banking, but I was always fascinated by how technology could solve problems and make operations more efficient. In 2016, I made the career change that would define my next chapter.
         </p>
-        <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed">
+        <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed">
           I immersed myself in coding, completed an intensive bootcamp, and quickly progressed from software quality assurance to full-stack development. This non-traditional path gave me a unique perspective: I understand both the business problems that technology solves and the technical skills needed to build robust solutions.
         </p>
       </div>
 
       {/* Current Professional Summary */}
-      <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed mb-6">
+      <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed mb-6">
         Today, I'm a software engineer with over 5 years of experience building scalable web applications and automating complex workflows in high-stakes government environments. I specialize in Python and Django on the backend, with expertise in AWS, Azure, and OpenShift deployments.
       </p>
-      <p className="indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed mb-6">
+      <p className="indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed mb-6">
         I've led the development of systems that replaced expensive vendor tools, streamlined manual processes, and delivered measurable impact on operational efficiency. My work has saved organizations over $1M annually while serving thousands of users with 100% compliance rates.
       </p>
-      <p className="indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed mb-2">
+      <p className="indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed mb-2">
         While backend development is my specialty, I'm comfortable across the full stack with JavaScript/TypeScript, React, and modern DevOps practices. I'm currently pursuing my AWS Solutions Architect certification and am particularly excited about the intersection of AI and cloud engineering.
       </p>
-      <p className=" indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-justify leading-relaxed mb-12">
+      <p className=" indent-6 lg:indent-10 xl:indent-14 text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-200 text-left md:text-justify leading-relaxed mb-12">
         Beyond my professional work, I maintain a balanced lifestyle that
         includes family time and personal development. I'm passionate about
         continuous learning in technology and maintain an active fitness

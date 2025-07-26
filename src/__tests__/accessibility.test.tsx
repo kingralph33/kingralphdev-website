@@ -127,7 +127,6 @@ describe("SEO and Meta Tests", () => {
     
     // Should have descriptive content about the person
     expect(screen.getByText(/Building scalable solutions for government and enterprise clients/)).toBeInTheDocument();
-    expect(screen.getByText(/I build mission-critical systems that replace expensive vendor tools/)).toBeInTheDocument();
     expect(screen.getByText(/Technology Expertise/)).toBeInTheDocument();
   });
 

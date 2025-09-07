@@ -23,6 +23,15 @@ const Navbar = () => {
     setIsAffiliatesOpen(false);
   };
 
+  const handleRailwayAppClick = () => {
+    window.open(
+      "https://railway.com?referralCode=Q392J9",
+      "_blank",
+      "noopener noreferrer"
+    );
+    setIsAffiliatesOpen(false);
+  }
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10"
@@ -151,6 +160,13 @@ const Navbar = () => {
                     role="menuitem"
                   >
                     Discount for systemdesignschool.io
+                  </button>
+                  <button
+                    className="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-base lg:text-md xl:text-lg whitespace-nowrap cursor-pointer"
+                    onClick={handleRailwayAppClick}
+                    role="menuitem"
+                  >
+                    Discount for railway.com
                   </button>
                 </div>
               )}

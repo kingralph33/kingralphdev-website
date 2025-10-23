@@ -1,6 +1,6 @@
 import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { memo, useState } from "react";
+import { memo, useState, useEffect, useRef } from "react";
 
 const AFFILIATE_LINKS = [
   {
@@ -16,6 +16,38 @@ const AFFILIATE_LINKS = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAffiliatesOpen, setIsAffiliatesOpen] = useState(false);
+
+  // Refs to track dropdown elements for click-outside detection
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Click-outside handler to close dropdown when clicking outside
+  useEffect(() => {
+    // Only run if dropdown is open
+    if (!isAffiliatesOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      // Check if click was outside both desktop and mobile dropdowns
+      const isOutsideDesktop = desktopDropdownRef.current &&
+                                !desktopDropdownRef.current.contains(target);
+      const isOutsideMobile = mobileDropdownRef.current &&
+                               !mobileDropdownRef.current.contains(target);
+
+      if (isOutsideDesktop && isOutsideMobile) {
+        setIsAffiliatesOpen(false);
+      }
+    };
+
+    // Add listener to entire document
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Cleanup function - remove listener when component unmounts or dropdown closes
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isAffiliatesOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -120,7 +152,7 @@ const Navbar = () => {
               <FaLinkedin size={28} />
             </a>
             {/* Affiliates Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={desktopDropdownRef}>
               <button
                 type="button"
                 className="nav-link text-base lg:text-lg xl:text-xl flex items-center focus:outline-none"
@@ -198,7 +230,7 @@ const Navbar = () => {
               <FaExternalLinkAlt className="ml-1" size={14} />
             </a>
             {/* Mobile Affiliates Dropdown */}
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-center" ref={mobileDropdownRef}>
               <button
                 type="button"
                 className="nav-link py-2 flex items-center focus:outline-none"

@@ -54,6 +54,23 @@ describe("Navbar", () => {
     openSpy.mockRestore();
   });
 
+  it("closes Affiliates dropdown when clicking outside", () => {
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const affiliatesButtons = screen.getAllByRole("button", { name: /Affiliates/i });
+    const affiliatesButton = affiliatesButtons.find(btn => desktopNav.contains(btn))!;
+
+    // Open the dropdown
+    fireEvent.click(affiliatesButton);
+    expect(screen.getAllByText("Discount for systemdesignschool.io").length).toBeGreaterThan(0);
+
+    // Click outside the dropdown (on the nav element)
+    const nav = screen.getByRole('navigation');
+    fireEvent.mouseDown(nav);
+
+    // Dropdown should be closed
+    expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
+  });
+
   it("renders the logo/site name", () => {
     expect(screen.getByText("KingRalph.dev")).toBeInTheDocument();
   });

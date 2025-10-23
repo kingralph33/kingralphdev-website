@@ -179,4 +179,6 @@ psd
 thumb
 sketch
 
+# Claude
+.claude/settings.local.*
 # End of https://www.toptal.com/developers/gitignore/api/react,node

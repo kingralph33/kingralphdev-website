@@ -7,29 +7,42 @@ const renderWithRouter = (component: React.ReactElement) => {
 };
 
 describe("Navbar", () => {
+  beforeEach(() => {
+    renderWithRouter(<Navbar />);
+  });
+
   it("renders the Affiliates button in the desktop menu", () => {
     const desktopNav = screen.getByTestId("desktop-menu");
-    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
-    expect(affiliatesButton).toBeInTheDocument();
-    expect(desktopNav).toContainElement(affiliatesButton);
+    const affiliatesButtons = screen.getAllByRole("button", { name: /Affiliates/i });
+    const desktopAffiliatesButton = affiliatesButtons.find(btn => desktopNav.contains(btn));
+    expect(desktopAffiliatesButton).toBeInTheDocument();
   });
 
   it("shows and hides the Affiliates dropdown when clicked", () => {
-    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const affiliatesButtons = screen.getAllByRole("button", { name: /Affiliates/i });
+    const affiliatesButton = affiliatesButtons.find(btn => desktopNav.contains(btn))!;
+
     // Dropdown should not be visible initially
     expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
     // Click to open
     fireEvent.click(affiliatesButton);
-    expect(screen.getByText("Discount for systemdesignschool.io")).toBeInTheDocument();
+    expect(screen.getAllByText("Discount for systemdesignschool.io").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Discount for railway.com").length).toBeGreaterThan(0);
     // Click again to close
     fireEvent.click(affiliatesButton);
     expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
   });
 
   it("opens System Design School link in a new tab when dropdown item is clicked", () => {
-    const affiliatesButton = screen.getByRole("button", { name: /Affiliates/i });
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const affiliatesButtons = screen.getAllByRole("button", { name: /Affiliates/i });
+    const affiliatesButton = affiliatesButtons.find(btn => desktopNav.contains(btn))!;
+
     fireEvent.click(affiliatesButton);
-    const discountButton = screen.getByText("Discount for systemdesignschool.io");
+    const discountButtons = screen.getAllByText("Discount for systemdesignschool.io");
+    const discountButton = discountButtons[0];
+
     // Mock window.open
     const openSpy = jest.spyOn(window, "open").mockImplementation(() => null);
     fireEvent.click(discountButton);
@@ -40,8 +53,22 @@ describe("Navbar", () => {
     );
     openSpy.mockRestore();
   });
-  beforeEach(() => {
-    renderWithRouter(<Navbar />);
+
+  it("closes Affiliates dropdown when clicking outside", () => {
+    const desktopNav = screen.getByTestId("desktop-menu");
+    const affiliatesButtons = screen.getAllByRole("button", { name: /Affiliates/i });
+    const affiliatesButton = affiliatesButtons.find(btn => desktopNav.contains(btn))!;
+
+    // Open the dropdown
+    fireEvent.click(affiliatesButton);
+    expect(screen.getAllByText("Discount for systemdesignschool.io").length).toBeGreaterThan(0);
+
+    // Click outside the dropdown (on the nav element)
+    const nav = screen.getByRole('navigation');
+    fireEvent.mouseDown(nav);
+
+    // Dropdown should be closed
+    expect(screen.queryByText("Discount for systemdesignschool.io")).not.toBeInTheDocument();
   });
 
   it("renders the logo/site name", () => {

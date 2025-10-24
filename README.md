@@ -29,9 +29,9 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 
 - **Framework:** React 19
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS v4
 - **Build Tool:** Vite
-- **Testing:** Jest + React Testing Library
+- **Testing:** Playwright (E2E)
 - **Routing:** React Router v7
 - **Icons:** Heroicons + React Icons
 - **Deployment:** Cloudflare Pages
@@ -71,46 +71,70 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production
 - `pnpm preview` - Preview production build
-- `pnpm test` - Run tests
-- `pnpm test:watch` - Run tests in watch mode
-- `pnpm test:coverage` - Run tests with coverage report
+- `pnpm test` - Run Playwright E2E tests
+- `pnpm test:ui` - Run tests in Playwright UI mode
+- `pnpm test:headed` - Run tests with browser visible
+- `pnpm test:debug` - Run tests in debug mode
 - `pnpm lint` - Run ESLint
+- `pnpm type-check` - Check TypeScript types
 
 ## Testing
 
-The project includes comprehensive test coverage using Jest and React Testing Library. I aim to achieve high code coverage, with tests for all core components and critical user interactions. The project uses a mix of unit and integration tests to ensure the reliability of the application. Tests are located next to the component they are testing. Test cover:
+The project uses **Playwright** for end-to-end testing with comprehensive coverage of user interactions and accessibility features. Tests are located in the `e2e/` directory and run in Chromium by default.
 
-- Component rendering (all key components are rendered)
-- User interactions (the buttons, forms, and other interactive elements)
-- Navigation (all routes can be reached)
-- Dark mode functionality (that it switches properly)
-- Accessibility features (alt text, and button labels)
+### Test Coverage
 
-Run tests with:
+- ✅ Homepage rendering and content
+- ✅ Navigation and routing (internal and external links)
+- ✅ User interactions (buttons, dropdowns, mobile menu)
+- ✅ Dark mode toggle and persistence across navigation
+- ✅ Accessibility (ARIA labels, keyboard navigation, heading hierarchy)
+- ✅ Responsive behavior (desktop and mobile viewports)
+- ✅ Click-outside-to-close behavior for dropdowns
+
+### Running Tests
 
 ```bash
-pnpm test
+pnpm test              # Run all tests headless
+pnpm test:ui           # Open Playwright UI for interactive debugging
+pnpm test:headed       # Run tests with browser visible
+pnpm test:debug        # Run tests in debug mode
 ```
+
+### CI/CD
+
+Tests automatically run on GitHub Actions for all pushes and pull requests to `main` and `dev` branches.
 
 ## Project Structure
 
 ```
 src/
 ├── components/           # Reusable components
-│   ├── common/           # Shared components
-│   │   ├── Footer/       # Footer component with tests
-│   │   └── Navbar/       # Navigation component with tests
+│   └── common/           # Shared components
+│       ├── Footer/       # Footer component
+│       └── Navbar/       # Navigation component
 ├── layouts/              # Layout components
-│   └── MainLayout/       # Main layout with tests
+│   └── MainLayout/       # Main layout wrapper
 ├── pages/                # Page components
-│   └── About/            # About page with tests
-├── styles/               # Global styles
-│   └── fonts.css         # Font definitions
-├── assets/               # Static assets
-├── App.tsx               # Main App component
+│   └── About/            # About page
+├── App.tsx               # Main App component with routing
 ├── App.css               # App-specific styles
 ├── main.tsx              # Entry point
-└── index.css             # Global CSS
+└── index.css             # Global CSS & Tailwind config
+
+e2e/                      # Playwright E2E tests
+├── homepage.spec.ts      # Homepage tests
+├── navigation.spec.ts    # Navigation & links tests
+├── accessibility.spec.ts # Accessibility tests
+├── dark-mode.spec.ts     # Dark mode tests
+└── about-page.spec.ts    # About page tests
+
+.claude/                  # Claude Code configuration
+├── commands/             # Custom slash commands
+│   ├── pre-commit.md
+│   ├── security-check.md
+│   └── self-review.md
+└── settings.local.json   # Local settings
 ```
 
 ## Browser Compatibility
@@ -125,7 +149,12 @@ This website is optimized for the following browsers:
 
 ## Deployment
 
-The site is automatically deployed to Netlify when changes are pushed to the main branch.
+The site is automatically deployed to **Cloudflare Pages** when changes are pushed to the `main` branch.
+
+**Build Settings:**
+- Build command: `pnpm build`
+- Output directory: `dist`
+- Node version: 22.x
 
 ## Copyright
 

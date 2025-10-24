@@ -28,11 +28,6 @@ export default {
       ],
     },
     extend: {
-      colors: {
-        "navy-blue": "#1e3a8a",
-        "grinch-green": "#00a353",
-        "light-grey": "#f5f5f5",
-      },
       fontSize: {
         "3xl": "1.875rem",
         lg: "1.125rem",

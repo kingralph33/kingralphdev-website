@@ -1,4 +1,0 @@
-const fs = require('fs');
-
-fs.unlinkSync('jest.setup.js');
-fs.unlinkSync('src/setupTests.ts');

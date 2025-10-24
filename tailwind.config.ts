@@ -2,11 +2,11 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: "media",
+  darkMode: "class",
   theme: {
     fontFamily: {
       sans: [
-        "Roboto Slab",
+        "Fira Sans",
         "ui-sans-serif",
         "system-ui",
         "sans-serif",
@@ -15,11 +15,19 @@ export default {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
+      mono: [
+        "Fira Code",
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
     },
     extend: {
-      colors: {
-        "navy-blue": "#000080",
-      },
       fontSize: {
         "3xl": "1.875rem",
         lg: "1.125rem",

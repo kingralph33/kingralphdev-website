@@ -27,5 +27,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
       - name: Run tests
-        run: NODE_OPTIONS=--experimental-vm-modules pnpm test
+        run: pnpm test

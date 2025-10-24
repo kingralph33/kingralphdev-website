@@ -19,7 +19,7 @@ const Home = memo(() => (
       </h2>
       <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-4 max-w-xl leading-relaxed">
         Building scalable solutions for government and enterprise clients with
-        5+ years experience
+        nearly 10 years of experience
       </p>
     </div>
 

@@ -11,7 +11,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <div className="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
       <Navbar />
       <main
-        className="flex-grow flex flex-col justify-center items-center pt-14 lg:pt-16 w-full max-w-7xl mx-auto"
+        className="grow flex flex-col justify-center items-center pt-14 lg:pt-16 w-full max-w-7xl mx-auto"
         role="main"
         aria-label="Main content"
       >

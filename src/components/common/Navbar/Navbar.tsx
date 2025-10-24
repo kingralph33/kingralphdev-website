@@ -146,7 +146,7 @@ const Navbar = () => {
             className="hidden md:flex space-x-4 lg:space-x-6 items-center"
             data-testid="desktop-menu"
           >
-            <Link to="/about" className="nav-link text-sm lg:text-base">
+            <Link to="/about" className="nav-link text-sm lg:text-base" data-testid="desktop-about-link">
               About
             </Link>
             <a
@@ -155,6 +155,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="nav-link flex items-center text-sm lg:text-base"
               aria-label="Resume, opens in new tab"
+              data-testid="desktop-resume-link"
             >
               Resume
               <FaExternalLinkAlt
@@ -169,6 +170,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="nav-link"
               aria-label="GitHub profile, opens in new tab"
+              data-testid="desktop-github-link"
             >
               <FaGithub size={20} />
             </a>
@@ -178,6 +180,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="nav-link"
               aria-label="LinkedIn profile, opens in new tab"
+              data-testid="desktop-linkedin-link"
             >
               <FaLinkedin size={20} />
             </a>
@@ -190,6 +193,7 @@ const Navbar = () => {
                 aria-expanded={isAffiliatesOpen}
                 aria-label="Affiliates menu"
                 onClick={handleAffiliatesClick}
+                data-testid="desktop-affiliates-button"
               >
                 Affiliates
                 <svg
@@ -238,6 +242,7 @@ const Navbar = () => {
               aria-label={
                 isDarkMode ? "Switch to light mode" : "Switch to dark mode"
               }
+              data-testid="desktop-theme-toggle"
             >
               {isDarkMode ? (
                 <FaSun
@@ -270,6 +275,7 @@ const Navbar = () => {
               to="/about"
               className="nav-link py-2"
               onClick={() => setIsMenuOpen(false)}
+              data-testid="mobile-about-link"
             >
               About
             </Link>
@@ -280,6 +286,7 @@ const Navbar = () => {
               className="nav-link flex items-center py-2"
               aria-label="Resume, opens in new tab"
               onClick={() => setIsMenuOpen(false)}
+              data-testid="mobile-resume-link"
             >
               Resume
               <FaExternalLinkAlt
@@ -300,6 +307,7 @@ const Navbar = () => {
                 aria-expanded={isAffiliatesOpen}
                 aria-label="Affiliates menu"
                 onClick={handleAffiliatesClick}
+                data-testid="mobile-affiliates-button"
               >
                 Affiliates
                 <svg
@@ -342,6 +350,7 @@ const Navbar = () => {
                 className="nav-link"
                 aria-label="GitHub profile, opens in new tab"
                 onClick={() => setIsMenuOpen(false)}
+                data-testid="mobile-github-link"
               >
                 <FaGithub size={24} />
               </a>
@@ -352,6 +361,7 @@ const Navbar = () => {
                 className="nav-link"
                 aria-label="LinkedIn profile, opens in new tab"
                 onClick={() => setIsMenuOpen(false)}
+                data-testid="mobile-linkedin-link"
               >
                 <FaLinkedin size={24} />
               </a>
@@ -363,6 +373,7 @@ const Navbar = () => {
                 aria-label={
                   isDarkMode ? "Switch to light mode" : "Switch to dark mode"
                 }
+                data-testid="mobile-theme-toggle"
               >
                 {isDarkMode ? (
                   <FaSun

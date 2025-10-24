@@ -7,8 +7,8 @@ test.describe('Homepage', () => {
 
   test('renders the main navigation', async ({ page }) => {
     await expect(page.getByText('KingRalph.dev')).toBeVisible();
-    await expect(page.getByRole('link', { name: 'About' }).first()).toBeVisible();
-    await expect(page.getByRole('link', { name: /Resume/ }).first()).toBeVisible();
+    await expect(page.getByTestId('desktop-about-link')).toBeVisible();
+    await expect(page.getByTestId('desktop-resume-link')).toBeVisible();
   });
 
   test('renders the intro section', async ({ page }) => {
@@ -23,7 +23,7 @@ test.describe('Homepage', () => {
     await expect(page.getByRole('heading', { name: 'Cloud & DevOps' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Frontend & Full-Stack' })).toBeVisible();
 
-    // Check for specific technologies
+    // Check for specific technologies - using .first() since technologies appear multiple times
     await expect(page.getByText('Python').first()).toBeVisible();
     await expect(page.getByText('Node.js').first()).toBeVisible();
     await expect(page.getByText('PostgreSQL').first()).toBeVisible();

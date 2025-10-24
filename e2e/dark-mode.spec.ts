@@ -6,8 +6,8 @@ test.describe('Dark Mode', () => {
   });
 
   test('can toggle dark mode on desktop', async ({ page }) => {
-    // Find and click the dark mode toggle
-    const darkModeToggle = page.getByLabel(/Switch to dark mode/).first();
+    // Find and click the dark mode toggle using test ID
+    const darkModeToggle = page.getByTestId('desktop-theme-toggle');
     await darkModeToggle.click();
 
     // Check that dark mode is applied
@@ -15,8 +15,7 @@ test.describe('Dark Mode', () => {
     await expect(html).toHaveClass(/dark/);
 
     // Toggle back to light mode
-    const lightModeToggle = page.getByLabel(/Switch to light mode/).first();
-    await lightModeToggle.click();
+    await darkModeToggle.click();
     await expect(html).not.toHaveClass(/dark/);
   });
 
@@ -27,8 +26,8 @@ test.describe('Dark Mode', () => {
     const menuButton = page.getByLabel('Toggle navigation menu');
     await menuButton.click();
 
-    // Find and click the dark mode toggle in mobile menu (use last() to get mobile version)
-    const darkModeToggle = page.getByLabel(/Switch to dark mode/).last();
+    // Find and click the dark mode toggle in mobile menu using test ID
+    const darkModeToggle = page.getByTestId('mobile-theme-toggle');
     await darkModeToggle.click();
 
     // Check that dark mode is applied
@@ -38,7 +37,7 @@ test.describe('Dark Mode', () => {
 
   test('dark mode preference persists on page reload', async ({ page }) => {
     // Enable dark mode
-    const darkModeToggle = page.getByLabel(/Switch to dark mode/).first();
+    const darkModeToggle = page.getByTestId('desktop-theme-toggle');
     await darkModeToggle.click();
 
     // Check dark mode is enabled
@@ -54,14 +53,14 @@ test.describe('Dark Mode', () => {
 
   test('dark mode preference persists across navigation', async ({ page }) => {
     // Enable dark mode
-    const darkModeToggle = page.getByLabel(/Switch to dark mode/).first();
+    const darkModeToggle = page.getByTestId('desktop-theme-toggle');
     await darkModeToggle.click();
 
     const html = page.locator('html');
     await expect(html).toHaveClass(/dark/);
 
     // Navigate to About page
-    await page.getByRole('link', { name: 'About' }).first().click();
+    await page.getByTestId('desktop-about-link').click();
     await expect(page).toHaveURL('/about');
 
     // Dark mode should still be enabled

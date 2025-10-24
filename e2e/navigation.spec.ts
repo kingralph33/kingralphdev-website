@@ -6,28 +6,28 @@ test.describe('Navigation', () => {
   });
 
   test('navigates to About page', async ({ page }) => {
-    await page.getByRole('link', { name: 'About' }).first().click();
+    await page.getByTestId('desktop-about-link').click();
     await expect(page).toHaveURL('/about');
     await expect(page.getByRole('heading', { name: 'About Me', level: 1 })).toBeVisible();
   });
 
   test('opens Resume in new tab', async ({ page, context }) => {
     const pagePromise = context.waitForEvent('page');
-    await page.getByRole('link', { name: /Resume/ }).first().click();
+    await page.getByTestId('desktop-resume-link').click();
     const newPage = await pagePromise;
     await expect(newPage).toHaveURL(/kingralphresume\.com/);
   });
 
   test('opens GitHub profile in new tab', async ({ page, context }) => {
     const pagePromise = context.waitForEvent('page');
-    await page.getByLabel('GitHub profile, opens in new tab').first().click();
+    await page.getByTestId('desktop-github-link').click();
     const newPage = await pagePromise;
     await expect(newPage).toHaveURL(/github\.com\/kingralph33/);
   });
 
   test('opens LinkedIn profile in new tab', async ({ page, context }) => {
     const pagePromise = context.waitForEvent('page');
-    await page.getByLabel('LinkedIn profile, opens in new tab').first().click();
+    await page.getByTestId('desktop-linkedin-link').click();
     const newPage = await pagePromise;
     await expect(newPage).toHaveURL(/linkedin\.com/);
   });
@@ -53,7 +53,7 @@ test.describe('Navigation', () => {
   test('affiliates dropdown works on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
 
-    const affiliatesButton = page.getByLabel('Affiliates menu').first();
+    const affiliatesButton = page.getByTestId('desktop-affiliates-button');
     await affiliatesButton.click();
 
     // Check dropdown is visible (use role="menuitem" to get desktop dropdown items)
@@ -64,7 +64,7 @@ test.describe('Navigation', () => {
   test('closes affiliates dropdown when clicking outside', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
 
-    const affiliatesButton = page.getByLabel('Affiliates menu').first();
+    const affiliatesButton = page.getByTestId('desktop-affiliates-button');
     await affiliatesButton.click();
 
     // Verify dropdown is open (use role="menuitem" to get desktop dropdown)

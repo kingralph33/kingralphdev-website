@@ -39,7 +39,7 @@ test.describe('Accessibility', () => {
     await page.keyboard.press('Tab');
 
     // External links should be accessible
-    const resumeLink = page.getByLabel('Resume, opens in new tab').first();
+    const resumeLink = page.getByTestId('desktop-resume-link');
     await expect(resumeLink).toBeVisible();
   });
 
@@ -54,7 +54,7 @@ test.describe('Accessibility', () => {
   });
 
   test('dark mode toggle has accessible label', async ({ page }) => {
-    const darkModeToggle = page.getByLabel(/Switch to (dark|light) mode/).first();
+    const darkModeToggle = page.getByTestId('desktop-theme-toggle');
     await expect(darkModeToggle).toBeVisible();
   });
 

@@ -1,63 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
 
 @layer base {
   html {
-    font-family: 'Roboto Slab', system-ui, sans-serif;
+    font-family: "Fira Sans", system-ui, sans-serif;
+  }
+
+  body {
+    @apply text-blue-900;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  }
+
+  .dark body {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    @apply text-gray-100;
+  }
+
+  code,
+  pre {
+    font-family: "Fira Code", monospace;
   }
 }
 
 /* Global styles */
 ul.ul-job-points,
 ul.list-adaptive {
-    list-style-type: disc !important;
-    padding-left: 2rem !important;
+  list-style-type: disc !important;
+  padding-left: 2rem !important;
 }
 
 ul.ul-job-points li::marker,
 ul.list-adaptive li::marker {
-    color: currentColor;
+  color: currentColor;
 }
 
 @layer components {
-    .section-h2 {
-        @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white uppercase tracking-wider;
-    }
+  .navbar-dark-gradient {
+    /* Light mode keeps default background */
+  }
 
-    .p-header {
-        @apply text-gray-600 dark:text-gray-100 text-left text-lg;
-    }
+  .dark .navbar-dark-gradient {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  }
 
-    .p-job-summary {
-        @apply text-gray-600 dark:text-gray-100 mb-4 text-left text-lg;
-    }
+  .navbar-border {
+    /* Light mode uses default border */
+  }
 
-    .ul-job-points {
-        @apply text-gray-600 dark:text-gray-100 space-y-2 text-left mb-12 text-lg;
-    }
+  .dark .navbar-border {
+    border-bottom-color: white;
+    border-bottom-width: 4px;
+  }
 
-    .text-adaptive {
-        @apply text-gray-600 dark:text-gray-100;
-    }
+  .footer-dark-gradient {
+    /* Light mode keeps default background */
+  }
 
-    .text-adaptive-bold {
-        @apply text-gray-900 dark:text-white font-semibold;
-    }
+  .dark .footer-dark-gradient {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  }
 
-    .list-adaptive {
-        @apply text-gray-600 dark:text-gray-100 space-y-3 text-left mb-12 text-lg;
-    }
-    
-    .nav-link {
-        @apply text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100;
-    }
+  .section-h2 {
+    @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white uppercase tracking-wider;
+  }
+
+  .p-header {
+    @apply text-gray-600 dark:text-gray-100 text-left text-lg;
+  }
+
+  .p-job-summary {
+    @apply text-gray-600 dark:text-gray-100 mb-4 text-left text-lg;
+  }
+
+  .ul-job-points {
+    @apply text-gray-600 dark:text-gray-100 space-y-2 text-left mb-12 text-lg;
+  }
+
+  .text-adaptive {
+    @apply text-gray-600 dark:text-gray-100;
+  }
+
+  .text-adaptive-bold {
+    @apply text-gray-900 dark:text-white font-semibold;
+  }
+
+  .list-adaptive {
+    @apply text-gray-600 dark:text-gray-100 space-y-3 text-left mb-12 text-lg;
+  }
+
+  .nav-link {
+    @apply text-blue-900 hover:text-green-600 dark:text-blue-400 dark:hover:text-green-600 transition-colors duration-200;
+  }
 }
 
 @layer utilities {
-    .text-adaptive {
-        @apply text-gray-600 dark:text-gray-100;
-    }
+  .text-adaptive {
+    @apply text-gray-600 dark:text-gray-100;
+  }
 
-    .text-adaptive-bold {
-        @apply text-gray-900 dark:text-white font-semibold;
-    }
+  .text-adaptive-bold {
+    @apply text-gray-900 dark:text-white font-semibold;
+  }
 }
+

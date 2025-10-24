@@ -97,8 +97,8 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 w-full bg-white/80 z-50 backdrop-blur-sm navbar-dark-gradient"
       aria-label="Main navigation"
     >
-      <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md navbar-border">
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 flex justify-between items-center h-14 lg:h-16">
+      <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md">
+        <div className="max-w-5xl mx-auto px-4 lg:px-6 flex justify-between items-center h-14 lg:h-16">
           <div className="flex-shrink-0">
             <Link
               to="/"
@@ -146,10 +146,7 @@ const Navbar = () => {
             className="hidden md:flex space-x-4 lg:space-x-6 items-center"
             data-testid="desktop-menu"
           >
-            <Link
-              to="/about"
-              className="nav-link text-sm lg:text-base"
-            >
+            <Link to="/about" className="nav-link text-sm lg:text-base">
               About
             </Link>
             <a
@@ -160,7 +157,11 @@ const Navbar = () => {
               aria-label="Resume, opens in new tab"
             >
               Resume
-              <FaExternalLinkAlt className="ml-1" size={14} aria-hidden="true" />
+              <FaExternalLinkAlt
+                className="ml-1"
+                size={14}
+                aria-hidden="true"
+              />
             </a>
             <a
               href="https://github.com/kingralph33"
@@ -212,7 +213,7 @@ const Navbar = () => {
               {isAffiliatesOpen && (
                 <div
                   className="absolute right-0 mt-4 min-w-fit bg-white dark:bg-gray-800 border-2 border-green-600 rounded shadow-lg z-20"
-                  style={{ minWidth: 'fit-content' }}
+                  style={{ minWidth: "fit-content" }}
                   role="menu"
                   aria-label="Affiliates dropdown"
                 >
@@ -234,12 +235,22 @@ const Navbar = () => {
               type="button"
               onClick={toggleTheme}
               className="nav-link p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={
+                isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
             >
               {isDarkMode ? (
-                <FaSun size={18} className="text-yellow-600" aria-hidden="true" />
+                <FaSun
+                  size={18}
+                  className="text-yellow-600"
+                  aria-hidden="true"
+                />
               ) : (
-                <FaMoon size={18} className="text-gray-700" aria-hidden="true" />
+                <FaMoon
+                  size={18}
+                  className="text-gray-700"
+                  aria-hidden="true"
+                />
               )}
             </button>
           </div>
@@ -254,7 +265,7 @@ const Navbar = () => {
           data-testid="mobile-menu"
           aria-label="Mobile navigation"
         >
-          <div className="max-w-7xl mx-auto px-4 lg:px-6 flex flex-col items-center space-y-4 pb-4 pt-2">
+          <div className="max-w-5xl mx-auto px-4 lg:px-6 flex flex-col items-center space-y-4 pb-4 pt-2">
             <Link
               to="/about"
               className="nav-link py-2"
@@ -271,10 +282,17 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Resume
-              <FaExternalLinkAlt className="ml-1" size={14} aria-hidden="true" />
+              <FaExternalLinkAlt
+                className="ml-1"
+                size={14}
+                aria-hidden="true"
+              />
             </a>
             {/* Mobile Affiliates Dropdown */}
-            <div className="w-full flex flex-col items-center" ref={mobileDropdownRef}>
+            <div
+              className="w-full flex flex-col items-center"
+              ref={mobileDropdownRef}
+            >
               <button
                 type="button"
                 className="nav-link py-2 flex items-center focus:outline-none"
@@ -342,12 +360,22 @@ const Navbar = () => {
                 type="button"
                 onClick={toggleTheme}
                 className="nav-link p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                aria-label={
+                  isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+                }
               >
                 {isDarkMode ? (
-                  <FaSun size={22} className="text-yellow-600" aria-hidden="true" />
+                  <FaSun
+                    size={22}
+                    className="text-yellow-600"
+                    aria-hidden="true"
+                  />
                 ) : (
-                  <FaMoon size={22} className="text-gray-700" aria-hidden="true" />
+                  <FaMoon
+                    size={22}
+                    className="text-gray-700"
+                    aria-hidden="true"
+                  />
                 )}
               </button>
             </div>

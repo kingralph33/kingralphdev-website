@@ -17,18 +17,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAffiliatesOpen, setIsAffiliatesOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check localStorage or default to light mode
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme === 'dark';
-      }
-      // Check system preference if available
-      if (window.matchMedia) {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
     }
-    return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   // Refs to track dropdown elements for click-outside detection
@@ -99,7 +92,7 @@ const Navbar = () => {
     >
       <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md">
         <div className="max-w-5xl mx-auto px-4 lg:px-6 flex justify-between items-center h-14 lg:h-16">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link
               to="/"
               className="text-lg lg:text-xl font-semibold font-sans text-blue-900 dark:text-blue-400 hover:text-green-600 dark:hover:text-green-600 transition-colors duration-200"

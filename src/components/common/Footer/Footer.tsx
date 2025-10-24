@@ -5,11 +5,11 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-white dark:bg-gray-900 shadow-lg mt-auto border-t border-gray-200 dark:border-gray-700"
+      className="shadow-lg mt-auto footer-dark-gradient"
       aria-label="Footer"
     >
-      <div className="max-w-6xl mx-auto px-4 py-4 lg:py-6 xl:py-8">
-        <p className="text-center text-sm lg:text-base xl:text-lg text-gray-600 dark:text-gray-100">
+      <div className="px-4 py-3 lg:py-4">
+        <p className="text-center text-xs lg:text-sm text-gray-700 dark:text-white dark:font-semibold">
           &copy; 2020 - {currentYear} Ralph King. All rights reserved.
         </p>
       </div>

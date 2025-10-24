@@ -26,7 +26,7 @@ describe("MainLayout", () => {
 
   it("has correct layout structure", () => {
     const mainContent = screen.getByRole("main");
-    expect(mainContent).toHaveClass("flex-grow", "pt-16");
+    expect(mainContent).toHaveClass("flex-grow", "pt-14", "lg:pt-16");
   });
 
   it("includes proper accessibility attributes", () => {
@@ -55,14 +55,9 @@ describe("MainLayout", () => {
     expect(mainContent).toHaveClass("max-w-7xl", "mx-auto");
   });
 
-  it("has responsive padding classes", () => {
-    const mainContent = screen.getByRole("main");
-    expect(mainContent).toHaveClass("px-4", "sm:px-6", "lg:px-8", "xl:px-12", "2xl:px-20");
-  });
-
   it("provides top padding to account for fixed navbar", () => {
     const mainContent = screen.getByRole("main");
-    expect(mainContent).toHaveClass("pt-16");
+    expect(mainContent).toHaveClass("pt-14", "lg:pt-16");
   });
 
   it("renders footer at the bottom with proper styling", () => {

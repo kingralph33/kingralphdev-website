@@ -41,47 +41,39 @@ describe("About Page", () => {
 
   it("renders current focus items", () => {
     expect(screen.getByText("AI Engineering")).toBeInTheDocument();
-    expect(
-      screen.getByText("AWS Certified Solutions Architect - Associate Exam")
-    ).toBeInTheDocument();
+    expect(screen.getByText("AWS Solutions Architect Cert")).toBeInTheDocument();
     expect(screen.getByText("System Design")).toBeInTheDocument();
   });
 
   it("renders professional interests", () => {
-    expect(screen.getByText("Automation and Efficiency")).toBeInTheDocument();
+    expect(screen.getByText(/Automation & Efficiency/)).toBeInTheDocument();
     expect(screen.getByText("Process Optimization")).toBeInTheDocument();
-    expect(screen.getByText("Scalable and Reliable Systems")).toBeInTheDocument();
+    expect(screen.getByText("Scalable Systems")).toBeInTheDocument();
   });
 
   // Additional comprehensive tests
   it("has proper responsive layout structure", () => {
-    const container = screen.getByText("About Me").closest('div');
-    expect(container).toHaveClass("max-w-6xl", "mx-auto", "px-4");
+    // Find the main container by looking for its unique characteristics
+    const mainContainer = screen.getByText("About Me").closest('.max-w-4xl');
+    expect(mainContainer).toHaveClass("max-w-4xl", "mx-auto", "px-4");
   });
 
   it("has responsive typography classes", () => {
     const heading = screen.getByText("About Me");
-    expect(heading).toHaveClass("text-3xl", "lg:text-4xl", "xl:text-5xl");
-    
-    const introText = screen.getByText(/Today, I'm a software engineer with over 5 years of experience/);
-    expect(introText).toHaveClass("text-lg", "lg:text-xl", "xl:text-2xl");
-  });
+    expect(heading).toHaveClass("text-2xl", "lg:text-3xl");
 
-  it("has proper text indentation for paragraphs", () => {
-    const paragraphs = screen.getAllByText(/I've led the development|While backend development|Beyond my professional work/);
-    paragraphs.forEach(paragraph => {
-      expect(paragraph).toHaveClass("indent-6", "lg:indent-10", "xl:indent-14");
-    });
+    const introText = screen.getByText(/Today, I'm a software engineer with over 5 years of experience/);
+    expect(introText).toHaveClass("text-sm", "lg:text-base");
   });
 
   it("displays divider with correct styling", () => {
     const divider = screen.getByRole("separator");
-    expect(divider).toHaveClass("border-gray-200", "dark:border-gray-700", "mb-12");
+    expect(divider).toHaveClass("border-[--color-grinch-green]", "border-2", "mb-8");
   });
 
   it("has prominent career transition section with proper styling", () => {
     const careerSection = screen.getByText("From Banking to Building Government Systems").closest('div');
-    expect(careerSection).toHaveClass("bg-gray-50", "dark:bg-gray-800", "p-6", "lg:p-8", "rounded-lg");
+    expect(careerSection).toHaveClass("bg-gray-100", "dark:bg-gray-800", "p-5", "lg:p-6", "rounded-lg", "border-l-4", "border-[--color-grinch-green]");
   });
 
   it("has responsive grid layout for three columns", () => {
@@ -93,22 +85,22 @@ describe("About Page", () => {
   it("renders all section headings with consistent styling", () => {
     const headings = [
       screen.getByText("Technical Interests"),
-      screen.getByText("Current Focus"), 
+      screen.getByText("Current Focus"),
       screen.getByText("Professional Interests")
     ];
-    
+
     headings.forEach(heading => {
-      expect(heading).toHaveClass("text-xl", "lg:text-2xl", "xl:text-3xl", "font-bold");
-      expect(heading).toHaveClass("text-gray-900", "dark:text-gray-100");
+      expect(heading).toHaveClass("text-base", "lg:text-lg", "font-bold");
+      expect(heading).toHaveClass("text-[--color-navy-blue]", "dark:text-white");
     });
   });
 
   it("has properly structured lists with consistent styling", () => {
     const lists = screen.getAllByRole("list");
     expect(lists).toHaveLength(3);
-    
+
     lists.forEach(list => {
-      expect(list).toHaveClass("space-y-2", "lg:space-y-3", "xl:space-y-4");
+      expect(list).toHaveClass("space-y-1.5");
       expect(list).toHaveClass("text-gray-600", "dark:text-gray-100");
     });
   });

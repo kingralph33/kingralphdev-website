@@ -17,7 +17,7 @@ describe("Footer", () => {
 
   it("has the correct styling classes", () => {
     const footer = screen.getByRole("contentinfo");
-    expect(footer).toHaveClass("bg-white", "shadow-lg", "mt-auto");
+    expect(footer).toHaveClass("shadow-lg", "mt-auto");
   });
 
   it("includes proper footer ARIA attributes", () => {
@@ -26,12 +26,8 @@ describe("Footer", () => {
   });
 
   it("handles dark mode classes properly", () => {
-    const footer = screen.getByRole("contentinfo");
-    expect(footer).toHaveClass("dark:bg-gray-900");
-    expect(footer).toHaveClass("dark:border-gray-700");
-
     const copyrightText = screen.getByText(/Ralph King. All rights reserved./);
-    expect(copyrightText).toHaveClass("dark:text-gray-100");
+    expect(copyrightText).toHaveClass("dark:text-white", "dark:font-semibold");
   });
 
   // Additional comprehensive tests
@@ -50,12 +46,12 @@ describe("Footer", () => {
 
   it("has responsive padding classes", () => {
     const container = screen.getByRole("contentinfo").firstChild;
-    expect(container).toHaveClass("py-4", "lg:py-6", "xl:py-8");
+    expect(container).toHaveClass("py-3", "lg:py-4");
   });
 
   it("has responsive text sizing", () => {
     const copyrightText = screen.getByText(/Ralph King. All rights reserved./);
-    expect(copyrightText).toHaveClass("text-sm", "lg:text-base", "xl:text-lg");
+    expect(copyrightText).toHaveClass("text-xs", "lg:text-sm");
   });
 
   it("maintains proper layout structure", () => {
@@ -63,7 +59,7 @@ describe("Footer", () => {
     const container = footer.firstChild;
     const text = container?.firstChild;
 
-    expect(container).toHaveClass("max-w-6xl", "mx-auto", "px-4");
+    expect(container).toHaveClass("px-4");
     expect(text).toHaveClass("text-center");
   });
 });

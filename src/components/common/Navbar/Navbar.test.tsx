@@ -252,8 +252,8 @@ describe("Navbar", () => {
 
   it("has responsive sizing classes", () => {
     const logo = screen.getByText("KingRalph.dev");
-    expect(logo).toHaveClass("text-xl", "lg:text-2xl", "xl:text-3xl");
-    
+    expect(logo).toHaveClass("text-lg", "lg:text-xl");
+
     const menuButton = screen.getByLabelText('Toggle navigation menu');
     const svg = menuButton.querySelector('svg');
     expect(svg).toHaveClass("h-6", "w-6", "lg:h-8", "lg:w-8", "xl:h-10", "xl:w-10");
@@ -261,6 +261,6 @@ describe("Navbar", () => {
 
   it("maintains fixed positioning for sticky navigation", () => {
     const nav = screen.getByRole('navigation');
-    expect(nav).toHaveClass("fixed", "top-0", "left-0", "right-0", "z-10");
+    expect(nav).toHaveClass("fixed", "top-0", "left-0", "right-0", "z-50");
   });
 });

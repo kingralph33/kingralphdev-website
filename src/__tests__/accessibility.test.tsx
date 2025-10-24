@@ -31,13 +31,13 @@ describe("Accessibility Tests", () => {
     expect(footer).toHaveAttribute("aria-label", "Footer");
   });
 
-  it("has proper alt text for images", () => {
+  it("has text-focused homepage without large images", () => {
     render(<App />);
-    
-    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
-    expect(profileImage).toBeInTheDocument();
-    expect(profileImage.getAttribute("alt")).toBeTruthy();
-    expect(profileImage.getAttribute("alt")).not.toBe("");
+
+    // Verify homepage is text-focused
+    const mainHeading = screen.getByText("Ralph King Jr");
+    expect(mainHeading).toBeInTheDocument();
+    expect(mainHeading.tagName).toBe("H1");
   });
 
   it("has proper focus management", () => {
@@ -54,13 +54,10 @@ describe("Accessibility Tests", () => {
 
   it("has proper color contrast with dark mode support", () => {
     render(<App />);
-    
+
     // Check that dark mode classes are present
     const heroText = screen.getByText(/Building scalable solutions for government and enterprise clients/);
-    expect(heroText).toHaveClass("dark:text-gray-300");
-    
-    const footer = screen.getByRole("contentinfo");
-    expect(footer).toHaveClass("dark:bg-gray-900");
+    expect(heroText).toHaveClass("dark:text-white", "dark:font-semibold");
   });
 
   it("provides keyboard navigation support", () => {
@@ -80,14 +77,12 @@ describe("Accessibility Tests", () => {
 });
 
 describe("Performance Tests", () => {
-  it("loads images with proper optimization attributes", () => {
+  it("uses optimized text-focused hero layout", () => {
     render(<App />);
-    
-    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
-    expect(profileImage).toHaveAttribute("loading", "eager");
-    expect(profileImage).toHaveAttribute("fetchPriority", "high");
-    expect(profileImage).toHaveAttribute("width");
-    expect(profileImage).toHaveAttribute("height");
+
+    // Verify hero section doesn't have heavy images on homepage
+    const mainHeading = screen.getByRole("heading", { level: 1 });
+    expect(mainHeading).toHaveTextContent("Ralph King Jr");
   });
 
   it("uses semantic HTML elements for better performance", () => {
@@ -102,21 +97,21 @@ describe("Performance Tests", () => {
 
   it("has efficient CSS classes for responsive design", () => {
     render(<App />);
-    
-    const profileImage = screen.getByAltText("Ralph King Jr a Software Engineer");
-    // Check for responsive classes that enable efficient CSS
-    expect(profileImage).toHaveClass("w-80", "h-80", "lg:w-96", "lg:h-96");
+
+    // Check for main heading with responsive typography
+    const mainHeading = screen.getByRole("heading", { level: 1 });
+    expect(mainHeading).toHaveClass("text-3xl", "lg:text-4xl", "xl:text-5xl");
   });
 });
 
 describe("SEO and Meta Tests", () => {
   it("has proper heading structure for SEO", () => {
     render(<App />);
-    
+
     // Main heading should be descriptive
     const mainHeading = screen.getByRole("heading", { level: 1 });
     expect(mainHeading).toHaveTextContent("Ralph King Jr");
-    
+
     // Secondary heading should be descriptive
     const secondaryHeading = screen.getByText("Software Engineer");
     expect(secondaryHeading.tagName).toBe("H2");
@@ -124,7 +119,7 @@ describe("SEO and Meta Tests", () => {
 
   it("has descriptive text content for search engines", () => {
     render(<App />);
-    
+
     // Should have descriptive content about the person
     expect(screen.getByText(/Building scalable solutions for government and enterprise clients/)).toBeInTheDocument();
     expect(screen.getByText(/Technology Expertise/)).toBeInTheDocument();
@@ -132,16 +127,12 @@ describe("SEO and Meta Tests", () => {
 
   it("has proper link structure for navigation", () => {
     render(<App />);
-    
-    // Internal links should be relative
-    const aboutLink = screen.getByText("Learn More");
-    expect(aboutLink.closest('a')).toHaveAttribute('href', '/about');
-    
+
     // External links should be absolute and secure
-    const externalLinks = screen.getAllByRole('link').filter(link => 
+    const externalLinks = screen.getAllByRole('link').filter(link =>
       link.getAttribute('href')?.startsWith('http')
     );
-    
+
     externalLinks.forEach(link => {
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });

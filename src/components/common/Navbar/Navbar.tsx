@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaLinkedin, FaMoon, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { memo, useState, useEffect, useRef } from "react";
 
@@ -16,10 +16,35 @@ const AFFILIATE_LINKS = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAffiliatesOpen, setIsAffiliatesOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check localStorage or default to light mode
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme === 'dark';
+      }
+      // Check system preference if available
+      if (window.matchMedia) {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+    }
+    return false;
+  });
 
   // Refs to track dropdown elements for click-outside detection
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Apply theme to document
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
 
   // Click-outside handler to close dropdown when clicking outside
   useEffect(() => {
@@ -63,17 +88,21 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
     <nav
-      className="fixed top-0 left-0 right-0 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 z-10"
+      className="fixed top-0 left-0 right-0 w-full bg-white/80 z-50 backdrop-blur-sm navbar-dark-gradient"
       aria-label="Main navigation"
     >
-      <div className="max-w-screen mx-auto px-6 lg:px-10 xl:px-16 2xl:px-24">
-        <div className="flex justify-between items-center h-16 lg:h-20 xl:h-24">
+      <div className="border-t-2 border-t-[#00a353] border-b-2 border-b-[--color-grinch-green] dark:border-b-white shadow-md navbar-border">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6 flex justify-between items-center h-14 lg:h-16">
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-xl lg:text-2xl xl:text-3xl font-semibold font-sans text-gray-900 dark:text-gray-100"
+              className="text-lg lg:text-xl font-semibold font-sans text-[--color-navy-blue] dark:text-gray-800 hover:text-[--color-grinch-green] dark:hover:text-[--color-grinch-green] transition-colors duration-200"
             >
               KingRalph.dev
             </Link>
@@ -82,7 +111,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 focus:outline-none"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-800 dark:hover:text-gray-900 focus:outline-none"
               aria-expanded={isMenuOpen}
               aria-label="Toggle navigation menu"
               onClick={toggleMenu}
@@ -114,12 +143,12 @@ const Navbar = () => {
           </div>
           {/* Desktop menu */}
           <div
-            className="hidden md:flex space-x-4 lg:space-x-8 xl:space-x-12 items-center"
+            className="hidden md:flex space-x-4 lg:space-x-6 items-center"
             data-testid="desktop-menu"
           >
             <Link
               to="/about"
-              className="nav-link text-base lg:text-lg xl:text-xl"
+              className="nav-link text-sm lg:text-base"
             >
               About
             </Link>
@@ -127,11 +156,11 @@ const Navbar = () => {
               href="https://kingralphresume.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link flex items-center text-base lg:text-lg xl:text-xl"
+              className="nav-link flex items-center text-sm lg:text-base"
               aria-label="Resume, opens in new tab"
             >
               Resume
-              <FaExternalLinkAlt className="ml-1" size={18} />
+              <FaExternalLinkAlt className="ml-1" size={14} />
             </a>
             <a
               href="https://github.com/kingralph33"
@@ -140,7 +169,7 @@ const Navbar = () => {
               className="nav-link"
               aria-label="GitHub profile, opens in new tab"
             >
-              <FaGithub size={28} />
+              <FaGithub size={20} />
             </a>
             <a
               href="https://www.linkedin.com/in/ralphkingjr/"
@@ -149,13 +178,13 @@ const Navbar = () => {
               className="nav-link"
               aria-label="LinkedIn profile, opens in new tab"
             >
-              <FaLinkedin size={28} />
+              <FaLinkedin size={20} />
             </a>
             {/* Affiliates Dropdown */}
             <div className="relative" ref={desktopDropdownRef}>
               <button
                 type="button"
-                className="nav-link text-base lg:text-lg xl:text-xl flex items-center focus:outline-none"
+                className="nav-link text-sm lg:text-base flex items-center focus:outline-none"
                 aria-haspopup="true"
                 aria-expanded={isAffiliatesOpen}
                 onClick={handleAffiliatesClick}
@@ -180,7 +209,7 @@ const Navbar = () => {
               </button>
               {isAffiliatesOpen && (
                 <div
-                  className="absolute right-0 mt-2 min-w-fit bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-20"
+                  className="absolute right-0 mt-4 min-w-fit bg-white dark:bg-gray-800 border-2 border-[--color-grinch-green] rounded shadow-lg z-20"
                   style={{ minWidth: 'fit-content' }}
                   role="menu"
                   aria-label="Affiliates dropdown"
@@ -188,7 +217,7 @@ const Navbar = () => {
                   {AFFILIATE_LINKS.map((link) => (
                     <button
                       key={link.url}
-                      className="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 text-base lg:text-md xl:text-lg whitespace-nowrap cursor-pointer"
+                      className="w-full text-left px-3 py-2 text-[--color-navy-blue] dark:text-gray-800 hover:bg-[--color-grinch-green] hover:text-white dark:hover:bg-[--color-grinch-green] dark:hover:text-white text-sm whitespace-nowrap cursor-pointer transition-colors duration-200"
                       onClick={() => handleAffiliateClick(link.url)}
                       role="menuitem"
                     >
@@ -198,6 +227,19 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            {/* Theme Toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="nav-link p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? (
+                <FaSun size={18} className="text-yellow-600" />
+              ) : (
+                <FaMoon size={18} className="text-gray-700" />
+              )}
+            </button>
           </div>
         </div>
 
@@ -210,7 +252,7 @@ const Navbar = () => {
           data-testid="mobile-menu"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col items-center space-y-4 pb-4 pt-2">
+          <div className="max-w-7xl mx-auto px-4 lg:px-6 flex flex-col items-center space-y-4 pb-4 pt-2">
             <Link
               to="/about"
               className="nav-link py-2"
@@ -261,7 +303,7 @@ const Navbar = () => {
                   {AFFILIATE_LINKS.map((link) => (
                     <button
                       key={link.url}
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 py-1 cursor-pointer"
+                      className="text-sm text-[--color-navy-blue] dark:text-gray-800 hover:text-[--color-grinch-green] dark:hover:text-[--color-grinch-green] py-1 cursor-pointer transition-colors duration-200"
                       onClick={() => handleAffiliateClick(link.url)}
                     >
                       {link.label}

@@ -14,28 +14,29 @@ test.describe('Homepage', () => {
   test('renders the intro section', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Ralph King Jr', level: 1 })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Software Engineer', level: 2 })).toBeVisible();
-    await expect(page.getByText(/Building scalable solutions for government and enterprise clients/)).toBeVisible();
+    await expect(page.getByText(/Building cloud-native infrastructure and developer tooling for mission-critical government systems/)).toBeVisible();
   });
 
   test('displays technology expertise section', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Technology Expertise' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Backend Specialization' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Platform & Infrastructure' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Cloud & DevOps' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Frontend & Full-Stack' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Development & Tooling' })).toBeVisible();
 
     // Check for specific technologies - using .first() since technologies appear multiple times
+    await expect(page.getByText('Kubernetes/OpenShift').first()).toBeVisible();
+    await expect(page.getByText('CI/CD Automation').first()).toBeVisible();
+    await expect(page.getByText('Infrastructure as Code').first()).toBeVisible();
     await expect(page.getByText('Python').first()).toBeVisible();
-    await expect(page.getByText('Node.js').first()).toBeVisible();
-    await expect(page.getByText('PostgreSQL').first()).toBeVisible();
-    await expect(page.getByText('React').first()).toBeVisible();
+    await expect(page.getByText('TypeScript').first()).toBeVisible();
   });
 
   test('displays recent impact projects', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Recent Impact' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Government Compliance System' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Fleet Management Platform' })).toBeVisible();
-    await expect(page.getByText(/Replaced legacy vendor software with custom Django application/)).toBeVisible();
-    await expect(page.getByText(/Built automated workflow system managing 2,000\+ vehicles/)).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'OpenShift Platform Infrastructure' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Enterprise DevOps Migration' })).toBeVisible();
+    await expect(page.getByText(/Architected and operate container platform serving 7,500\+ users/)).toBeVisible();
+    await expect(page.getByText(/Led platform migration from TFS to Azure DevOps/)).toBeVisible();
   });
 
   test('has responsive layout', async ({ page }) => {

@@ -18,8 +18,8 @@ const Home = memo(() => (
         Software Engineer
       </h2>
       <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-4 max-w-xl leading-relaxed">
-        Building scalable solutions for government and enterprise clients with
-        nearly 10 years of experience
+        Building cloud-native infrastructure and developer tooling for
+        mission-critical government systems with 5+ years of experience
       </p>
     </div>
 
@@ -31,10 +31,10 @@ const Home = memo(() => (
       <div className="max-w-4xl mx-auto">
         <div className="mb-5">
           <h4 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-            Backend Specialization
+            Platform & Infrastructure
           </h4>
           <div className="flex flex-wrap justify-center gap-2">
-            {["Python", "Node.js", "PostgreSQL"].map((tech) => (
+            {["Kubernetes/OpenShift", "CI/CD Automation", "Infrastructure as Code"].map((tech) => (
               <span
                 key={tech}
                 className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
@@ -49,7 +49,7 @@ const Home = memo(() => (
             Cloud & DevOps
           </h4>
           <div className="flex flex-wrap justify-center gap-2">
-            {["AWS", "Azure", "OpenShift", "Docker", "CI/CD"].map((tech) => (
+            {["AWS", "Azure", "Terraform", "Docker", "Azure DevOps"].map((tech) => (
               <span
                 key={tech}
                 className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs lg:text-sm"
@@ -61,10 +61,10 @@ const Home = memo(() => (
         </div>
         <div>
           <h4 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-            Frontend & Full-Stack
+            Development & Tooling
           </h4>
           <div className="flex flex-wrap justify-center gap-2">
-            {["JavaScript", "TypeScript", "React", "HTML/CSS"].map((tech) => (
+            {["Python", "TypeScript", "JavaScript", "Node.js", "Developer Tooling"].map((tech) => (
               <span
                 key={tech}
                 className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
@@ -85,14 +85,13 @@ const Home = memo(() => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
           <h4 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-            Government Compliance System
+            OpenShift Platform Infrastructure
           </h4>
           <p className="text-sm text-gray-600 dark:text-white dark:font-semibold mb-3">
-            Replaced legacy vendor software with custom Django application,
-            serving 7,500+ users with 100% compliance rate
+            Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines and self-service deployment capabilities
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
-            {["Python", "Django", "PostgreSQL", "OpenShift", "Azure"].map(
+            {["OpenShift", "Kubernetes", "CI/CD", "Azure DevOps", "Python"].map(
               (tech) => (
                 <span
                   key={tech}
@@ -106,14 +105,13 @@ const Home = memo(() => (
         </div>
         <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
           <h4 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-            Fleet Management Platform
+            Enterprise DevOps Migration
           </h4>
           <p className="text-sm text-gray-600 dark:text-gray-100 dark:font-semibold mb-3">
-            Built automated workflow system managing 2,000+ vehicles, reducing
-            processing time by 80%
+            Led platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines that reduced release cycles by 70%
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
-            {["Python", "Django", "PostgreSQL", "OpenShift", "Azure"].map(
+            {["Azure DevOps", "CI/CD", "Automation", "Infrastructure as Code"].map(
               (tech) => (
                 <span
                   key={tech}

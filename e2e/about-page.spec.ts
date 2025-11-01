@@ -16,9 +16,9 @@ test.describe('About Page', () => {
   });
 
   test('displays professional summary', async ({ page }) => {
-    await expect(page.getByText(/Today, I'm a software engineer with nearly 10 years of experience/)).toBeVisible();
-    await expect(page.getByText(/I've led the development of systems that replaced expensive vendor tools/)).toBeVisible();
-    await expect(page.getByText(/My work has saved organizations over \$1M annually/)).toBeVisible();
+    await expect(page.getByText(/Today, I'm a software engineer with 5\+ years of experience/)).toBeVisible();
+    await expect(page.getByText(/I currently architect and operate OpenShift infrastructure/)).toBeVisible();
+    await expect(page.getByText(/I've reduced release cycles by 70%/)).toBeVisible();
   });
 
   test('displays section headings', async ({ page }) => {

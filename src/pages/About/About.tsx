@@ -25,19 +25,19 @@ const About = () => {
           My journey into tech wasn't typical. I started in retail banking, but I was always fascinated by how technology could solve problems and make operations more efficient. In 2016, I made the career change that would define my next chapter.
         </p>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed">
-          I immersed myself in coding, completed an intensive bootcamp, and quickly progressed from software quality assurance to full-stack development. This non-traditional path gave me a unique perspective: I understand both the business problems that technology solves and the technical skills needed to build robust solutions.
+          I immersed myself in coding, completed an intensive bootcamp, and quickly progressed from software quality assurance to full-stack development, and eventually to platform engineering. This non-traditional path gave me a unique perspective: I understand both the business problems that technology solves and the technical systems needed to deliver reliable infrastructure.
         </p>
       </div>
 
       {/* Current Professional Summary */}
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        Today, I'm a software engineer with nearly 10 years of experience building scalable web applications and automating complex workflows in high-stakes environments. I specialize in Python/Django and Node.js on the backend, with expertise in AWS, Azure, and OpenShift deployments.
+        Today, I'm a software engineer with 5+ years of experience building cloud-native infrastructure and developer tooling in high-stakes government environments. I specialize in Kubernetes (OpenShift), CI/CD automation, and infrastructure as code, creating platforms that enable development teams to ship faster and more reliably.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        I've led the development of systems that replaced expensive vendor tools, streamlined manual processes, and delivered measurable impact on operational efficiency. My work has saved organizations over $1M annually while serving thousands of users with 100% compliance rates.
+        I currently architect and operate OpenShift infrastructure serving 7,500+ users across 9 enterprise applications. My work focuses on building self-service deployment capabilities, establishing engineering standards, and creating automation that eliminates manual toil. I've reduced release cycles by 70% and enabled teams to deploy independently through platform tooling.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-8">
-        While backend development is my specialty, I'm comfortable across the full stack with JavaScript/TypeScript, React, and modern DevOps practices. I'm currently pursuing my AWS Solutions Architect certification and am particularly excited about the intersection of AI and cloud engineering.
+        While platform infrastructure is my specialty, I'm comfortable across the stack - from Python and TypeScript for building automation tools, to cloud infrastructure on AWS and Azure, to container orchestration and deployment pipelines. I'm currently exploring Terraform and deepening my expertise in infrastructure as code patterns.
       </p>
 
       {/* Personal Life Section */}
@@ -49,7 +49,7 @@ const About = () => {
           Above all, I'm a husband and a father. Family is my foundation, and they're one of the reasons I strive to be better every day.
         </p>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-3">
-          In my spare time, I love unwinding with PlayStation games—<span className="italic">Ghost of Tsushima</span> is a particular favorite. There's something therapeutic about exploring those beautiful landscapes and perfecting combat mechanics after a long day of debugging code.
+          In my spare time, I love unwinding with PlayStation games—<span className="italic">Ghost of Tsushima</span> is a particular favorite. There's something therapeutic about exploring those beautiful landscapes and perfecting combat mechanics after a long day of debugging infrastructure issues.
         </p>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed">
           I used to be big into working out, hitting the gym regularly for strength training and cardio. Lately though, learning new technologies has taken priority in my free time. The tech landscape moves fast, and I find the challenge of mastering new tools and frameworks just as rewarding as physical fitness. Who knows—maybe I'll find a way to balance both again soon!
@@ -67,9 +67,9 @@ const About = () => {
             Technical Interests
           </h2>
           <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
-            <li>Software Engineering</li>
-            <li>AI & ML Engineering</li>
-            <li>Cloud Solutions</li>
+            <li>Platform Engineering</li>
+            <li>Infrastructure as Code</li>
+            <li>Developer Experience & Tooling</li>
           </ul>
         </div>
 
@@ -79,9 +79,9 @@ const About = () => {
             Current Focus
           </h2>
           <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
-            <li>AI Engineering</li>
-            <li>AWS Solutions Architect Cert</li>
-            <li>System Design</li>
+            <li>Kubernetes/OpenShift Optimization</li>
+            <li>CI/CD Architecture</li>
+            <li>Infrastructure Automation</li>
           </ul>
         </div>
 
@@ -91,9 +91,9 @@ const About = () => {
             Professional Interests
           </h2>
           <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
-            <li>Automation & Efficiency</li>
-            <li>Process Optimization</li>
-            <li>Scalable Systems</li>
+            <li>Developer Productivity</li>
+            <li>Platform Reliability</li>
+            <li>Self-Service Infrastructure</li>
           </ul>
         </div>
       </div>

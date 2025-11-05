@@ -16,6 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Disable ESM updates to avoid firewall blocks
+        run: |
+          sudo sed -i 's|^deb https://esm\.ubuntu\.com/.*||' /etc/apt/sources.list.d/*.list || true
+          sudo apt-get update
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

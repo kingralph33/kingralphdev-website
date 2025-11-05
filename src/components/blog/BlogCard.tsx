@@ -24,7 +24,12 @@ const BlogCard = ({ post, initialExpanded = false }: BlogCardProps) => {
 
   return (
     <article className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg">
-      <div className="cursor-pointer" onClick={toggleExpand}>
+      <button 
+        onClick={toggleExpand}
+        className="text-left w-full focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded"
+        aria-expanded={isExpanded}
+        aria-label={isExpanded ? `Collapse ${post.title}` : `Expand ${post.title}`}
+      >
         <h2 className="text-xl font-bold mb-2 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-400 transition-colors">
           {post.title}
         </h2>
@@ -36,7 +41,7 @@ const BlogCard = ({ post, initialExpanded = false }: BlogCardProps) => {
             {post.excerpt}
           </p>
         )}
-      </div>
+      </button>
 
       {isExpanded && (
         <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
@@ -82,9 +87,8 @@ const BlogCard = ({ post, initialExpanded = false }: BlogCardProps) => {
 
       <button
         onClick={toggleExpand}
-        className="mt-4 text-sm text-green-600 dark:text-green-400 hover:underline focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded"
-        aria-expanded={isExpanded}
-        aria-label={isExpanded ? 'Collapse post' : 'Expand post'}
+        className="mt-4 text-sm text-green-600 dark:text-green-400 hover:underline focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded px-2 py-1"
+        aria-label={isExpanded ? `Collapse ${post.title}` : `Expand ${post.title}`}
       >
         {isExpanded ? 'Collapse' : 'Read more'}
       </button>

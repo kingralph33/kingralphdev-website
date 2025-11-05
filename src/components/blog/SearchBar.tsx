@@ -3,7 +3,7 @@
  * Provides search functionality for blog posts with debounced input and clear button
  */
 
-import { useCallback, useEffect, useRef, useState, memo } from 'react';
+import { useCallback, useEffect, useRef, memo } from 'react';
 import debounce from 'lodash/debounce';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
@@ -14,7 +14,7 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchBarProps) => {
-  const [localValue, setLocalValue] = useState(value);
+  const inputRef = useRef<HTMLInputElement>(null);
   // Create a ref to store the debounced function
   const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
 
@@ -35,22 +35,24 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
     };
   }, [onChange]);
 
-  // Sync local value when external value changes
+  // Sync input value when external value changes (e.g., from clear button)
   useEffect(() => {
-    setLocalValue(value);
+    if (inputRef.current && inputRef.current.value !== value) {
+      inputRef.current.value = value;
+    }
   }, [value]);
 
   // Memoized handler that calls the debounced function
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    setLocalValue(newValue);
     if (debouncedOnChangeRef.current) {
-      debouncedOnChangeRef.current(newValue);
+      debouncedOnChangeRef.current(e.target.value);
     }
   }, []);
 
   const handleClear = useCallback(() => {
-    setLocalValue('');
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
     onChange('');
     if (debouncedOnChangeRef.current) {
       debouncedOnChangeRef.current.cancel();
@@ -65,8 +67,9 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
           aria-hidden="true"
         />
         <input
+          ref={inputRef}
           type="text"
-          value={localValue}
+          defaultValue={value}
           onChange={handleChange}
           placeholder={placeholder}
           className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg 
@@ -75,7 +78,7 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
                      focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-gray-200"
           aria-label="Search blog posts"
         />
-        {localValue && (
+        {value && (
           <button
             onClick={handleClear}
             className="absolute right-3 top-1/2 transform -translate-y-1/2 

@@ -16,11 +16,11 @@ test.describe('Blog Page', () => {
   });
 
   test('should display published posts', async ({ page }) => {
-    // Wait for posts to load
-    await page.waitForTimeout(1000);
-
-    // Check if blog cards are visible (there should be at least 2 published posts)
+    // Wait for posts to load by checking for blog cards
     const blogCards = page.locator('article');
+    await expect(blogCards.first()).toBeVisible({ timeout: 5000 });
+    
+    // Check if blog cards are visible (there should be at least 2 published posts)
     await expect(blogCards).toHaveCount(2, { timeout: 5000 });
   });
 
@@ -31,12 +31,9 @@ test.describe('Blog Page', () => {
   });
 
   test('should display category filter buttons', async ({ page }) => {
-    // Wait for posts to load
-    await page.waitForTimeout(1000);
-
-    // Check that "All Posts" button exists
+    // Wait for posts to load by checking for "All Posts" button
     const allPostsButton = page.getByRole('button', { name: 'All Posts' });
-    await expect(allPostsButton).toBeVisible();
+    await expect(allPostsButton).toBeVisible({ timeout: 5000 });
 
     // Check that category buttons exist
     const categoryButtons = page.locator('button[aria-pressed]');
@@ -44,50 +41,51 @@ test.describe('Blog Page', () => {
   });
 
   test('should expand and collapse blog post', async ({ page }) => {
-    // Wait for posts to load
-    await page.waitForTimeout(1000);
+    // Wait for posts to load by checking for first article
+    const firstArticle = page.locator('article').first();
+    await expect(firstArticle).toBeVisible({ timeout: 5000 });
 
-    // Find the first "Read more" button
-    const readMoreButton = page.getByRole('button', { name: 'Read more' }).first();
-    await expect(readMoreButton).toBeVisible();
+    // Find the expand button within the first article
+    const expandButton = firstArticle.getByRole('button', { name: /Expand/ });
+    await expect(expandButton).toBeVisible();
 
     // Click to expand
-    await readMoreButton.click();
+    await expandButton.click();
 
-    // Check that button text changed to "Collapse"
-    await expect(readMoreButton).toHaveText('Collapse');
+    // Check that button text changed to include "Collapse"
+    const collapseButton = firstArticle.getByRole('button', { name: /Collapse/ });
+    await expect(collapseButton).toBeVisible();
 
-    // Check aria-expanded attribute
-    await expect(readMoreButton).toHaveAttribute('aria-expanded', 'true');
+    // Check aria-expanded attribute on the main expand/collapse button
+    await expect(expandButton).toHaveAttribute('aria-expanded', 'true');
 
     // Click to collapse
-    await readMoreButton.click();
+    await collapseButton.click();
 
-    // Check that button text changed back to "Read more"
-    await expect(readMoreButton).toHaveText('Read more');
+    // Check that button text changed back to include "Expand"
+    await expect(expandButton).toBeVisible();
 
     // Check aria-expanded attribute
-    await expect(readMoreButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(expandButton).toHaveAttribute('aria-expanded', 'false');
   });
 
   test('should filter posts by search query', async ({ page }) => {
     // Wait for posts to load
-    await page.waitForTimeout(1000);
-
+    const blogCards = page.locator('article');
+    await expect(blogCards.first()).toBeVisible({ timeout: 5000 });
+    
     // Get initial post count
-    const initialCards = page.locator('article');
-    const initialCount = await initialCards.count();
+    const initialCount = await blogCards.count();
 
     // Type in search box (this will trigger debounced search)
     const searchInput = page.getByLabel('Search blog posts');
     await searchInput.fill('Kubernetes');
 
-    // Wait for debounce and filtering
-    await page.waitForTimeout(500);
+    // Wait for debounce and re-render using network idle
+    await page.waitForLoadState('networkidle');
 
     // Check that posts are filtered (should have fewer posts)
-    const filteredCards = page.locator('article');
-    const filteredCount = await filteredCards.count();
+    const filteredCount = await blogCards.count();
 
     // We expect fewer posts or the same (if all match)
     expect(filteredCount).toBeLessThanOrEqual(initialCount);
@@ -95,7 +93,7 @@ test.describe('Blog Page', () => {
 
   test('should display clear button when search has text', async ({ page }) => {
     // Wait for posts to load
-    await page.waitForTimeout(1000);
+    await expect(page.locator('article').first()).toBeVisible({ timeout: 5000 });
 
     const searchInput = page.getByLabel('Search blog posts');
     const clearButton = page.getByLabel('Clear search');
@@ -120,15 +118,14 @@ test.describe('Blog Page', () => {
   });
 
   test('should filter posts by category', async ({ page }) => {
-    // Wait for posts to load
-    await page.waitForTimeout(1000);
-
-    // Get initial post count with "All Posts" selected
+    // Wait for "All Posts" button to appear
     const allPostsButton = page.getByRole('button', { name: 'All Posts' });
+    await expect(allPostsButton).toBeVisible({ timeout: 5000 });
     await expect(allPostsButton).toHaveAttribute('aria-pressed', 'true');
 
-    const initialCards = page.locator('article');
-    const initialCount = await initialCards.count();
+    // Get initial post count
+    const blogCards = page.locator('article');
+    const initialCount = await blogCards.count();
 
     // Click on a category button (e.g., "Platform Engineering")
     const categoryButton = page.getByRole('button', { name: 'Platform Engineering' });
@@ -138,12 +135,11 @@ test.describe('Blog Page', () => {
       // Check that category button is now pressed
       await expect(categoryButton).toHaveAttribute('aria-pressed', 'true');
 
-      // Wait for filtering
-      await page.waitForTimeout(300);
+      // Wait for re-render
+      await page.waitForLoadState('domcontentloaded');
 
       // Check that posts are filtered
-      const filteredCards = page.locator('article');
-      const filteredCount = await filteredCards.count();
+      const filteredCount = await blogCards.count();
 
       // Should have some posts (at least 1)
       expect(filteredCount).toBeGreaterThan(0);
@@ -151,25 +147,24 @@ test.describe('Blog Page', () => {
       // Click "All Posts" to reset
       await allPostsButton.click();
 
-      // Wait for filtering
-      await page.waitForTimeout(300);
+      // Wait for re-render
+      await page.waitForLoadState('domcontentloaded');
 
       // Should show all posts again
-      const resetCards = page.locator('article');
-      await expect(resetCards).toHaveCount(initialCount);
+      await expect(blogCards).toHaveCount(initialCount);
     }
   });
 
   test('should display "No posts found" when search has no results', async ({ page }) => {
     // Wait for posts to load
-    await page.waitForTimeout(1000);
+    await expect(page.locator('article').first()).toBeVisible({ timeout: 5000 });
 
     // Search for something that doesn't exist
     const searchInput = page.getByLabel('Search blog posts');
     await searchInput.fill('xyznonexistentquery123');
 
     // Wait for debounce and filtering
-    await page.waitForTimeout(500);
+    await page.waitForLoadState('networkidle');
 
     // Check for "No posts found" message
     await expect(page.getByText('No posts found.')).toBeVisible();
@@ -177,16 +172,13 @@ test.describe('Blog Page', () => {
 
   test('should work in dark mode', async ({ page }) => {
     // Wait for posts to load
-    await page.waitForTimeout(1000);
+    await expect(page.locator('article').first()).toBeVisible({ timeout: 5000 });
 
     // Toggle dark mode
     const darkModeToggle = page.getByLabel(/Switch to dark mode/).first();
     await darkModeToggle.click();
 
-    // Wait for dark mode to apply
-    await page.waitForTimeout(300);
-
-    // Check that html element has dark class
+    // Wait for dark mode class to be applied
     const html = page.locator('html');
     await expect(html).toHaveClass(/dark/);
 
@@ -200,7 +192,7 @@ test.describe('Blog Page', () => {
     await page.setViewportSize({ width: 375, height: 667 });
 
     // Wait for posts to load
-    await page.waitForTimeout(1000);
+    await expect(page.locator('article').first()).toBeVisible({ timeout: 5000 });
 
     // Check that blog cards are visible
     const blogCards = page.locator('article');

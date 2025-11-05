@@ -1,6 +1,7 @@
 /**
  * BlogCard component
  * Displays a single blog post preview card with expandable content
+ * Supports lazy-loading of post content
  */
 
 import { useState, memo } from 'react';
@@ -9,18 +10,33 @@ import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import type { BlogPost } from '../../data/blog/types';
+import type { BlogPostPreview } from '../../data/blog/types';
 
 interface BlogCardProps {
-  post: BlogPost;
+  post: BlogPostPreview;
+  content?: string;
+  isLoadingContent?: boolean;
+  onExpand?: (postId: string) => Promise<void>;
   initialExpanded?: boolean;
 }
 
-const BlogCard = ({ post, initialExpanded = false }: BlogCardProps) => {
+const BlogCard = ({ 
+  post, 
+  content,
+  isLoadingContent = false,
+  onExpand,
+  initialExpanded = false 
+}: BlogCardProps) => {
   const [isExpanded, setIsExpanded] = useState(initialExpanded);
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+  const toggleExpand = async () => {
+    const newExpandedState = !isExpanded;
+    setIsExpanded(newExpandedState);
+    
+    // Load content when expanding if not already loaded
+    if (newExpandedState && !content && onExpand) {
+      await onExpand(post.id);
+    }
   };
 
   return (
@@ -50,33 +66,45 @@ const BlogCard = ({ post, initialExpanded = false }: BlogCardProps) => {
 
       {isExpanded && (
         <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700" data-testid="blog-card-content">
-          <div className="prose dark:prose-invert max-w-none prose-headings:text-blue-900 dark:prose-headings:text-white prose-a:text-green-600 dark:prose-a:text-green-400">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeSanitize]}
-              components={{
-                code(props) {
-                  const { children, className, ...rest } = props;
-                  const match = /language-(\w+)/.exec(className || '');
-                  return match ? (
-                    <SyntaxHighlighter
-                      style={oneDark}
-                      language={match[1]}
-                      PreTag="div"
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code {...rest} className={className}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          {isLoadingContent ? (
+            <div className="flex items-center justify-center py-8">
+              <div className="animate-pulse text-gray-600 dark:text-gray-400">
+                Loading content...
+              </div>
+            </div>
+          ) : content ? (
+            <div className="prose dark:prose-invert max-w-none prose-headings:text-blue-900 dark:prose-headings:text-white prose-a:text-green-600 dark:prose-a:text-green-400">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeSanitize]}
+                components={{
+                  code(props) {
+                    const { children, className, ...rest } = props;
+                    const match = /language-(\w+)/.exec(className || '');
+                    return match ? (
+                      <SyntaxHighlighter
+                        style={oneDark}
+                        language={match[1]}
+                        PreTag="div"
+                      >
+                        {String(children).replace(/\n$/, '')}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code {...rest} className={className}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
+          ) : (
+            <div className="text-gray-600 dark:text-gray-400 py-4">
+              Failed to load content. Please try again.
+            </div>
+          )}
         </div>
       )}
 

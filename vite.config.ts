@@ -4,6 +4,19 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    // Polyfill Buffer for browser environments (needed by gray-matter)
+    global: 'globalThis',
+  },
+  resolve: {
+    alias: {
+      // Polyfill buffer for browser
+      buffer: 'buffer/',
+    },
+  },
+  optimizeDeps: {
+    include: ['buffer'],
+  },
   build: {
     minify: 'terser',
     terserOptions: {

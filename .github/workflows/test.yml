@@ -7,6 +7,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Only run for non-draft PRs and skip copilot-generated branches
+    if: |
+      github.event.pull_request.draft == false &&
+      !startsWith(github.head_ref, 'copilot/') &&
+      !startsWith(github.head_ref, 'copilot-')
 
     steps:
       - uses: actions/checkout@v4

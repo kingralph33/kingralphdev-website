@@ -39,15 +39,20 @@ export type BlogPostMetadata = z.infer<typeof BlogPostMetadataSchema>;
 
 /**
  * Schema for complete blog post with computed fields
- * Extends metadata with runtime-computed values
+ * This schema extends metadata with runtime-computed values.
+ * Note: This schema is primarily used for type inference via z.infer<>.
+ * Actual validation happens at the BlogPostMetadata level,
+ * then defaults are applied in the service layer to create the full BlogPost.
  */
-export const BlogPostSchema = BlogPostMetadataSchema.extend({
-  id: z.string(),
-  content: z.string(),
-  author: z.string(),
-  tags: z.array(z.string()),
-  readingTime: z.number().int().positive(),
-});
+export const BlogPostSchema = BlogPostMetadataSchema
+  .omit({ author: true, tags: true })
+  .extend({
+    id: z.string(),
+    content: z.string(),
+    author: z.string(), // Always present in final post (default applied in service)
+    tags: z.array(z.string()), // Always present in final post (fallback to categories in service)
+    readingTime: z.number().int().positive(),
+  });
 
 /**
  * Infer TypeScript type for complete blog post

@@ -14,25 +14,30 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchBarProps) => {
   // Create a ref to store the debounced function
-  const debouncedOnChangeRef = useRef(
-    debounce((value: string) => onChange(value), 300)
-  );
+  const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | undefined>(undefined);
 
   // Update the debounced function when onChange changes
   useEffect(() => {
-    debouncedOnChangeRef.current = debounce((value: string) => onChange(value), 300);
-  }, [onChange]);
-
-  // Cleanup debounced function on unmount
-  useEffect(() => {
-    return () => {
+    // Cancel the previous debounced function if it exists
+    if (debouncedOnChangeRef.current) {
       debouncedOnChangeRef.current.cancel();
+    }
+    // Create new debounced function with current onChange
+    debouncedOnChangeRef.current = debounce((value: string) => onChange(value), 300);
+    
+    // Cleanup on unmount or when onChange changes
+    return () => {
+      if (debouncedOnChangeRef.current) {
+        debouncedOnChangeRef.current.cancel();
+      }
     };
-  }, []);
+  }, [onChange]);
 
   // Memoized handler that calls the debounced function
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedOnChangeRef.current(e.target.value);
+    if (debouncedOnChangeRef.current) {
+      debouncedOnChangeRef.current(e.target.value);
+    }
   }, []);
 
   return (

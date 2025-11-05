@@ -8,11 +8,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     # Workflow runs for: Non-draft PRs targeting main/dev from regular branches
-    # Workflow skips: Draft PRs, branches starting with 'copilot/'
+    # Workflow skips: Draft PRs, branches starting with 'copilot/' or 'copilot-'
+    # Null safety: Handles both PR and push events gracefully
     # This ensures tests run automatically for ready PRs without manual approval
     if: |
-      github.event.pull_request.draft != true &&
-      !startsWith(github.head_ref, 'copilot/')
+      (github.event.pull_request == null || github.event.pull_request.draft == false) &&
+      !startsWith(github.head_ref, 'copilot/') &&
+      !startsWith(github.head_ref, 'copilot-')
 
     steps:
       - uses: actions/checkout@v4

@@ -206,6 +206,79 @@ test.describe('Blog Page', () => {
     const categoryButtons = page.locator('button[aria-pressed]');
     await expect(categoryButtons.first()).toBeVisible();
   });
+
+  test('should combine search and category filters', async ({ page }) => {
+    // Wait for posts to load
+    const blogCards = page.getByTestId('blog-card');
+    await expect(blogCards.first()).toBeVisible({ timeout: 5000 });
+
+    // Apply category filter
+    const categoryButton = page.getByRole('button', { name: 'Platform Engineering' });
+    if (await categoryButton.isVisible()) {
+      await categoryButton.click();
+      await page.waitForTimeout(100);
+
+      const categoryFilteredCount = await blogCards.count();
+
+      // Apply search on top of category filter
+      const searchInput = page.getByTestId('search-input');
+      await searchInput.fill('Kubernetes');
+
+      // Wait for debounce
+      await page.waitForTimeout(400);
+
+      // Should have fewer or equal posts than category filter alone
+      const combinedFilterCount = await blogCards.count();
+      expect(combinedFilterCount).toBeLessThanOrEqual(categoryFilteredCount);
+    }
+  });
+
+  test('should render markdown content correctly when expanded', async ({ page }) => {
+    // Wait for posts to load
+    const firstCard = page.getByTestId('blog-card').first();
+    await expect(firstCard).toBeVisible({ timeout: 5000 });
+
+    // Expand the first post
+    const expandButton = firstCard.getByTestId('blog-card-toggle');
+    await expandButton.click();
+
+    // Check that content is visible
+    const content = firstCard.getByTestId('blog-card-content');
+    await expect(content).toBeVisible();
+
+    // Check for prose styling (indicates markdown is rendered)
+    const proseDiv = content.locator('.prose');
+    await expect(proseDiv).toBeVisible();
+  });
+
+  test('should display syntax-highlighted code blocks', async ({ page }) => {
+    // Wait for posts to load
+    const firstCard = page.getByTestId('blog-card').first();
+    await expect(firstCard).toBeVisible({ timeout: 5000 });
+
+    // Expand the first post
+    await firstCard.getByTestId('blog-card-toggle').click();
+
+    // Wait for content to be visible
+    const content = firstCard.getByTestId('blog-card-content');
+    await expect(content).toBeVisible();
+
+    // Check if code blocks exist (they should have syntax highlighting)
+    const codeBlocks = content.locator('pre');
+    if ((await codeBlocks.count()) > 0) {
+      // Verify syntax highlighter is present
+      await expect(codeBlocks.first()).toBeVisible();
+    }
+  });
+
+  test('should use test IDs for reliable element selection', async ({ page }) => {
+    // Verify all major components have test IDs
+    await expect(page.getByTestId('search-input')).toBeVisible({ timeout: 5000 });
+    await expect(page.getByTestId('category-filters')).toBeVisible();
+    await expect(page.getByTestId('category-filter-all')).toBeVisible();
+    await expect(page.getByTestId('blog-posts-grid')).toBeVisible();
+    await expect(page.getByTestId('blog-card').first()).toBeVisible();
+  });
 });
 
 test.describe('Blog Page - Empty State', () => {

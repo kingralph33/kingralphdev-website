@@ -3,9 +3,10 @@
  * Provides search functionality for blog posts with debounced input and clear button
  */
 
-import { useCallback, useEffect, useRef, memo } from 'react';
+import { useCallback, useEffect, useRef, memo, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { SEARCH_DEBOUNCE_DELAY } from './constants';
 
 interface SearchBarProps {
   value: string;
@@ -15,25 +16,20 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchBarProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  // Create a ref to store the debounced function
-  const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
 
-  // Update the debounced function when onChange changes
+  // Create debounced onChange with useMemo to prevent recreation on every render
+  // Using useMemo instead of useEffect avoids the memory leak issue with onChange in dependencies
+  const debouncedOnChange = useMemo(
+    () => debounce((value: string) => onChange(value), SEARCH_DEBOUNCE_DELAY),
+    [] // Empty deps - we intentionally want to keep the same debounced function
+  );
+
+  // Cleanup debounced function on unmount
   useEffect(() => {
-    // Cancel the previous debounced function if it exists
-    if (debouncedOnChangeRef.current) {
-      debouncedOnChangeRef.current.cancel();
-    }
-    // Create new debounced function with current onChange
-    debouncedOnChangeRef.current = debounce((value: string) => onChange(value), 300);
-    
-    // Cleanup on unmount or when onChange changes
     return () => {
-      if (debouncedOnChangeRef.current) {
-        debouncedOnChangeRef.current.cancel();
-      }
+      debouncedOnChange.cancel();
     };
-  }, [onChange]);
+  }, [debouncedOnChange]);
 
   // Sync input value when external value changes (e.g., from clear button)
   useEffect(() => {
@@ -44,20 +40,16 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
 
   // Memoized handler that calls the debounced function
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (debouncedOnChangeRef.current) {
-      debouncedOnChangeRef.current(e.target.value);
-    }
-  }, []);
+    debouncedOnChange(e.target.value);
+  }, [debouncedOnChange]);
 
   const handleClear = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
     }
     onChange('');
-    if (debouncedOnChangeRef.current) {
-      debouncedOnChangeRef.current.cancel();
-    }
-  }, [onChange]);
+    debouncedOnChange.cancel();
+  }, [onChange, debouncedOnChange]);
 
   return (
     <div className="mb-6 relative">
@@ -72,19 +64,21 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
           defaultValue={value}
           onChange={handleChange}
           placeholder={placeholder}
-          className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg 
+          className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg
                      bg-white dark:bg-gray-800 text-gray-900 dark:text-white
                      placeholder:text-gray-500 dark:placeholder:text-gray-400
                      focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-gray-200"
           aria-label="Search blog posts"
+          data-testid="search-input"
         />
         {value && (
           <button
             onClick={handleClear}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 
+            className="absolute right-3 top-1/2 transform -translate-y-1/2
                        text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300
                        focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-gray-200 rounded"
             aria-label="Clear search"
+            data-testid="clear-search-button"
           >
             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
           </button>

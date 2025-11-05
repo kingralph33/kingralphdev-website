@@ -250,23 +250,9 @@ export async function getPublishedPostPreviews(): Promise<BlogPostPreview[]> {
  */
 export async function getPostById(id: string): Promise<BlogPost | null> {
   try {
-    // Use Vite's glob import to load the specific markdown file
-    const postModules = import.meta.glob<string>('./posts/*.md', {
-      query: '?raw',
-      import: 'default',
-    });
-
-    for (const [path, loadPost] of Object.entries(postModules)) {
-      // Extract slug from file path
-      const slug = path.replace(/^.*\/(.+)\.md$/, '$1');
-      
-      if (slug === id) {
-        const content = await loadPost();
-        return parseMarkdownPost(slug, content);
-      }
-    }
-
-    return null;
+    // Use dynamic import to load only the specific markdown file
+    const content = await import(`./posts/${id}.md?raw`);
+    return parseMarkdownPost(id, content.default);
   } catch (error) {
     console.error(`Error loading post with id "${id}":`, error);
     return null;

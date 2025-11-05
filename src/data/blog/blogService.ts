@@ -41,7 +41,7 @@ function parseMarkdownPost(slug: string, fileContent: string): BlogPost {
       categories: data.categories || [],
       published: data.published ?? false,
       author: data.author || 'Ralph King Jr',
-      tags: data.tags || data.categories || [],
+      tags: data.tags ?? data.categories ?? [],
       readingTime: calculateReadingTime(content),
     };
 

@@ -3,6 +3,8 @@
  */
 
 import matter from 'gray-matter';
+import { z } from 'zod';
+import { BlogPostMetadataSchema } from './schemas';
 import type { BlogPost } from './types';
 
 /**
@@ -22,31 +24,27 @@ function parseMarkdownPost(slug: string, fileContent: string): BlogPost {
   try {
     const { data, content } = matter(fileContent);
 
-    // Validate required frontmatter fields
-    const requiredFields = ['title', 'date', 'excerpt', 'slug'];
-    for (const field of requiredFields) {
-      if (!data[field]) {
-        throw new Error(`Missing required frontmatter field: ${field}`);
-      }
-    }
+    // Validate frontmatter with Zod
+    const metadata = BlogPostMetadataSchema.parse(data);
 
     // Create post object with defaults for optional fields
     const post: BlogPost = {
+      ...metadata,
       id: slug,
-      slug: data.slug || slug,
-      title: data.title,
-      date: data.date,
-      excerpt: data.excerpt,
       content: content,
-      categories: data.categories || [],
-      published: data.published ?? false,
-      author: data.author || 'Ralph King Jr',
-      tags: data.tags ?? data.categories ?? [],
+      author: metadata.author || 'Ralph King Jr',
+      tags: metadata.tags ?? metadata.categories,
       readingTime: calculateReadingTime(content),
     };
 
     return post;
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      const issues = error.issues
+        .map((i) => `${i.path.join('.')}: ${i.message}`)
+        .join(', ');
+      throw new Error(`Invalid frontmatter in "${slug}": ${issues}`);
+    }
     throw new Error(
       `Failed to parse markdown post "${slug}": ${error instanceof Error ? error.message : String(error)}`
     );

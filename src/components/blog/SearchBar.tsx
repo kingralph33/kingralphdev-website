@@ -14,7 +14,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchBarProps) => {
   // Create a ref to store the debounced function
-  const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | undefined>(undefined);
+  const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
 
   // Update the debounced function when onChange changes
   useEffect(() => {

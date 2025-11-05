@@ -3,10 +3,10 @@
  * Displays a single blog post preview card
  */
 
-import type { BlogPostMetadata } from '../../data/blog/types';
+import type { BlogPostPreview } from '../../data/blog/types';
 
 interface BlogCardProps {
-  post: BlogPostMetadata;
+  post: BlogPostPreview;
 }
 
 const BlogCard = ({ post }: BlogCardProps) => {

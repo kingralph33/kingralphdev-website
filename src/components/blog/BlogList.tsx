@@ -3,11 +3,11 @@
  * Displays a filtered list of blog posts
  */
 
-import type { BlogPostMetadata } from '../../data/blog/types';
+import type { BlogPostPreview } from '../../data/blog/types';
 import BlogCard from './BlogCard';
 
 interface BlogListProps {
-  posts: BlogPostMetadata[];
+  posts: BlogPostPreview[];
 }
 
 const BlogList = ({ posts }: BlogListProps) => {

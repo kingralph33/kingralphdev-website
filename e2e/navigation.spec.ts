@@ -11,6 +11,12 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { name: 'About Me', level: 1 })).toBeVisible();
   });
 
+  test('navigates to Blog page', async ({ page }) => {
+    await page.getByTestId('desktop-blog-link').click();
+    await expect(page).toHaveURL('/blog');
+    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+  });
+
   test('opens Resume in new tab', async ({ page, context }) => {
     const pagePromise = context.waitForEvent('page');
     await page.getByTestId('desktop-resume-link').click();
@@ -47,6 +53,27 @@ test.describe('Navigation', () => {
 
     // Click to close
     await menuButton.click();
+    await expect(mobileMenu).toBeHidden();
+  });
+
+  test('mobile menu Blog link navigates and closes menu', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+
+    const menuButton = page.getByLabel('Toggle navigation menu');
+    const mobileMenu = page.getByTestId('mobile-menu');
+
+    // Open mobile menu
+    await menuButton.click();
+    await expect(mobileMenu).toBeVisible();
+
+    // Click Blog link
+    await page.getByTestId('mobile-blog-link').click();
+
+    // Should navigate to Blog page
+    await expect(page).toHaveURL('/blog');
+    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+
+    // Mobile menu should be closed
     await expect(mobileMenu).toBeHidden();
   });
 

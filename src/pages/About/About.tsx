@@ -8,17 +8,17 @@ const About = () => {
           alt="Ralph King Jr"
           width="150"
           height="150"
-          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 border-4 border-green-600 dark:border-gray-200"
+          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-2 ring-green-600 dark:ring-gray-400"
           loading="eager"
         />
-        <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-center text-blue-900 dark:text-white">
+        <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           About Me
         </h1>
       </div>
 
       {/* Career Transition Story - Prominently Featured */}
-      <div className="bg-gray-100 dark:bg-gray-800 p-5 lg:p-6 rounded-lg mb-8 border-l-4 border-green-600 dark:border-gray-200">
-        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center text-blue-900 dark:text-white">
+      <div className="bg-gray-100 dark:bg-gray-800 p-6 lg:p-8 rounded-lg mb-12 lg:mb-16 border-l-2 border-green-600 dark:border-gray-700">
+        <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           From Banking to Building Government Systems
         </h2>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-3">
@@ -41,8 +41,8 @@ const About = () => {
       </p>
 
       {/* Personal Life Section */}
-      <div className="bg-gray-100 dark:bg-gray-800 p-5 lg:p-6 rounded-lg mb-8 border-l-4 border-green-600 dark:border-gray-200">
-        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center text-blue-900 dark:text-white">
+      <div className="bg-gray-100 dark:bg-gray-800 p-6 lg:p-8 rounded-lg mb-12 lg:mb-16 border-l-2 border-green-600 dark:border-gray-700">
+        <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           Beyond the Code
         </h2>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-3">
@@ -56,17 +56,17 @@ const About = () => {
         </p>
       </div>
 
-      {/* Divider */}
-      <hr className="border-green-600 dark:border-gray-200 border-2 mb-8" />
+      {/* Section divider for spacing */}
+      <hr className="border-0 h-12 lg:h-16 bg-transparent" aria-hidden="true" />
 
       {/* Three Column Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16 mt-12 lg:mt-16">
         {/* Left Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Technical Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Platform Engineering</li>
             <li>Infrastructure as Code</li>
             <li>Developer Experience & Tooling</li>
@@ -75,10 +75,10 @@ const About = () => {
 
         {/* Middle Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Current Focus
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Kubernetes/OpenShift Optimization</li>
             <li>CI/CD Architecture</li>
             <li>Infrastructure Automation</li>
@@ -87,16 +87,109 @@ const About = () => {
 
         {/* Right Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Professional Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Developer Productivity</li>
             <li>Platform Reliability</li>
             <li>Self-Service Infrastructure</li>
           </ul>
         </div>
       </div>
+
+      {/* Technology Expertise (moved from Home) */}
+      <section className="mt-16 lg:mt-20">
+        <h2 className="text-2xl lg:text-3xl font-bold text-center mb-6 text-blue-900 dark:text-white">
+          Technology Expertise
+        </h2>
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-5">
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Platform & Infrastructure
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Kubernetes/OpenShift", "CI/CD Automation", "Infrastructure as Code"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="mb-5">
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Cloud & DevOps
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["AWS", "Azure", "Terraform", "Docker", "Azure DevOps"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Development & Tooling
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Python", "TypeScript", "JavaScript", "Node.js", "Developer Tooling"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Impact (moved from Home) */}
+      <section className="mt-16 lg:mt-20">
+        <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-blue-900 dark:text-white">
+          Recent Impact
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
+            <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
+              OpenShift Platform Infrastructure
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-white dark:font-semibold mb-3">
+              Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines and self-service deployment capabilities
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {["OpenShift", "Kubernetes", "CI/CD", "Azure DevOps", "Python"].map((tech) => (
+                <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
+            <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
+              Enterprise DevOps Migration
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
+              Led platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines that reduced release cycles by 70%
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {["Azure DevOps", "CI/CD", "Automation", "Infrastructure as Code"].map((tech) => (
+                <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

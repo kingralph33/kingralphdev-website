@@ -87,7 +87,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 w-full bg-white/80 z-50 backdrop-blur-sm navbar-dark-gradient"
+      className="fixed top-0 left-0 right-0 w-full navbar-same-bg z-50"
       aria-label="Main navigation"
     >
       <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md">
@@ -141,6 +141,9 @@ const Navbar = () => {
           >
             <Link to="/about" className="nav-link text-sm lg:text-base" data-testid="desktop-about-link">
               About
+            </Link>
+            <Link to="/blog" className="nav-link text-sm lg:text-base" data-testid="desktop-blog-link">
+              Blog
             </Link>
             <a
               href="https://kingralphresume.com/"
@@ -271,6 +274,14 @@ const Navbar = () => {
               data-testid="mobile-about-link"
             >
               About
+            </Link>
+            <Link
+              to="/blog"
+              className="nav-link py-2"
+              onClick={() => setIsMenuOpen(false)}
+              data-testid="mobile-blog-link"
+            >
+              Blog
             </Link>
             <a
               href="https://kingralphresume.com/"

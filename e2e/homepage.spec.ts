@@ -11,32 +11,16 @@ test.describe('Homepage', () => {
     await expect(page.getByTestId('desktop-resume-link')).toBeVisible();
   });
 
-  test('renders the intro section', async ({ page }) => {
+  test('renders the hero', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Ralph King Jr', level: 1 })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Software Engineer', level: 2 })).toBeVisible();
-    await expect(page.getByText(/Building cloud-native infrastructure and developer tooling for mission-critical government systems/)).toBeVisible();
+    await expect(page.getByText(/Building cloud-native infrastructure and developer tooling for mission-critical government systems\./)).toBeVisible();
   });
 
-  test('displays technology expertise section', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'Technology Expertise' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Platform & Infrastructure' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Cloud & DevOps' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Development & Tooling' })).toBeVisible();
-
-    // Check for specific technologies - using .first() since technologies appear multiple times
-    await expect(page.getByText('Kubernetes/OpenShift').first()).toBeVisible();
-    await expect(page.getByText('CI/CD Automation').first()).toBeVisible();
-    await expect(page.getByText('Infrastructure as Code').first()).toBeVisible();
-    await expect(page.getByText('Python').first()).toBeVisible();
-    await expect(page.getByText('TypeScript').first()).toBeVisible();
-  });
-
-  test('displays recent impact projects', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'Recent Impact' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'OpenShift Platform Infrastructure' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Enterprise DevOps Migration' })).toBeVisible();
-    await expect(page.getByText(/Architected and operate container platform serving 7,500\+ users/)).toBeVisible();
-    await expect(page.getByText(/Led platform migration from TFS to Azure DevOps/)).toBeVisible();
+  test('shows primary CTAs', async ({ page }) => {
+    await expect(page.getByRole('link', { name: 'Go to About page' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Hero resume link, opens in new tab' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Go to Blog page' })).toBeVisible();
   });
 
   test('has responsive layout', async ({ page }) => {

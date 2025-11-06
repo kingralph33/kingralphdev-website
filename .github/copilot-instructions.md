@@ -3,13 +3,45 @@
 ## Project Overview
 React 19 + TypeScript personal portfolio with Tailwind CSS v4, Vite build, React Router v7, and Playwright E2E testing. Deployed to Cloudflare Pages. Uses pnpm as package manager (Node.js ≥22.13.0).
 
+**Local Directory Name**: `kingralphdev-react`
+**GitHub Repository**: `kingralph33/kingralphdev-website`
+
+## File Path Rules (Critical)
+
+### Always Use Absolute Paths
+The `view`, `edit`, and `create` tools **require absolute paths**. Always construct paths relative to the repository root:
+```
+${REPO_ROOT}/{relative-path}
+```
+
+**Examples** (assuming repository root is your current working directory):
+- ✅ `${REPO_ROOT}/src/App.tsx` or use full path from working directory
+- ✅ `${REPO_ROOT}/package.json` or use full path from working directory
+- ❌ `src/App.tsx` (relative path - will fail)
+- ❌ `./package.json` (relative path - will fail)
+
+### Stay Within Project Directory
+- **Never** request files outside the project directory unless explicitly necessary
+- **Never** use `/tmp` for temporary files - use the project directory instead
+- When using bash commands, stay in current working directory or child directories
+
+**Examples**:
+- ✅ `gh pr diff 88 > ./pr88.diff` (project directory)
+- ❌ `cd /tmp && gh pr diff 88 > pr88.diff` (outside project)
+- ✅ `grep -r "pattern" src/` (within project)
+- ❌ `grep -r "pattern" ~/Documents/` (outside project)
+
 ## Architecture & Key Patterns
 
 ### Component Structure
 - **Layout System**: `MainLayout` wraps all pages with `Navbar` + `Footer`, uses flexbox for sticky footer pattern
 - **Lazy Loading**: Pages are lazy-loaded via `React.lazy()` with `Suspense` fallback (see `App.tsx`)
 - **Memoization**: Components exported with `React.memo()` for performance (Navbar, Footer, MainLayout)
-- **Directory Structure**: Components organized by function: `common/` (Navbar, Footer), `layouts/` (MainLayout), `pages/` (About)
+- **Directory Structure**: Components organized by function:
+  - `common/` - Shared components (Navbar, Footer)
+  - `blog/` - Blog-specific components (BlogCard, BlogList, SearchBar)
+  - `layouts/` - Layout wrappers (MainLayout)
+  - `pages/` - Page components (About, Blog)
 
 ### Dark Mode Implementation (Critical Pattern)
 Dark mode is implemented via class-based Tailwind approach with localStorage persistence:
@@ -38,6 +70,47 @@ useEffect(() => {
 }, [isOpen]);
 ```
 Both desktop and mobile dropdowns have separate refs for independent tracking.
+
+### Blog System Architecture (In Development)
+Blog functionality is being implemented with markdown-based content:
+
+1. **Data Layer** (`src/data/blog/`):
+   - `blogService.ts` - Service functions for loading, parsing, and filtering markdown posts
+   - `types.ts` - TypeScript interfaces (`BlogPost`, `BlogPostMetadata`, `BlogPostPreview`)
+   - `posts/` - Markdown blog posts with YAML frontmatter
+   - Uses Vite's glob import (`import.meta.glob()`) for automatic file loading
+   - Uses `gray-matter` to parse frontmatter, `remark-gfm` for GitHub Flavored Markdown
+
+2. **Blog Post Format**:
+   ```markdown
+   ---
+   title: "Post Title"
+   date: "2025-01-15"
+   categories: ["Platform Engineering", "DevOps"]
+   published: true
+   slug: "url-friendly-slug"
+   excerpt: "Brief description for listings"
+   ---
+   # Post Content (Markdown)
+   ```
+
+3. **Service Functions** (see `src/data/blog/README.md` for full API):
+   - `getAllPosts()` - Load all posts (including drafts)
+   - `getPublishedPosts()` - Filter published posts only
+   - `getPostBySlug(slug)` - Retrieve single post
+   - `searchPosts(posts, query)` - Full-text search
+   - `filterByCategory(posts, category)` - Category filtering
+   - `sortByDate(posts)` - Chronological sorting
+
+4. **Components**:
+   - `BlogCard.tsx` - Post preview card with title, date, excerpt, tags
+   - `BlogList.tsx` - Grid layout for multiple cards
+   - `SearchBar.tsx` - Search input component
+   - `Blog.tsx` - Main page (currently placeholder "Coming soon...")
+
+5. **Reading Time Calculation**: Automatically estimates reading time at ~200 words/minute
+
+**Important**: Blog is not yet fully implemented. Posts exist but routing and display logic are incomplete.
 
 ## Testing with Playwright
 
@@ -171,7 +244,7 @@ pnpm test        # All Playwright tests must pass
   - Minification: Terser (not default esbuild) to drop `console.log` and `debugger` in production
 - **TypeScript**: 
   - Strict mode enabled (`strict: true`)
-  - Additional strict checks: `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`
+  - Additional strict checks: `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`, `noUncheckedSideEffectImports`
   - Target ES2020, bundler moduleResolution
   - No `any` types allowed, use `unknown` if type is truly unknown
   - Project references pattern: `tsconfig.json` orchestrates `tsconfig.app.json` and `tsconfig.node.json`
@@ -192,10 +265,35 @@ build: {
 ```
 
 ### CI/CD
-GitHub Actions runs tests on push/PR to `main`/`dev`:
+
+**Hybrid Workflow System** - Combines automatic validation with on-demand assistance:
+
+#### 1. Automatic Testing (`test.yml`)
+Runs on **ready PRs** to `main`/`dev`:
 1. Setup Node 22.x + pnpm 10
 2. Install deps + Playwright Chromium with `--with-deps`
-3. Run `pnpm test` (must pass to merge)
+3. Run unit tests (`pnpm test:unit`)
+4. Run E2E tests (`pnpm test:e2e`)
+5. Must pass before merging
+
+**Conditions**: Automatically runs but skips:
+- Draft PRs (`github.event.pull_request.draft != true`)
+- Branches starting with `copilot/` or `copilot-` (AI-generated branches)
+- Triggers: `opened`, `synchronize`, `reopened`, `ready_for_review`
+
+#### 2. On-Demand Assistance (`claude-assist.yml`)
+Triggered by `@claude` mentions in PR/issue comments:
+
+**Available Commands**:
+- `@claude test` - Run full test suite
+- `@claude lint` - Run ESLint
+- `@claude build` - Verify production build
+- `@claude help` - Show available commands
+
+**Pattern**: Inspired by [Anthropic's workflow](https://github.com/anthropics/claude-code/blob/main/.github/workflows/claude.yml)
+- Explicit opt-in vs automatic execution
+- Saves CI minutes on active repos
+- Provides fine-grained control over when automation runs
 
 ## Common Pitfalls
 
@@ -207,9 +305,26 @@ GitHub Actions runs tests on push/PR to `main`/`dev`:
 
 ## Key Files Reference
 
+### Core Application
 - `src/App.tsx`: Routing and lazy loading setup
+- `src/main.tsx`: Entry point and React 19 setup
 - `src/components/common/Navbar/Navbar.tsx`: Dark mode + dropdown pattern
+- `src/layouts/MainLayout/MainLayout.tsx`: Page wrapper with sticky footer
 - `src/index.css`: Custom Tailwind components and dark mode gradients
-- `e2e/dark-mode.spec.ts`: Dark mode persistence testing patterns
+
+### Blog System (In Development)
+- `src/data/blog/blogService.ts`: Post loading and filtering logic
+- `src/data/blog/types.ts`: TypeScript interfaces for blog posts
+- `src/data/blog/README.md`: Complete API documentation for blog service
+- `src/components/blog/`: BlogCard, BlogList, SearchBar components
+- `src/pages/Blog/Blog.tsx`: Blog page (placeholder)
+
+### Testing & Configuration
+- `e2e/`: Playwright E2E tests (homepage, navigation, dark-mode, accessibility, about-page)
 - `playwright.config.ts`: Test environment configuration
-- `.claude.md`: Extended project context (legacy, prefer this file)
+- `vite.config.ts`: Build configuration with Terser minification
+- `tsconfig.json`: TypeScript project references
+- `eslint.config.js`: ESLint with React hooks and TypeScript rules
+
+### CI/CD
+- `.github/workflows/test.yml`: Automated testing on PRs to main/dev

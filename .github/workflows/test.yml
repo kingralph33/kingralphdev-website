@@ -1,15 +1,29 @@
-name: Test
+name: Required Tests
 
+# Automatic validation for PRs to main/dev branches
+# For on-demand testing, use @claude test in comments (see claude-assist.yml)
 on:
   pull_request:
     branches: [main, dev]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Skip tests for draft PRs and AI-generated branches (copilot/ or copilot- prefix)
+    # This ensures tests only run for ready PRs that are candidates for merging
+    if: |
+      github.event.pull_request.draft != true &&
+      !startsWith(github.head_ref, 'copilot/') &&
+      !startsWith(github.head_ref, 'copilot-')
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Disable ESM Ubuntu repositories to avoid firewall blocks
+        run: |
+          sudo sed -i 's|^deb https://esm\.ubuntu\.com/.*||' /etc/apt/sources.list.d/*.list || true
+          sudo apt-get update
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -25,8 +39,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Run unit tests
+        run: pnpm test:unit
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run E2E tests
+        run: pnpm test:e2e

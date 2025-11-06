@@ -11,25 +11,58 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { name: 'About Me', level: 1 })).toBeVisible();
   });
 
+  test('navigates to Blog page', async ({ page }) => {
+    await page.getByTestId('desktop-blog-link').click();
+    await expect(page).toHaveURL('/blog');
+    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+  });
+
   test('opens Resume in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const resumeLink = page.getByTestId('desktop-resume-link');
+    await expect(resumeLink).toHaveAttribute('href', /kingralphresume\.com/);
+    await expect(resumeLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-resume-link').click();
+    await resumeLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/kingralphresume\.com/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('opens GitHub profile in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const githubLink = page.getByTestId('desktop-github-link');
+    await expect(githubLink).toHaveAttribute('href', /github\.com\/kingralph33/);
+    await expect(githubLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-github-link').click();
+    await githubLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/github\.com\/kingralph33/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('opens LinkedIn profile in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const linkedinLink = page.getByTestId('desktop-linkedin-link');
+    await expect(linkedinLink).toHaveAttribute('href', /linkedin\.com/);
+    await expect(linkedinLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-linkedin-link').click();
+    await linkedinLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/linkedin\.com/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('mobile menu toggle works', async ({ page }) => {
@@ -47,6 +80,27 @@ test.describe('Navigation', () => {
 
     // Click to close
     await menuButton.click();
+    await expect(mobileMenu).toBeHidden();
+  });
+
+  test('mobile menu Blog link navigates and closes menu', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+
+    const menuButton = page.getByLabel('Toggle navigation menu');
+    const mobileMenu = page.getByTestId('mobile-menu');
+
+    // Open mobile menu
+    await menuButton.click();
+    await expect(mobileMenu).toBeVisible();
+
+    // Click Blog link
+    await page.getByTestId('mobile-blog-link').click();
+
+    // Should navigate to Blog page
+    await expect(page).toHaveURL('/blog');
+    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+
+    // Mobile menu should be closed
     await expect(mobileMenu).toBeHidden();
   });
 

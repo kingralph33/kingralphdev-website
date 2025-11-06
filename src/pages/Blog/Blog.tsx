@@ -70,12 +70,14 @@ const Blog = () => {
   if (loading) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
-        <h1 className="text-2xl lg:text-3xl font-bold mb-6 text-center text-blue-900 dark:text-white">
+        <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
           Blog
         </h1>
-        <p className="text-center text-gray-600 dark:text-gray-400">
-          Loading posts...
-        </p>
+        <div className="flex items-center justify-center py-12">
+          <div className="animate-pulse text-gray-600 dark:text-gray-400">
+            Loading posts...
+          </div>
+        </div>
       </div>
     );
   }
@@ -84,20 +86,23 @@ const Blog = () => {
   if (error) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
-        <h1 className="text-2xl lg:text-3xl font-bold mb-6 text-center text-blue-900 dark:text-white">
+        <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
           Blog
         </h1>
-        <div 
-          className="text-center py-12"
+        <div
+          className="text-center py-16"
           role="alert"
           aria-live="polite"
         >
-          <p className="text-lg text-red-600 dark:text-red-400 mb-4">
+          <p className="text-lg lg:text-xl text-red-600 dark:text-red-400 mb-6">
             {error}
           </p>
           <button
             onClick={loadPosts}
-            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2"
+            className="px-6 py-3 bg-green-600 text-white rounded-lg font-medium
+                       hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600
+                       transition-colors duration-200 shadow-md hover:shadow-lg
+                       focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2"
             aria-label="Try loading posts again"
           >
             Try Again
@@ -111,14 +116,14 @@ const Blog = () => {
   if (!loading && !error && posts.length === 0) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
-        <h1 className="text-2xl lg:text-3xl font-bold mb-6 text-center text-blue-900 dark:text-white">
+        <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
           Blog
         </h1>
-        <div className="text-center py-12">
-          <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-100 dark:font-semibold mb-2">
+        <div className="text-center py-16">
+          <p className="text-2xl lg:text-3xl text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
             Coming soon...
           </p>
-          <p className="text-sm lg:text-base text-gray-600 dark:text-gray-400">
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400">
             Check back later for new content!
           </p>
         </div>
@@ -128,17 +133,15 @@ const Blog = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
-      <h1 className="text-2xl lg:text-3xl font-bold mb-6 text-center text-blue-900 dark:text-white">
+      <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
         Blog
       </h1>
-      
-      <div className="mb-8">
-        <SearchBar 
-          value={searchQuery}
-          onChange={setSearchQuery}
-          placeholder="Search posts by title, content, or excerpt..."
-        />
-      </div>
+
+      <SearchBar
+        value={searchQuery}
+        onChange={setSearchQuery}
+        placeholder="Search posts by title, content, or excerpt..."
+      />
 
       <BlogList
         posts={filteredPosts}

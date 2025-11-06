@@ -132,7 +132,7 @@ test.describe('Blog Page', () => {
     const initialCount = await blogCards.count();
 
     // Click on a category button (e.g., "Platform Engineering")
-    const categoryButton = page.getByRole('button', { name: 'Platform Engineering' });
+    const categoryButton = page.getByTestId('category-filter-platform-engineering');
     if (await categoryButton.isVisible()) {
       await categoryButton.click();
 
@@ -217,7 +217,7 @@ test.describe('Blog Page', () => {
     await expect(blogCards.first()).toBeVisible({ timeout: 5000 });
 
     // Apply category filter
-    const categoryButton = page.getByRole('button', { name: 'Platform Engineering' });
+    const categoryButton = page.getByTestId('category-filter-platform-engineering');
     if (await categoryButton.isVisible()) {
       await categoryButton.click();
       await page.waitForTimeout(100);

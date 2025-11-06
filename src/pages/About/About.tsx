@@ -8,7 +8,7 @@ const About = () => {
           alt="Ralph King Jr"
           width="150"
           height="150"
-          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-2 ring-green-600"
+          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-2 ring-green-600 dark:ring-gray-400"
           loading="eager"
         />
         <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-center text-blue-900 dark:text-white">

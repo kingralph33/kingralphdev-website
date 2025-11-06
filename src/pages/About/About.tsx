@@ -56,8 +56,8 @@ const About = () => {
         </p>
       </div>
 
-      {/* Spacing instead of divider */}
-      <div className="mt-12 lg:mt-16" aria-hidden="true" />
+      {/* Section divider for spacing */}
+      <hr className="border-0 h-12 lg:h-16 bg-transparent" aria-hidden="true" />
 
       {/* Three Column Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

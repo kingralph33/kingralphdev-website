@@ -19,8 +19,8 @@ published: false
 
 # URL slug - appears in the browser address bar
 # Must be unique, lowercase, and use hyphens
-# Example: this post would be at /blog/getting-started-platform-engineering
-slug: "getting-started-platform-engineering"
+# Example: this post would be at /blog/platform-engineering-example-guide
+slug: "platform-engineering-example-guide"
 
 # Excerpt appears in blog listings and search results
 # Write 1-2 compelling sentences that summarize the post

@@ -230,7 +230,7 @@ This template demonstrates all the essential markdown features available in the 
 4. Set `published: false` while drafting
 5. Update `published: true` when ready to publish
 
-Happy blogging! 🚀
+Happy blogging!
 
 ---
 

@@ -1,7 +1,6 @@
 /**
  * BlogList component
  * Displays a filtered list of blog posts with category filters
- * Supports lazy-loading of post content
  */
 
 import { memo } from 'react';
@@ -13,19 +12,13 @@ interface BlogListProps {
   selectedCategory?: string;
   onCategoryChange?: (category: string) => void;
   categories?: string[];
-  expandedContent?: Map<string, string>;
-  loadingContent?: Set<string>;
-  onLoadContent?: (postId: string) => Promise<void>;
 }
 
-const BlogList = ({ 
-  posts, 
-  selectedCategory, 
+const BlogList = ({
+  posts,
+  selectedCategory,
   onCategoryChange,
-  categories = [],
-  expandedContent = new Map(),
-  loadingContent = new Set(),
-  onLoadContent
+  categories = []
 }: BlogListProps) => {
   if (posts.length === 0) {
     return (
@@ -78,12 +71,9 @@ const BlogList = ({
 
       <div className="grid gap-6 lg:grid-cols-2" data-testid="blog-posts-grid">
         {posts.map((post) => (
-          <BlogCard 
-            key={post.id} 
+          <BlogCard
+            key={post.id}
             post={post}
-            content={expandedContent.get(post.id)}
-            isLoadingContent={loadingContent.has(post.id)}
-            onExpand={onLoadContent}
           />
         ))}
       </div>

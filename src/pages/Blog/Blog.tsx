@@ -1,18 +1,16 @@
 /**
  * Blog main page component
  * Displays list of blog posts with search and filtering capabilities
- * Implements lazy-loading pattern for post content
  */
 
-import { useState, useEffect, useMemo, memo, useCallback } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import BlogList from '../../components/blog/BlogList';
 import SearchBar from '../../components/blog/SearchBar';
-import { 
+import {
   getPublishedPostPreviews,
-  getPostById,
-  searchPosts, 
-  filterByCategory, 
-  sortByDate 
+  searchPosts,
+  filterByCategory,
+  sortByDate
 } from '../../data/blog/blogService';
 import type { BlogPostPreview } from '../../data/blog/types';
 
@@ -21,8 +19,6 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [expandedContent, setExpandedContent] = useState<Map<string, string>>(new Map());
-  const [loadingContent, setLoadingContent] = useState<Set<string>>(new Set());
 
   // Load post previews on component mount
   useEffect(() => {
@@ -42,33 +38,6 @@ const Blog = () => {
 
     loadPosts();
   }, []);
-
-  // Lazy-load content for a specific post
-  const loadPostContent = useCallback(async (postId: string) => {
-    // Don't reload if already loaded or currently loading
-    if (expandedContent.has(postId) || loadingContent.has(postId)) {
-      return;
-    }
-
-    // Mark as loading
-    setLoadingContent(prev => new Set(prev).add(postId));
-
-    try {
-      const fullPost = await getPostById(postId);
-      if (fullPost) {
-        setExpandedContent(prev => new Map(prev).set(postId, fullPost.content));
-      }
-    } catch (error) {
-      console.error(`Error loading content for post ${postId}:`, error);
-    } finally {
-      // Remove from loading set
-      setLoadingContent(prev => {
-        const next = new Set(prev);
-        next.delete(postId);
-        return next;
-      });
-    }
-  }, [expandedContent, loadingContent]);
 
   // Get unique categories from all posts
   const categories = useMemo(() => {
@@ -138,14 +107,11 @@ const Blog = () => {
         />
       </div>
 
-      <BlogList 
+      <BlogList
         posts={filteredPosts}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         categories={categories}
-        expandedContent={expandedContent}
-        loadingContent={loadingContent}
-        onLoadContent={loadPostContent}
       />
     </div>
   );

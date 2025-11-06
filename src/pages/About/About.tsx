@@ -8,7 +8,7 @@ const About = () => {
           alt="Ralph King Jr"
           width="150"
           height="150"
-          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-2 ring-green-600 dark:ring-gray-200"
+          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-4 ring-green-600 dark:ring-gray-200"
           loading="eager"
         />
         <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-center text-blue-900 dark:text-white">
@@ -57,7 +57,7 @@ const About = () => {
       </div>
 
       {/* Three Column Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16 mt-12 lg:mt-16">
         {/* Left Column */}
         <div className="text-center">
           <h2 className="text-sm lg:text-base font-semibold mb-2 text-blue-900 dark:text-white">
@@ -124,7 +124,7 @@ const About = () => {
               {["AWS", "Azure", "Terraform", "Docker", "Azure DevOps"].map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                  className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs lg:text-sm"
                 >
                   {tech}
                 </span>
@@ -155,7 +155,7 @@ const About = () => {
           Recent Impact
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
               OpenShift Platform Infrastructure
             </h3>
@@ -170,7 +170,7 @@ const About = () => {
               ))}
             </div>
           </div>
-          <div className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
               Enterprise DevOps Migration
             </h3>

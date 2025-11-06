@@ -8,17 +8,17 @@ const About = () => {
           alt="Ralph King Jr"
           width="150"
           height="150"
-          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 border-4 border-green-600 dark:border-gray-200"
+          className="w-32 h-32 lg:w-36 lg:h-36 rounded-full object-cover mb-4 ring-2 ring-green-600"
           loading="eager"
         />
-        <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-center text-blue-900 dark:text-white">
+        <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           About Me
         </h1>
       </div>
 
       {/* Career Transition Story - Prominently Featured */}
-      <div className="bg-gray-100 dark:bg-gray-800 p-5 lg:p-6 rounded-lg mb-8 border-l-4 border-green-600 dark:border-gray-200">
-        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center text-blue-900 dark:text-white">
+      <div className="bg-gray-100 dark:bg-gray-800 p-6 lg:p-8 rounded-lg mb-12 lg:mb-16 border-l-2 border-green-600 dark:border-gray-700">
+        <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           From Banking to Building Government Systems
         </h2>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-3">
@@ -41,8 +41,8 @@ const About = () => {
       </p>
 
       {/* Personal Life Section */}
-      <div className="bg-gray-100 dark:bg-gray-800 p-5 lg:p-6 rounded-lg mb-8 border-l-4 border-green-600 dark:border-gray-200">
-        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center text-blue-900 dark:text-white">
+      <div className="bg-gray-100 dark:bg-gray-800 p-6 lg:p-8 rounded-lg mb-12 lg:mb-16 border-l-2 border-green-600 dark:border-gray-700">
+        <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-center text-blue-900 dark:text-white">
           Beyond the Code
         </h2>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-3">
@@ -56,17 +56,17 @@ const About = () => {
         </p>
       </div>
 
-      {/* Divider */}
-      <hr className="border-green-600 dark:border-gray-200 border-2 mb-8" />
+      {/* Spacing instead of divider */}
+      <div className="mt-12 lg:mt-16" aria-hidden="true" />
 
       {/* Three Column Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Technical Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Platform Engineering</li>
             <li>Infrastructure as Code</li>
             <li>Developer Experience & Tooling</li>
@@ -75,10 +75,10 @@ const About = () => {
 
         {/* Middle Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Current Focus
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Kubernetes/OpenShift Optimization</li>
             <li>CI/CD Architecture</li>
             <li>Infrastructure Automation</li>
@@ -87,10 +87,10 @@ const About = () => {
 
         {/* Right Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-lg lg:text-xl font-semibold mb-3 text-blue-900 dark:text-white">
             Professional Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Developer Productivity</li>
             <li>Platform Reliability</li>
             <li>Self-Service Infrastructure</li>

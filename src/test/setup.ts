@@ -4,7 +4,7 @@
  */
 
 import '@testing-library/jest-dom';
-import { expect, afterEach } from 'vitest';
+import { afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
 // Cleanup after each test
@@ -17,6 +17,3 @@ Object.defineProperty(navigator, 'onLine', {
   writable: true,
   value: true,
 });
-
-// Extend Vitest matchers with jest-dom
-expect.extend({});

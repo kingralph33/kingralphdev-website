@@ -252,7 +252,7 @@ describe('Navbar Component', () => {
     it('blog link has correct href', () => {
       renderNavbar();
       const blogLink = screen.getByTestId('desktop-blog-link');
-      expect(blogLink).toHaveAttribute('href', '/blog');
+      expect(blogLink).toHaveAttribute('href', '/posts');
     });
 
     it('resume link opens in new tab', () => {

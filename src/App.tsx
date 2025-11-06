@@ -27,8 +27,8 @@ const Home = memo(() => (
       <a href="https://kingralphresume.com/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Hero resume link, opens in new tab">
         Resume
       </a>
-      <a href="/blog" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to Blog page">
-        Blog
+      <a href="/posts" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to Posts page">
+        Posts
       </a>
     </div>
   </div>
@@ -48,8 +48,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/posts" element={<Blog />} />
+            <Route path="/posts/:slug" element={<BlogPost />} />
           </Routes>
         </Suspense>
       </MainLayout>

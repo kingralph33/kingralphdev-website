@@ -21,8 +21,8 @@ test.describe('Navigation - Critical E2E Flows', () => {
     
     // Navigate to Blog
     await page.getByTestId('desktop-blog-link').click();
-    await expect(page).toHaveURL('/blog');
-    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+    await expect(page).toHaveURL('/posts');
+    await expect(page.getByRole('heading', { name: 'Posts', level: 1 })).toBeVisible();
     
     // Navigate back to Homepage
     await page.getByRole('link', { name: 'KingRalph.dev' }).click();
@@ -56,7 +56,7 @@ test.describe('Navigation - Critical E2E Flows', () => {
 
     // Navigate to Blog
     await page.getByTestId('mobile-blog-link').click();
-    await expect(page).toHaveURL('/blog');
+    await expect(page).toHaveURL('/posts');
     
     // Menu should close after navigation
     await expect(page.getByTestId('mobile-menu')).toBeHidden();

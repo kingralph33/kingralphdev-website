@@ -71,7 +71,7 @@ const Blog = () => {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
         <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
-          Blog
+          Posts
         </h1>
         <div className="flex items-center justify-center py-12">
           <div className="animate-pulse text-gray-600 dark:text-gray-400">
@@ -87,7 +87,7 @@ const Blog = () => {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
         <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
-          Blog
+          Posts
         </h1>
         <div
           className="text-center py-16"
@@ -117,7 +117,7 @@ const Blog = () => {
     return (
       <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
         <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
-          Blog
+          Posts
         </h1>
         <div className="text-center py-16">
           <p className="text-2xl lg:text-3xl text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
@@ -134,7 +134,7 @@ const Blog = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
       <h1 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center text-blue-900 dark:text-white">
-        Blog
+        Posts
       </h1>
 
       <SearchBar

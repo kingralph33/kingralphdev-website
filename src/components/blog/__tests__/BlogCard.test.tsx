@@ -79,7 +79,7 @@ describe('BlogCard Component', () => {
       fireEvent.click(card);
 
       // Check that we're on the correct URL path (router will handle this)
-      expect(window.location.pathname).toBe('/blog/test-post');
+      expect(window.location.pathname).toBe('/posts/test-post');
     });
 
     it('navigates when Enter key is pressed', () => {
@@ -88,7 +88,7 @@ describe('BlogCard Component', () => {
       
       fireEvent.keyDown(card, { key: 'Enter', code: 'Enter' });
       
-      expect(window.location.pathname).toBe('/blog/test-post');
+      expect(window.location.pathname).toBe('/posts/test-post');
     });
 
     it('navigates when Space key is pressed', () => {
@@ -97,7 +97,7 @@ describe('BlogCard Component', () => {
       
       fireEvent.keyDown(card, { key: ' ', code: 'Space' });
       
-      expect(window.location.pathname).toBe('/blog/test-post');
+      expect(window.location.pathname).toBe('/posts/test-post');
     });
 
     it('does not navigate on other key presses', () => {

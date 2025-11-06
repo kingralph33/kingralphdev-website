@@ -31,9 +31,9 @@ const mockPost: BlogPostType = {
 
 const renderBlogPost = (slug = 'test-post') => {
   return render(
-    <MemoryRouter initialEntries={[`/blog/${slug}`]}>
+    <MemoryRouter initialEntries={[`/posts/${slug}`]}>
       <Routes>
-        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/posts/:slug" element={<BlogPost />} />
       </Routes>
     </MemoryRouter>
   );
@@ -67,7 +67,7 @@ describe('BlogPost Page Component', () => {
 
       renderBlogPost();
 
-      expect(screen.getByText('Back to Blog')).toBeInTheDocument();
+      expect(screen.getByText('Back to Posts')).toBeInTheDocument();
     });
 
     it('has loading animation', () => {
@@ -156,7 +156,7 @@ describe('BlogPost Page Component', () => {
       renderBlogPost();
       
       await waitFor(() => {
-        expect(screen.getByText('Back to Blog')).toBeInTheDocument();
+        expect(screen.getByText('Back to Posts')).toBeInTheDocument();
       });
     });
   });
@@ -190,9 +190,9 @@ describe('BlogPost Page Component', () => {
   describe('Error State - No Slug', () => {
     it('displays error when no slug is provided', async () => {
       render(
-        <MemoryRouter initialEntries={['/blog/']}>
+        <MemoryRouter initialEntries={['/posts/']}>
           <Routes>
-            <Route path="/blog/" element={<BlogPost />} />
+            <Route path="/posts/" element={<BlogPost />} />
           </Routes>
         </MemoryRouter>
       );
@@ -210,7 +210,7 @@ describe('BlogPost Page Component', () => {
       renderBlogPost();
       
       await waitFor(() => {
-        const backButton = screen.getByText('Back to Blog');
+        const backButton = screen.getByText('Back to Posts');
         expect(backButton).toHaveClass('text-green-600', 'dark:text-green-400', 'hover:underline');
       });
     });
@@ -324,7 +324,7 @@ describe('BlogPost Page Component', () => {
       renderBlogPost();
       
       await waitFor(() => {
-        const backButton = screen.getByText('Back to Blog');
+        const backButton = screen.getByText('Back to Posts');
         expect(backButton).toHaveClass('focus:outline-none', 'focus:ring-2');
       });
     });

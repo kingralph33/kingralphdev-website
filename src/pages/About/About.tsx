@@ -56,10 +56,7 @@ const About = () => {
         </p>
       </div>
 
-      {/* Divider */}
-      <hr className="border-green-600 dark:border-gray-200 border-2 mb-8" />
-
-      {/* Three Column Section */}
+  {/* Three Column Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Column */}
         <div className="text-center">
@@ -97,6 +94,99 @@ const About = () => {
           </ul>
         </div>
       </div>
+
+      {/* Technology Expertise (moved from Home) */}
+      <section className="mt-12 lg:mt-16">
+        <h2 className="text-2xl lg:text-3xl font-bold text-center mb-6 text-blue-900 dark:text-white">
+          Technology Expertise
+        </h2>
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-5">
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Platform & Infrastructure
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Kubernetes/OpenShift", "CI/CD Automation", "Infrastructure as Code"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="mb-5">
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Cloud & DevOps
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["AWS", "Azure", "Terraform", "Docker", "Azure DevOps"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
+              Development & Tooling
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Python", "TypeScript", "JavaScript", "Node.js", "Developer Tooling"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Impact (moved from Home) */}
+      <section className="mt-12 lg:mt-16">
+        <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-blue-900 dark:text-white">
+          Recent Impact
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
+              OpenShift Platform Infrastructure
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-white dark:font-semibold mb-3">
+              Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines and self-service deployment capabilities
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {["OpenShift", "Kubernetes", "CI/CD", "Azure DevOps", "Python"].map((tech) => (
+                <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
+              Enterprise DevOps Migration
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
+              Led platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines that reduced release cycles by 70%
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {["Azure DevOps", "CI/CD", "Automation", "Infrastructure as Code"].map((tech) => (
+                <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

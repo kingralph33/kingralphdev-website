@@ -87,7 +87,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 w-full bg-white/80 z-50 backdrop-blur-sm navbar-dark-gradient"
+      className="fixed top-0 left-0 right-0 w-full bg-transparent z-50"
       aria-label="Main navigation"
     >
       <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md">

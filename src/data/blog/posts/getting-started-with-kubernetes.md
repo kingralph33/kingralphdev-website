@@ -2,7 +2,7 @@
 title: "Getting Started with Kubernetes"
 date: "2025-01-10"
 categories: ["DevOps", "Kubernetes"]
-published: true
+published: false
 slug: "getting-started-with-kubernetes"
 excerpt: "A beginner's guide to understanding and deploying applications with Kubernetes."
 author: "Ralph King Jr"

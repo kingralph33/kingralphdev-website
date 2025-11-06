@@ -2,7 +2,7 @@
 title: "Building Scalable Platform Engineering Solutions"
 date: "2025-01-15"
 categories: ["Platform Engineering", "DevOps"]
-published: true
+published: false
 slug: "building-scalable-platform-engineering"
 excerpt: "Learn how to build robust platform engineering solutions that scale with your organization's needs."
 author: "Ralph King Jr"

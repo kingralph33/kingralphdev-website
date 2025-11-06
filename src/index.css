@@ -184,6 +184,21 @@ ul.list-adaptive li::marker {
   .prose em {
     @apply italic;
   }
+
+  /* New: make navbar/footer match main background (opaque), preventing content showing through */
+  .navbar-same-bg {
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  }
+  .dark .navbar-same-bg {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  }
+
+  .footer-same-bg {
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  }
+  .dark .footer-same-bg {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  }
 }
 
 @layer utilities {

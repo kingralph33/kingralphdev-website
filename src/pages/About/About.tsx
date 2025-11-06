@@ -56,14 +56,14 @@ const About = () => {
         </p>
       </div>
 
-  {/* Three Column Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Three Column Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16">
         {/* Left Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-sm lg:text-base font-semibold mb-2 text-blue-900 dark:text-white">
             Technical Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Platform Engineering</li>
             <li>Infrastructure as Code</li>
             <li>Developer Experience & Tooling</li>
@@ -72,10 +72,10 @@ const About = () => {
 
         {/* Middle Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-sm lg:text-base font-semibold mb-2 text-blue-900 dark:text-white">
             Current Focus
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Kubernetes/OpenShift Optimization</li>
             <li>CI/CD Architecture</li>
             <li>Infrastructure Automation</li>
@@ -84,10 +84,10 @@ const About = () => {
 
         {/* Right Column */}
         <div className="text-center">
-          <h2 className="text-base lg:text-lg font-bold mb-3 text-blue-900 dark:text-white">
+          <h2 className="text-sm lg:text-base font-semibold mb-2 text-blue-900 dark:text-white">
             Professional Interests
           </h2>
-          <ul className="space-y-1.5 text-gray-600 dark:text-gray-100 text-sm">
+          <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
             <li>Developer Productivity</li>
             <li>Platform Reliability</li>
             <li>Self-Service Infrastructure</li>
@@ -96,7 +96,7 @@ const About = () => {
       </div>
 
       {/* Technology Expertise (moved from Home) */}
-      <section className="mt-12 lg:mt-16">
+      <section className="mt-16 lg:mt-20">
         <h2 className="text-2xl lg:text-3xl font-bold text-center mb-6 text-blue-900 dark:text-white">
           Technology Expertise
         </h2>
@@ -150,7 +150,7 @@ const About = () => {
       </section>
 
       {/* Recent Impact (moved from Home) */}
-      <section className="mt-12 lg:mt-16">
+      <section className="mt-16 lg:mt-20">
         <h2 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-blue-900 dark:text-white">
           Recent Impact
         </h2>

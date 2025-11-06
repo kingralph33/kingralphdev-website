@@ -39,7 +39,7 @@ ul.list-adaptive li::marker {
 
 @layer components {
   .section-h2 {
-    @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white uppercase tracking-wider;
+    @apply text-3xl font-bold mb-4 text-gray-900 dark:text-white uppercase tracking-wider;
   }
 
   .p-header {

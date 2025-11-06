@@ -89,3 +89,10 @@ test.describe('Blog - Critical E2E Flows', () => {
       // Click "All Posts" to reset
       await allPostsButton.click();
       await page.waitForLoadState('networkidle');
+
+      // Verify all posts are back
+      const resetCount = await blogCards.count();
+      expect(resetCount).toBe(initialCount);
+    }
+  });
+});

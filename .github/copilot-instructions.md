@@ -3,6 +3,34 @@
 ## Project Overview
 React 19 + TypeScript personal portfolio with Tailwind CSS v4, Vite build, React Router v7, and Playwright E2E testing. Deployed to Cloudflare Pages. Uses pnpm as package manager (Node.js ≥22.13.0).
 
+**Project Root**: `/Users/kingralph33/Development/websites/kingralphdev-react`  
+**GitHub Repository**: `kingralph33/kingralphdev-website` (not `kingralphdev-react`)
+
+## File Path Rules (Critical)
+
+### Always Use Absolute Paths
+The `view`, `edit`, and `create` tools **require absolute paths**. Always construct paths as:
+```
+/Users/kingralph33/Development/websites/kingralphdev-react/{relative-path}
+```
+
+**Examples**:
+- ✅ `/Users/kingralph33/Development/websites/kingralphdev-react/src/App.tsx`
+- ✅ `/Users/kingralph33/Development/websites/kingralphdev-react/package.json`
+- ❌ `src/App.tsx` (will fail)
+- ❌ `./package.json` (will fail)
+
+### Stay Within Project Directory
+- **Never** request files outside the project directory unless explicitly necessary
+- **Never** use `/tmp` for temporary files - use the project directory instead
+- When using bash commands, stay in current working directory or child directories
+
+**Examples**:
+- ✅ `gh pr diff 88 > ./pr88.diff` (project directory)
+- ❌ `cd /tmp && gh pr diff 88 > pr88.diff` (outside project)
+- ✅ `grep -r "pattern" src/` (within project)
+- ❌ `grep -r "pattern" ~/Documents/` (outside project)
+
 ## Architecture & Key Patterns
 
 ### Component Structure

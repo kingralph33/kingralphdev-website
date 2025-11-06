@@ -90,7 +90,7 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 w-full navbar-same-bg z-50"
       aria-label="Main navigation"
     >
-      <div className="border-b border-gray-200 dark:border-gray-700 shadow-sm">
+      <div className="border-t-4 border-t-green-600 border-b-2 border-b-blue-900 dark:border-b-white shadow-md">
         <div className="max-w-5xl mx-auto px-4 lg:px-6 flex justify-between items-center h-14 lg:h-16">
           <div className="shrink-0">
             <Link
@@ -212,7 +212,7 @@ const Navbar = () => {
               </button>
               {isAffiliatesOpen && (
                 <div
-                  className="absolute right-0 mt-4 min-w-fit bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-20"
+                  className="absolute right-0 mt-4 min-w-fit bg-white dark:bg-gray-800 border-2 border-green-600 rounded shadow-lg z-20"
                   style={{ minWidth: "fit-content" }}
                   role="menu"
                   aria-label="Affiliates dropdown"

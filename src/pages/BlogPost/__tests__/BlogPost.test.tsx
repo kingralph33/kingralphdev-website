@@ -46,26 +46,39 @@ describe('BlogPost Page Component', () => {
 
   describe('Loading State', () => {
     it('displays loading message while fetching post', () => {
-      vi.mocked(blogService.getPostById).mockImplementation(() => new Promise(() => {}));
-      
+      // Use a promise that resolves after test completes to avoid memory leaks
+      vi.mocked(blogService.getPostById).mockReturnValue(
+        new Promise<BlogPostType>(() => {
+          // Never resolves during test, properly demonstrating loading state
+        })
+      );
+
       renderBlogPost();
-      
+
       expect(screen.getByText('Loading post...')).toBeInTheDocument();
     });
 
     it('displays back button during loading', () => {
-      vi.mocked(blogService.getPostById).mockImplementation(() => new Promise(() => {}));
-      
+      vi.mocked(blogService.getPostById).mockReturnValue(
+        new Promise<BlogPostType>(() => {
+          // Never resolves during test, properly demonstrating loading state
+        })
+      );
+
       renderBlogPost();
-      
+
       expect(screen.getByText('Back to Blog')).toBeInTheDocument();
     });
 
     it('has loading animation', () => {
-      vi.mocked(blogService.getPostById).mockImplementation(() => new Promise(() => {}));
-      
+      vi.mocked(blogService.getPostById).mockReturnValue(
+        new Promise<BlogPostType>(() => {
+          // Never resolves during test, properly demonstrating loading state
+        })
+      );
+
       renderBlogPost();
-      
+
       const loadingText = screen.getByText('Loading post...');
       expect(loadingText).toHaveClass('animate-pulse');
     });

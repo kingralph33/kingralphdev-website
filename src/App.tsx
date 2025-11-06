@@ -21,13 +21,13 @@ const Home = memo(() => (
       Building cloud-native infrastructure and developer tooling for mission-critical government systems.
     </p>
     <div className="flex flex-wrap justify-center gap-3">
-      <a href="/about" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:shadow-sm transition" aria-label="Go to About page">
+      <a href="/about" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to About page">
         About
       </a>
-      <a href="https://kingralphresume.com/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:shadow-sm transition" aria-label="Hero resume link, opens in new tab">
+      <a href="https://kingralphresume.com/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Hero resume link, opens in new tab">
         Resume
       </a>
-      <a href="/blog" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:shadow-sm transition" aria-label="Go to Blog page">
+      <a href="/blog" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to Blog page">
         Blog
       </a>
     </div>

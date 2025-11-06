@@ -11,12 +11,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Blog - Critical E2E Flows', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/blog');
+    await page.goto('/posts');
   });
 
   test('complete blog journey: List → Post → Back', async ({ page }) => {
     // Start on blog list
-    const heading = page.getByRole('heading', { name: 'Blog', level: 1 });
+    const heading = page.getByRole('heading', { name: 'Posts', level: 1 });
     await expect(heading).toBeVisible();
 
     // Check if posts exist (handle both empty and populated states)
@@ -38,7 +38,7 @@ test.describe('Blog - Critical E2E Flows', () => {
 
     // Click to navigate to post
     await firstArticle.click();
-    await page.waitForURL(/\/blog\/.+/, { timeout: 5000 });
+    await page.waitForURL(/\/posts\/.+/, { timeout: 5000 });
 
     // Verify we're on the post page
     const postPageTitle = page.locator('article header h1');
@@ -46,11 +46,11 @@ test.describe('Blog - Critical E2E Flows', () => {
     await expect(postPageTitle).toHaveText(postTitle || '');
 
     // Navigate back
-    const backButton = page.getByRole('button', { name: /Back to Blog/i });
+    const backButton = page.getByRole('button', { name: /Back to Posts/i });
     await backButton.click();
 
     // Verify we're back on list page
-    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Posts', level: 1 })).toBeVisible();
   });
 
   test('search and filter integration flow', async ({ page }) => {

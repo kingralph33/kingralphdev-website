@@ -16,7 +16,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/blog/${post.id}`);
+    navigate(`/posts/${post.id}`);
   };
 
   return (

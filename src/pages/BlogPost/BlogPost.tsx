@@ -53,12 +53,12 @@ const BlogPost = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-6 lg:py-10">
         <button
-          onClick={() => navigate('/blog')}
+          onClick={() => navigate('/posts')}
           className="mb-8 text-green-600 dark:text-green-400 hover:underline font-medium
                      focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded px-2 py-1
                      inline-flex items-center gap-1 transition-colors"
         >
-          <span aria-hidden="true">←</span> Back to Blog
+          <span aria-hidden="true">←</span> Back to Posts
         </button>
         <div className="flex items-center justify-center py-16">
           <div className="animate-pulse text-gray-600 dark:text-gray-400">
@@ -73,12 +73,12 @@ const BlogPost = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-6 lg:py-10">
         <button
-          onClick={() => navigate('/blog')}
+          onClick={() => navigate('/posts')}
           className="mb-8 text-green-600 dark:text-green-400 hover:underline font-medium
                      focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded px-2 py-1
                      inline-flex items-center gap-1 transition-colors"
         >
-          <span aria-hidden="true">←</span> Back to Blog
+          <span aria-hidden="true">←</span> Back to Posts
         </button>
         <div className="text-center py-16">
           <p className="text-lg lg:text-xl text-red-600 dark:text-red-400 mb-4">
@@ -95,12 +95,12 @@ const BlogPost = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 lg:py-10">
       <button
-        onClick={() => navigate('/blog')}
+        onClick={() => navigate('/posts')}
         className="mb-8 text-green-600 dark:text-green-400 hover:underline font-medium
                    focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 rounded px-2 py-1
                    inline-flex items-center gap-1 transition-colors"
       >
-        <span aria-hidden="true">←</span> Back to Blog
+        <span aria-hidden="true">←</span> Back to Posts
       </button>
 
       <article className="bg-white dark:bg-gray-800 p-6 lg:p-10 rounded-lg border-2 border-blue-900 dark:border-gray-200">

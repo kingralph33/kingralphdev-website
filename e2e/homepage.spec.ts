@@ -20,7 +20,7 @@ test.describe('Homepage', () => {
   test('shows primary CTAs', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Go to About page' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Hero resume link, opens in new tab' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Go to Blog page' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Go to Posts page' })).toBeVisible();
   });
 
   test('has responsive layout', async ({ page }) => {

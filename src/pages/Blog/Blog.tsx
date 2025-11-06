@@ -12,6 +12,7 @@ import {
   filterByCategory,
   sortByDate
 } from '../../data/blog/blogService';
+import { getErrorMessage } from '../../utils/errorHandling';
 import type { BlogPostPreview } from '../../data/blog/types';
 
 const Blog = () => {
@@ -20,22 +21,6 @@ const Blog = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-
-  // Helper function to get user-friendly error messages
-  const getErrorMessage = (err: unknown): string => {
-    // Check for network connectivity
-    if (typeof navigator !== 'undefined' && !navigator.onLine) {
-      return 'No internet connection. Please check your network and try again.';
-    }
-    
-    // Return specific error message if available
-    if (err instanceof Error) {
-      return err.message;
-    }
-    
-    // Fallback for unknown errors
-    return 'An unexpected error occurred while loading posts.';
-  };
 
   // Load post previews on component mount
   const loadPosts = async () => {

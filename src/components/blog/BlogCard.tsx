@@ -35,7 +35,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
       tabIndex={0}
       aria-label={`Read article: ${post.title}`}
     >
-      <h2 className="text-lg lg:text-xl font-bold mb-3 text-blue-900 dark:text-white text-left
+      <h2 className="text-lg lg:text-xl font-bold mb-3 text-blue-900 dark:text-white
                      group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
         {post.title}
       </h2>
@@ -44,7 +44,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
         <span aria-hidden="true">•</span>
         <span>{post.readingTime} min read</span>
       </div>
-      <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold mb-4 leading-relaxed text-left">
+      <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold mb-4 leading-relaxed">
         {post.excerpt}
       </p>
 

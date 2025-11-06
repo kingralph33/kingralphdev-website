@@ -69,7 +69,7 @@ const BlogList = ({
         </div>
       )}
 
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2" data-testid="blog-posts-grid">
+      <div className="grid gap-6 lg:grid-cols-2" data-testid="blog-posts-grid">
         {posts.map((post) => (
           <BlogCard
             key={post.id}

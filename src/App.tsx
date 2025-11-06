@@ -8,123 +8,28 @@ const About = lazy(() => import("./pages/About/About"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost/BlogPost"));
 
-// Extract the Home component to improve readability and organization
+// Extract the Home component to a focused, single-screen hero
 const Home = memo(() => (
-  <div className="max-w-6xl mx-auto px-4 py-6 lg:py-10">
-    {/* Intro Section */}
-    <div className="flex flex-col items-center text-center mb-12 lg:mb-16 max-w-3xl mx-auto">
-      <h1 className="text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 text-blue-900 dark:text-white">
-        Ralph King Jr
-      </h1>
-      <h2 className="text-xl lg:text-2xl font-semibold mb-3 lg:mb-4 text-blue-900 dark:text-gray-300">
-        Software Engineer
-      </h2>
-      <p className="text-sm lg:text-base text-gray-700 dark:text-gray-300 mb-6 max-w-xl leading-relaxed">
-        Building cloud-native infrastructure and developer tooling for mission-critical government systems.
-      </p>
-    </div>
-
-    {/* Core Technologies with Expertise Levels */}
-    <div className="mb-12 lg:mb-16">
-      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-6 text-blue-900 dark:text-white">
-        Technology Expertise
-      </h3>
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-5">
-          <h4 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-            Platform & Infrastructure
-          </h4>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["Kubernetes/OpenShift", "CI/CD Automation", "Infrastructure as Code"].map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="mb-5">
-          <h4 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-            Cloud & DevOps
-          </h4>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["AWS", "Azure", "Terraform", "Docker", "Azure DevOps"].map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h4 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-            Development & Tooling
-          </h4>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["Python", "TypeScript", "JavaScript", "Node.js", "Developer Tooling"].map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Key Projects */}
-    <div className="mb-12 lg:mb-16">
-      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-8 text-blue-900 dark:text-white">
-        Recent Impact
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div className="p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
-          <h4 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-            OpenShift Platform Infrastructure
-          </h4>
-          <p className="text-sm text-gray-700 dark:text-white dark:font-semibold mb-3">
-            Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines and self-service deployment capabilities
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {["OpenShift", "Kubernetes", "CI/CD", "Azure DevOps", "Python"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs"
-                >
-                  {tech}
-                </span>
-              ),
-            )}
-          </div>
-        </div>
-        <div className="p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
-          <h4 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-            Enterprise DevOps Migration
-          </h4>
-          <p className="text-sm text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
-            Led platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines that reduced release cycles by 70%
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {["Azure DevOps", "CI/CD", "Automation", "Infrastructure as Code"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs"
-                >
-                  {tech}
-                </span>
-              ),
-            )}
-          </div>
-        </div>
-      </div>
+  <div className="max-w-4xl mx-auto px-4 py-16 lg:py-24 text-center">
+    <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white">
+      Ralph King Jr
+    </h1>
+    <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-blue-900 dark:text-gray-300">
+      Software Engineer
+    </h2>
+    <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+      Building cloud-native infrastructure and developer tooling for mission-critical government systems. 5+ years of experience in platform engineering.
+    </p>
+    <div className="flex flex-wrap justify-center gap-3">
+      <a href="/about" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to About page">
+        About
+      </a>
+      <a href="https://kingralphresume.com/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Hero resume link, opens in new tab">
+        Resume
+      </a>
+      <a href="/blog" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to Blog page">
+        Blog
+      </a>
     </div>
   </div>
 ));

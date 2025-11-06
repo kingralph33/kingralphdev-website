@@ -34,7 +34,6 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
     };
   }, []);
 
-
   // Sync input value when external value changes (e.g., from clear button)
   useEffect(() => {
     if (inputRef.current && inputRef.current.value !== value) {

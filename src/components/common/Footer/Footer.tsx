@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="shadow-lg mt-auto bg-white/80 backdrop-blur-sm footer-dark-gradient"
+      className="shadow-lg mt-auto footer-same-bg"
       aria-label="Footer"
     >
       <div className="px-4 py-3 lg:py-4">

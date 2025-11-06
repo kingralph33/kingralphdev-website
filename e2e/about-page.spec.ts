@@ -27,6 +27,20 @@ test.describe('About Page', () => {
     await expect(page.getByRole('heading', { name: 'Professional Interests' })).toBeVisible();
   });
 
+  test('shows Technology Expertise moved from Home', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Technology Expertise' })).toBeVisible();
+    // Check a few representative tags
+    await expect(page.getByText('Kubernetes/OpenShift').first()).toBeVisible();
+    await expect(page.getByText('CI/CD Automation').first()).toBeVisible();
+    await expect(page.getByText('Python').first()).toBeVisible();
+  });
+
+  test('shows Recent Impact moved from Home', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Recent Impact' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'OpenShift Platform Infrastructure' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Enterprise DevOps Migration' })).toBeVisible();
+  });
+
   test('displays personal life section', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Beyond the Code' })).toBeVisible();
     await expect(page.getByText(/Above all, I'm a husband and a father/)).toBeVisible();

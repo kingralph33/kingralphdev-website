@@ -18,24 +18,51 @@ test.describe('Navigation', () => {
   });
 
   test('opens Resume in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const resumeLink = page.getByTestId('desktop-resume-link');
+    await expect(resumeLink).toHaveAttribute('href', /kingralphresume\.com/);
+    await expect(resumeLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-resume-link').click();
+    await resumeLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/kingralphresume\.com/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('opens GitHub profile in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const githubLink = page.getByTestId('desktop-github-link');
+    await expect(githubLink).toHaveAttribute('href', /github\.com\/kingralph33/);
+    await expect(githubLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-github-link').click();
+    await githubLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/github\.com\/kingralph33/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('opens LinkedIn profile in new tab', async ({ page, context }) => {
+    // Verify link attributes
+    const linkedinLink = page.getByTestId('desktop-linkedin-link');
+    await expect(linkedinLink).toHaveAttribute('href', /linkedin\.com/);
+    await expect(linkedinLink).toHaveAttribute('target', '_blank');
+    
+    // Verify new page opens when clicked
     const pagePromise = context.waitForEvent('page');
-    await page.getByTestId('desktop-linkedin-link').click();
+    await linkedinLink.click();
     const newPage = await pagePromise;
-    await expect(newPage).toHaveURL(/linkedin\.com/);
+    
+    // Verify a new page was opened (we don't check URL as external sites may be blocked in CI)
+    expect(newPage).toBeTruthy();
+    await newPage.close();
   });
 
   test('mobile menu toggle works', async ({ page }) => {

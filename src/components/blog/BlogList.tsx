@@ -22,12 +22,12 @@ const BlogList = ({
 }: BlogListProps) => {
   if (posts.length === 0) {
     return (
-      <div className="text-center py-12" data-testid="no-posts-message">
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
+      <div className="text-center py-16" data-testid="no-posts-message">
+        <p className="text-lg lg:text-xl text-gray-700 dark:text-gray-100 dark:font-semibold mb-2">
           No posts found.
         </p>
         {selectedCategory && (
-          <p className="text-sm text-gray-500 dark:text-gray-500">
+          <p className="text-sm lg:text-base text-gray-600 dark:text-gray-400">
             Try selecting a different category or clearing your search.
           </p>
         )}
@@ -38,14 +38,14 @@ const BlogList = ({
   return (
     <div>
       {categories.length > 0 && onCategoryChange && (
-        <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter posts by category" data-testid="category-filters">
+        <div className="mb-8 flex flex-wrap gap-2 lg:gap-3" role="group" aria-label="Filter posts by category" data-testid="category-filters">
           <button
             onClick={() => onCategoryChange('')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
               ${!selectedCategory
-                ? 'bg-green-600 text-white dark:bg-green-500'
+                ? 'bg-green-600 text-white dark:bg-green-500 shadow-md'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-              } focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400`}
+              } focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2`}
             aria-pressed={!selectedCategory}
             data-testid="category-filter-all"
           >
@@ -55,11 +55,11 @@ const BlogList = ({
             <button
               key={category}
               onClick={() => onCategoryChange(category)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
                 ${selectedCategory === category
-                  ? 'bg-green-600 text-white dark:bg-green-500'
+                  ? 'bg-green-600 text-white dark:bg-green-500 shadow-md'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                } focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400`}
+                } focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2`}
               aria-pressed={selectedCategory === category}
               data-testid={`category-filter-${category.toLowerCase().replace(/\s+/g, '-')}`}
             >
@@ -69,7 +69,7 @@ const BlogList = ({
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-2" data-testid="blog-posts-grid">
+      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2" data-testid="blog-posts-grid">
         {posts.map((post) => (
           <BlogCard
             key={post.id}

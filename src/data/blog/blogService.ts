@@ -241,7 +241,11 @@ export async function getPublishedPostPreviews(): Promise<BlogPostPreview[]> {
 
     // If all posts failed to load, throw an error
     if (previews.length === 0 && errors.length > 0) {
-      throw new Error(`Failed to load any blog posts. Errors: ${errors.join('; ')}`);
+      // Limit error details to first 3 errors for better UX
+      const errorSummary = errors.length > 3 
+        ? `${errors.slice(0, 3).join('; ')} (and ${errors.length - 3} more)`
+        : errors.join('; ');
+      throw new Error(`Failed to load any blog posts. Errors: ${errorSummary}`);
     }
 
     return previews;

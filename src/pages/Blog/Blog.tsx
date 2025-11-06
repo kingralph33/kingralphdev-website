@@ -112,9 +112,7 @@ const Blog = () => {
           </p>
           <button
             onClick={loadPosts}
-            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 
-                       dark:bg-green-500 dark:hover:bg-green-600 transition-colors
-                       focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2"
+            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-600 dark:focus:ring-green-400 focus:ring-offset-2"
             aria-label="Try loading posts again"
           >
             Try Again

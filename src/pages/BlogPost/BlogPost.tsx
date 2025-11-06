@@ -105,7 +105,7 @@ const BlogPost = () => {
 
       <article className="bg-white dark:bg-gray-800 p-6 lg:p-10 rounded-lg border-2 border-blue-900 dark:border-gray-200">
         <header className="mb-8 pb-8 border-b-2 border-gray-200 dark:border-gray-700">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white leading-tight text-left">
             {post.title}
           </h1>
           <div className="flex flex-wrap items-center gap-3 text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-5">
@@ -113,7 +113,7 @@ const BlogPost = () => {
             <span aria-hidden="true">•</span>
             <span>{post.readingTime} min read</span>
           </div>
-          <p className="text-base lg:text-lg text-gray-700 dark:text-gray-100 dark:font-semibold mb-5 leading-relaxed">
+          <p className="text-base lg:text-lg text-gray-700 dark:text-gray-100 dark:font-semibold mb-5 leading-relaxed text-left">
             {post.excerpt}
           </p>
           <div className="flex flex-wrap gap-2">

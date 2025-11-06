@@ -5,7 +5,7 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import BlogPost from '../BlogPost';
 import * as blogService from '../../../data/blog/blogService';
 import type { BlogPost as BlogPostType } from '../../../data/blog/types';
@@ -23,6 +23,10 @@ const mockPost: BlogPostType = {
   tags: ['React', 'Testing'],
   readingTime: 5,
   content: '# Hello World\n\nThis is test content.',
+  categories: ['Technology'],
+  published: true,
+  slug: 'test-post',
+  author: 'Test Author',
 };
 
 const renderBlogPost = (slug = 'test-post') => {

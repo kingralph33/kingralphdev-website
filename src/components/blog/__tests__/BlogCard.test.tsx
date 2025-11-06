@@ -3,7 +3,7 @@
  * Tests blog post preview card rendering and interactions
  */
 
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import BlogCard from '../BlogCard';
@@ -16,6 +16,10 @@ const mockPost: BlogPostPreview = {
   excerpt: 'This is a test excerpt for the blog post.',
   tags: ['React', 'TypeScript', 'Testing'],
   readingTime: 5,
+  categories: ['Technology'],
+  published: true,
+  slug: 'test-post',
+  author: 'Test Author',
 };
 
 const renderBlogCard = (post: BlogPostPreview = mockPost) => {
@@ -69,11 +73,11 @@ describe('BlogCard Component', () => {
 
   describe('Navigation', () => {
     it('navigates to blog post when clicked', () => {
-      const { container } = renderBlogCard();
+      renderBlogCard();
       const card = screen.getByTestId('blog-card');
-      
+
       fireEvent.click(card);
-      
+
       // Check that we're on the correct URL path (router will handle this)
       expect(window.location.pathname).toBe('/blog/test-post');
     });

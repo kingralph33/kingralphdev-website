@@ -17,6 +17,10 @@ const mockPosts: BlogPostPreview[] = [
     excerpt: 'First post excerpt',
     tags: ['React', 'TypeScript'],
     readingTime: 5,
+    categories: ['Frontend'],
+    published: true,
+    slug: 'first-post',
+    author: 'Test Author',
   },
   {
     id: 'post-2',
@@ -25,6 +29,10 @@ const mockPosts: BlogPostPreview[] = [
     excerpt: 'Second post excerpt',
     tags: ['JavaScript', 'Node.js'],
     readingTime: 7,
+    categories: ['Backend'],
+    published: true,
+    slug: 'second-post',
+    author: 'Test Author',
   },
 ];
 

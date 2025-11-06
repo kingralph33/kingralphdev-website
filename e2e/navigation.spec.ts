@@ -30,17 +30,20 @@ test.describe('Navigation - Critical E2E Flows', () => {
     await expect(page.getByRole('heading', { name: 'Ralph King Jr', level: 1 })).toBeVisible();
   });
 
-  test('external links open in new tabs', async ({ page, context }) => {
-    // Test one external link to verify behavior (Resume)
+  test('external links have target="_blank" attribute', async ({ page }) => {
+    // Verify external links have correct attributes without actually clicking
+    // (clicking would trigger firewall blocks in CI for external domains)
     const resumeLink = page.getByTestId('desktop-resume-link');
     await expect(resumeLink).toHaveAttribute('target', '_blank');
-    
-    const pagePromise = context.waitForEvent('page');
-    await resumeLink.click();
-    const newPage = await pagePromise;
-    
-    expect(newPage).toBeTruthy();
-    await newPage.close();
+    await expect(resumeLink).toHaveAttribute('rel', 'noopener noreferrer');
+
+    // Verify GitHub link
+    const githubLink = page.getByTestId('desktop-github-link');
+    await expect(githubLink).toHaveAttribute('target', '_blank');
+
+    // Verify LinkedIn link
+    const linkedinLink = page.getByTestId('desktop-linkedin-link');
+    await expect(linkedinLink).toHaveAttribute('target', '_blank');
   });
 
   test('mobile navigation flow', async ({ page }) => {

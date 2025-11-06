@@ -1,27 +1,11 @@
 /**
- * Unit tests for Blog component helper functions
+ * Unit tests for error handling utility functions
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { getErrorMessage } from '../../../utils/errorHandling';
 
-// We need to test the getErrorMessage function which is internal to the Blog component
-// For this test, we'll create a standalone version based on the implementation
-const getErrorMessage = (err: unknown): string => {
-  // Check for network connectivity
-  if (typeof navigator !== 'undefined' && !navigator.onLine) {
-    return 'No internet connection. Please check your network and try again.';
-  }
-  
-  // Return specific error message if available
-  if (err instanceof Error) {
-    return err.message;
-  }
-  
-  // Fallback for unknown errors
-  return 'An unexpected error occurred while loading posts.';
-};
-
-describe('Blog Component - getErrorMessage', () => {
+describe('errorHandling - getErrorMessage', () => {
   let originalOnLine: boolean;
 
   beforeEach(() => {
@@ -110,4 +94,30 @@ describe('Blog Component - getErrorMessage', () => {
     // Network error should take precedence
     expect(result).toBe('No internet connection. Please check your network and try again.');
   });
+
+  it('handles Error with empty message', () => {
+    // Ensure online state
+    Object.defineProperty(navigator, 'onLine', {
+      writable: true,
+      value: true,
+    });
+
+    const result = getErrorMessage(new Error(''));
+    
+    expect(result).toBe('');
+  });
+
+  it('handles complex error messages', () => {
+    // Ensure online state
+    Object.defineProperty(navigator, 'onLine', {
+      writable: true,
+      value: true,
+    });
+
+    const complexMessage = 'Failed to load any blog posts. Errors: Error 1; Error 2; Error 3';
+    const result = getErrorMessage(new Error(complexMessage));
+    
+    expect(result).toBe(complexMessage);
+  });
 });
+

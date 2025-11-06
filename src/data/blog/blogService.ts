@@ -10,8 +10,9 @@ import type { BlogPost, BlogPostPreview } from './types';
 /**
  * Calculate estimated reading time based on word count
  * Assumes average reading speed of 200 words per minute
+ * Exported for testing
  */
-function calculateReadingTime(content: string): number {
+export function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const wordCount = content.trim().split(/\s+/).length;
   return Math.ceil(wordCount / wordsPerMinute);
@@ -19,8 +20,9 @@ function calculateReadingTime(content: string): number {
 
 /**
  * Parse a markdown file and extract post data
+ * Exported for testing
  */
-function parseMarkdownPost(slug: string, fileContent: string): BlogPost {
+export function parseMarkdownPost(slug: string, fileContent: string): BlogPost {
   try {
     const { data, content } = matter(fileContent);
 
@@ -54,8 +56,9 @@ function parseMarkdownPost(slug: string, fileContent: string): BlogPost {
 /**
  * Parse a markdown file and extract post preview (without full content)
  * More efficient for listing pages as it doesn't load full markdown content
+ * Exported for testing
  */
-function parseMarkdownPostPreview(slug: string, fileContent: string): BlogPostPreview {
+export function parseMarkdownPostPreview(slug: string, fileContent: string): BlogPostPreview {
   try {
     const { data, content } = matter(fileContent);
 

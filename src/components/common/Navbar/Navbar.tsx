@@ -142,6 +142,9 @@ const Navbar = () => {
             <Link to="/about" className="nav-link text-sm lg:text-base" data-testid="desktop-about-link">
               About
             </Link>
+            <Link to="/blog" className="nav-link text-sm lg:text-base" data-testid="desktop-blog-link">
+              Blog
+            </Link>
             <a
               href="https://kingralphresume.com/"
               target="_blank"
@@ -271,6 +274,14 @@ const Navbar = () => {
               data-testid="mobile-about-link"
             >
               About
+            </Link>
+            <Link
+              to="/blog"
+              className="nav-link py-2"
+              onClick={() => setIsMenuOpen(false)}
+              data-testid="mobile-blog-link"
+            >
+              Blog
             </Link>
             <a
               href="https://kingralphresume.com/"

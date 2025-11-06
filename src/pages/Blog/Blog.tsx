@@ -6,27 +6,27 @@
 import { useState, useEffect, useMemo, memo } from 'react';
 import BlogList from '../../components/blog/BlogList';
 import SearchBar from '../../components/blog/SearchBar';
-import { 
-  getPublishedPosts, 
-  searchPosts, 
-  filterByCategory, 
-  sortByDate 
+import {
+  getPublishedPostPreviews,
+  searchPosts,
+  filterByCategory,
+  sortByDate
 } from '../../data/blog/blogService';
-import type { BlogPost } from '../../data/blog/types';
+import type { BlogPostPreview } from '../../data/blog/types';
 
 const Blog = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [posts, setPosts] = useState<BlogPostPreview[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Load posts on component mount
+  // Load post previews on component mount
   useEffect(() => {
     const loadPosts = async () => {
       try {
         setLoading(true);
-        const publishedPosts = await getPublishedPosts();
-        const sortedPosts = sortByDate(publishedPosts);
+        const publishedPreviews = await getPublishedPostPreviews();
+        const sortedPosts = sortByDate(publishedPreviews);
         setPosts(sortedPosts);
       } catch (error) {
         console.error('Error loading posts:', error);
@@ -107,7 +107,7 @@ const Blog = () => {
         />
       </div>
 
-      <BlogList 
+      <BlogList
         posts={filteredPosts}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}

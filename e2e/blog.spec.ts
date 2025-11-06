@@ -40,33 +40,37 @@ test.describe('Blog Page', () => {
     await expect(categoryButtons.first()).toBeVisible();
   });
 
-  test('should expand and collapse blog post', async ({ page }) => {
+  test('should navigate to blog post page when clicking card', async ({ page }) => {
     // Wait for posts to load by checking for first article
     const firstArticle = page.locator('article').first();
     await expect(firstArticle).toBeVisible({ timeout: 5000 });
 
-    // Find the expand button within the first article
-    const expandButton = firstArticle.getByRole('button', { name: /Expand/ });
-    await expect(expandButton).toBeVisible();
+    // Get the post title for verification
+    const postTitle = await firstArticle.locator('h2').textContent();
 
-    // Click to expand
-    await expandButton.click();
+    // Click the card to navigate to post page
+    await firstArticle.click();
 
-    // Check that button text changed to include "Collapse"
-    const collapseButton = firstArticle.getByRole('button', { name: /Collapse/ });
-    await expect(collapseButton).toBeVisible();
+    // Wait for navigation
+    await page.waitForURL(/\/blog\/.+/, { timeout: 5000 });
 
-    // Check aria-expanded attribute on the main expand/collapse button
-    await expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+    // Verify we're on the post page by checking the URL
+    expect(page.url()).toMatch(/\/blog\/.+/);
 
-    // Click to collapse
-    await collapseButton.click();
+    // Verify the post title is displayed on the post page (in the header section)
+    const postPageTitle = page.locator('article header h1');
+    await expect(postPageTitle).toBeVisible();
+    await expect(postPageTitle).toHaveText(postTitle || '');
 
-    // Check that button text changed back to include "Expand"
-    await expect(expandButton).toBeVisible();
+    // Verify back button exists
+    const backButton = page.getByRole('button', { name: /Back to Blog/i });
+    await expect(backButton).toBeVisible();
 
-    // Check aria-expanded attribute
-    await expect(expandButton).toHaveAttribute('aria-expanded', 'false');
+    // Navigate back to blog list
+    await backButton.click();
+
+    // Verify we're back on the blog list page
+    await expect(page.getByRole('heading', { name: 'Blog', level: 1 })).toBeVisible();
   });
 
   test('should filter posts by search query', async ({ page }) => {
@@ -233,41 +237,58 @@ test.describe('Blog Page', () => {
     }
   });
 
-  test('should render markdown content correctly when expanded', async ({ page }) => {
+  test('should render markdown content correctly on post page', async ({ page }) => {
     // Wait for posts to load
     const firstCard = page.getByTestId('blog-card').first();
     await expect(firstCard).toBeVisible({ timeout: 5000 });
 
-    // Expand the first post
-    const expandButton = firstCard.getByTestId('blog-card-toggle');
-    await expandButton.click();
+    // Click the card to navigate to post page
+    await firstCard.click();
 
-    // Check that content is visible
-    const content = firstCard.getByTestId('blog-card-content');
-    await expect(content).toBeVisible();
+    // Wait for navigation to post page
+    await page.waitForURL(/\/blog\/.+/, { timeout: 5000 });
+
+    // Check that article content is visible
+    const article = page.locator('article').first();
+    await expect(article).toBeVisible();
 
     // Check for prose styling (indicates markdown is rendered)
-    const proseDiv = content.locator('.prose');
+    const proseDiv = page.locator('.prose');
     await expect(proseDiv).toBeVisible();
+
+    // Verify markdown elements are rendered
+    // Check for headings, paragraphs, or other markdown elements
+    const paragraphs = proseDiv.locator('p');
+    await expect(paragraphs.first()).toBeVisible();
   });
 
-  test('should display syntax-highlighted code blocks', async ({ page }) => {
+  test('should display syntax-highlighted code blocks on post page', async ({ page }) => {
     // Wait for posts to load
     const firstCard = page.getByTestId('blog-card').first();
     await expect(firstCard).toBeVisible({ timeout: 5000 });
 
-    // Expand the first post
-    await firstCard.getByTestId('blog-card-toggle').click();
+    // Click the card to navigate to post page
+    await firstCard.click();
 
-    // Wait for content to be visible
-    const content = firstCard.getByTestId('blog-card-content');
-    await expect(content).toBeVisible();
+    // Wait for navigation to post page
+    await page.waitForURL(/\/blog\/.+/, { timeout: 5000 });
 
-    // Check if code blocks exist (they should have syntax highlighting)
-    const codeBlocks = content.locator('pre');
+    // Wait for article content to be visible
+    const article = page.locator('article').first();
+    await expect(article).toBeVisible();
+
+    // Check if code blocks exist in the prose content
+    const proseDiv = page.locator('.prose');
+    const codeBlocks = proseDiv.locator('pre');
+
     if ((await codeBlocks.count()) > 0) {
       // Verify syntax highlighter is present
       await expect(codeBlocks.first()).toBeVisible();
+
+      // Verify code block has syntax highlighting styles
+      // SyntaxHighlighter adds specific classes/styles
+      const firstCodeBlock = codeBlocks.first();
+      await expect(firstCodeBlock).toBeVisible();
     }
   });
 

@@ -5,6 +5,8 @@ import MainLayout from "./layouts/MainLayout/MainLayout";
 
 // Lazy load the About page for code splitting
 const About = lazy(() => import("./pages/About/About"));
+const Blog = lazy(() => import("./pages/Blog/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost/BlogPost"));
 
 // Extract the Home component to improve readability and organization
 const Home = memo(() => (
@@ -142,6 +144,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
         </Suspense>
       </MainLayout>

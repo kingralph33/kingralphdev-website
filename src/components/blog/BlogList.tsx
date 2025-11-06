@@ -4,19 +4,19 @@
  */
 
 import { memo } from 'react';
-import type { BlogPost } from '../../data/blog/types';
+import type { BlogPostPreview } from '../../data/blog/types';
 import BlogCard from './BlogCard';
 
 interface BlogListProps {
-  posts: BlogPost[];
+  posts: BlogPostPreview[];
   selectedCategory?: string;
   onCategoryChange?: (category: string) => void;
   categories?: string[];
 }
 
-const BlogList = ({ 
-  posts, 
-  selectedCategory, 
+const BlogList = ({
+  posts,
+  selectedCategory,
   onCategoryChange,
   categories = []
 }: BlogListProps) => {
@@ -71,7 +71,10 @@ const BlogList = ({
 
       <div className="grid gap-6 lg:grid-cols-2" data-testid="blog-posts-grid">
         {posts.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <BlogCard
+            key={post.id}
+            post={post}
+          />
         ))}
       </div>
     </div>

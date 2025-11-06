@@ -73,6 +73,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('rejects missing title', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { title, ...invalid } = validMetadata;
 
       expect(() => BlogPostMetadataSchema.parse(invalid)).toThrow();
@@ -107,6 +108,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('rejects missing date', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { date, ...invalid } = validMetadata;
 
       expect(() => BlogPostMetadataSchema.parse(invalid)).toThrow();
@@ -147,6 +149,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('rejects missing slug', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { slug, ...invalid } = validMetadata;
 
       expect(() => BlogPostMetadataSchema.parse(invalid)).toThrow();
@@ -161,6 +164,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('rejects missing excerpt', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { excerpt, ...invalid } = validMetadata;
 
       expect(() => BlogPostMetadataSchema.parse(invalid)).toThrow();
@@ -177,6 +181,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('defaults to empty array when missing', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { categories, ...minimal } = validMetadata;
 
       const result = BlogPostMetadataSchema.parse(minimal);
@@ -209,6 +214,7 @@ describe('BlogPostMetadataSchema', () => {
     });
 
     it('defaults to false when missing', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { published, ...minimal } = validMetadata;
 
       const result = BlogPostMetadataSchema.parse(minimal);

@@ -2,7 +2,7 @@
  * Unit tests for Blog component helper functions
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
 // We need to test the getErrorMessage function which is internal to the Blog component
 // For this test, we'll create a standalone version based on the implementation

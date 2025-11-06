@@ -2,7 +2,7 @@
  * Unit tests for blog service functions
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import {
   sortByDate,
   searchPosts,

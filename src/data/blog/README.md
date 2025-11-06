@@ -208,7 +208,25 @@ const devOpsPosts = filterByCategory(posts, 'DevOps');
 
 ## Sample Posts
 
-Three sample posts are included for testing:
+Five sample posts are included for testing and as templates:
+
+### Published Posts (visible on blog)
 1. **building-scalable-platform-engineering.md** - Published post about platform engineering
 2. **getting-started-with-kubernetes.md** - Published post about Kubernetes basics
+
+### Draft Posts (not visible, used as templates)
 3. **future-of-cloud-native-development.md** - Draft post about cloud native trends
+4. **example-blog-post-template.md** - Comprehensive template demonstrating all markdown features and frontmatter options with detailed comments
+5. **getting-started-platform-engineering-example.md** - Example of a real-world blog post with practical content and code examples
+
+### Using the Templates
+
+When creating a new blog post:
+1. Copy `example-blog-post-template.md` as a starting point
+2. Review the frontmatter comments to understand each field
+3. Update all frontmatter fields (title, date, slug, excerpt, categories)
+4. Replace the content with your own
+5. Set `published: false` while drafting
+6. Set `published: true` when ready to publish
+
+The template includes examples of all supported markdown features including headings, lists, code blocks with syntax highlighting, links, blockquotes, and text formatting.

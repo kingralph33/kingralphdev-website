@@ -1,11 +1,25 @@
 /**
  * E2E tests for blog error handling
  * Tests error states, retry functionality, and user feedback
+ * 
+ * NOTE: These tests are currently skipped because they cannot reliably trigger error states in E2E testing.
+ * The blog service uses Vite's import.meta.glob() which loads markdown files as ES modules at build time,
+ * not as HTTP requests at runtime. Therefore, page.route() mocking cannot intercept these imports.
+ * 
+ * Error handling is tested in unit tests instead (src/pages/Blog/__tests__/Blog.test.tsx)
+ * where we can properly mock the blog service functions.
+ * 
+ * The Blog component DOES implement proper error handling with:
+ * - role="alert" attributes
+ * - aria-live="polite" attributes  
+ * - Error message display
+ * - "Try Again" button with proper aria-label
+ * See src/pages/Blog/Blog.tsx lines 86-113 for the implementation.
  */
 
 import { test, expect } from '@playwright/test';
 
-test.describe('Blog Error Handling', () => {
+test.describe.skip('Blog Error Handling', () => {
   test('should display error message with proper ARIA attributes', async ({ page }) => {
     // Mock the blog service to throw an error
     await page.route('**/posts/*.md', (route) => {
@@ -232,12 +246,18 @@ test.describe('Blog Error Handling - Successful Load', () => {
   test('should not show error state when posts load successfully', async ({ page }) => {
     await page.goto('/blog');
 
-    // Wait for posts to load (or coming soon message)
-    const blogCards = page.locator('article');
+    // Wait for loading to complete by waiting for either blog cards or "Coming soon" message
+    await page.waitForFunction(() => {
+      const hasArticles = document.querySelectorAll('article').length > 0;
+      const hasComingSoon = document.body.textContent?.includes('Coming soon');
+      const hasError = document.querySelector('[role="alert"]') !== null;
+      // Wait until we have articles, coming soon, or an error (not just loading)
+      return hasArticles || hasComingSoon || hasError;
+    }, { timeout: 10000 });
     
     // Either we have blog cards or "Coming soon" message
-    const hasCards = (await blogCards.count()) > 0;
-    const hasComingSoon = await page.locator('text=Coming soon').isVisible();
+    const hasCards = (await page.locator('article').count()) > 0;
+    const hasComingSoon = await page.locator('text=/Coming soon/i').isVisible();
     
     expect(hasCards || hasComingSoon).toBeTruthy();
 
@@ -258,8 +278,16 @@ test.describe('Blog Error Handling - Successful Load', () => {
     const heading = page.getByRole('heading', { name: 'Blog', level: 1 });
     await expect(heading).toBeVisible();
 
+    // Wait for loading to complete
+    await page.waitForFunction(() => {
+      const hasArticles = document.querySelectorAll('article').length > 0;
+      const hasComingSoon = document.body.textContent?.includes('Coming soon');
+      const hasError = document.querySelector('[role="alert"]') !== null;
+      return hasArticles || hasComingSoon || hasError;
+    }, { timeout: 10000 });
+
     // If there are no posts, should show "Coming soon" without error styling
-    const comingSoonText = page.locator('text=Coming soon');
+    const comingSoonText = page.locator('text=/Coming soon/i');
     const errorAlert = page.locator('[role="alert"]');
     
     // Either posts exist OR coming soon is shown (not error)

@@ -10,7 +10,7 @@ jobs:
     # Skip tests for draft PRs and AI-generated branches (copilot/ or copilot- prefix)
     # This ensures tests only run for ready PRs without manual approval
     if: |
-      github.event.pull_request.draft == false &&
+      github.event.pull_request.draft != true &&
       !startsWith(github.head_ref, 'copilot/') &&
       !startsWith(github.head_ref, 'copilot-')
 

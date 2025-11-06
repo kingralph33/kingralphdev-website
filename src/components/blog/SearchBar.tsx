@@ -3,8 +3,9 @@
  * Provides search functionality for blog posts with debounced input and clear button
  */
 
-import { useCallback, useEffect, useRef, memo, useMemo } from 'react';
+import { useCallback, useEffect, useRef, memo } from 'react';
 import debounce from 'lodash/debounce';
+import type { DebouncedFunc } from 'lodash';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { SEARCH_DEBOUNCE_DELAY } from './constants';
 
@@ -16,20 +17,25 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchBarProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  // Keep the latest onChange without forcing re-creation of debounced function
+  const latestOnChange = useRef(onChange);
+  useEffect(() => {
+    latestOnChange.current = onChange;
+  }, [onChange]);
 
-  // Create debounced onChange with useMemo to prevent recreation on every render
-  // Using useMemo instead of useEffect avoids the memory leak issue with onChange in dependencies
-  const debouncedOnChange = useMemo(
-    () => debounce((value: string) => onChange(value), SEARCH_DEBOUNCE_DELAY),
-    [] // Empty deps - we intentionally want to keep the same debounced function
-  );
+  // Create a stable debounced function once (post-render) and keep it in a ref
+  const debouncedRef = useRef<DebouncedFunc<(value: string) => void> | null>(null);
+  useEffect(() => {
+    debouncedRef.current = debounce((value: string) => {
+      latestOnChange.current(value);
+    }, SEARCH_DEBOUNCE_DELAY);
+    return () => {
+      debouncedRef.current?.cancel();
+    };
+  }, []);
 
   // Cleanup debounced function on unmount
-  useEffect(() => {
-    return () => {
-      debouncedOnChange.cancel();
-    };
-  }, [debouncedOnChange]);
+  // Cleanup handled in the effect above
 
   // Sync input value when external value changes (e.g., from clear button)
   useEffect(() => {
@@ -40,16 +46,16 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
 
   // Memoized handler that calls the debounced function
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedOnChange(e.target.value);
-  }, [debouncedOnChange]);
+    debouncedRef.current?.(e.target.value);
+  }, []);
 
   const handleClear = useCallback(() => {
     if (inputRef.current) {
       inputRef.current.value = '';
     }
-    onChange('');
-    debouncedOnChange.cancel();
-  }, [onChange, debouncedOnChange]);
+    latestOnChange.current('');
+    debouncedRef.current?.cancel();
+  }, []);
 
   return (
     <div className="mb-6 relative">

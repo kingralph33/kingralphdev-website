@@ -73,12 +73,12 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production
 - `pnpm preview` - Preview production build
-- `pnpm test` - Run all tests (unit + E2E)
-- `pnpm test:unit` - Run Vitest unit tests
+- `pnpm test` - **Run all tests** (runs both unit tests via Vitest and E2E tests via Playwright)
+- `pnpm test:unit` - Run Vitest unit tests only
 - `pnpm test:unit:watch` - Run unit tests in watch mode
 - `pnpm test:unit:ui` - Open Vitest UI
 - `pnpm test:unit:coverage` - Generate unit test coverage report
-- `pnpm test:e2e` - Run Playwright E2E tests
+- `pnpm test:e2e` - Run Playwright E2E tests only
 - `pnpm test:e2e:ui` - Run E2E tests in Playwright UI mode
 - `pnpm test:e2e:headed` - Run E2E tests with browser visible
 - `pnpm test:e2e:debug` - Run E2E tests in debug mode
@@ -134,7 +134,34 @@ The project achieves comprehensive test coverage through a balanced testing pyra
 
 ### CI/CD
 
-Tests automatically run on GitHub Actions for all pushes and pull requests to `main` and `dev` branches. Unit tests run first (fast feedback), followed by E2E tests.
+The project uses a **hybrid workflow system** combining automatic validation with on-demand assistance:
+
+#### Automatic Testing (`test.yml`)
+Tests automatically run on GitHub Actions for all **ready PRs** to `main` and `dev` branches:
+- Triggers on PR open, sync, reopen, and when marked ready for review
+- Skips draft PRs and AI-generated branches (`copilot/`, `copilot-`)
+- Unit tests run first (fast feedback), followed by E2E tests
+- Must pass before merging
+
+#### On-Demand Assistance (`claude-assist.yml`)
+Trigger tasks by mentioning `@claude` in PR/issue comments:
+
+**Available commands:**
+- `@claude test` - Run full test suite (unit + E2E)
+- `@claude lint` - Run ESLint checks
+- `@claude build` - Verify production build
+- `@claude help` - Show available commands
+
+**Examples:**
+```
+@claude test
+# Runs complete test suite and posts results
+
+@claude lint
+# Runs ESLint and reports any issues
+```
+
+This pattern is inspired by [Anthropic's claude-code workflow](https://github.com/anthropics/claude-code/blob/main/.github/workflows/claude.yml) and provides explicit control over when CI tasks run.
 
 ## Project Structure
 

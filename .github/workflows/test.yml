@@ -1,18 +1,19 @@
-name: Test
+name: Required Tests
 
+# Automatic validation for PRs to main/dev branches
+# For on-demand testing, use @claude test in comments (see claude-assist.yml)
 on:
   pull_request:
     branches: [main, dev]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Workflow runs for: Non-draft PRs targeting main/dev from regular branches
-    # Workflow skips: Draft PRs, branches starting with 'copilot/' or 'copilot-'
-    # Null safety: Handles both PR and push events gracefully
-    # This ensures tests run automatically for ready PRs without manual approval
+    # Skip tests for draft PRs and AI-generated branches (copilot/ or copilot- prefix)
+    # This ensures tests only run for ready PRs that are candidates for merging
     if: |
-      (github.event.pull_request == null || github.event.pull_request.draft == false) &&
+      github.event.pull_request.draft != true &&
       !startsWith(github.head_ref, 'copilot/') &&
       !startsWith(github.head_ref, 'copilot-')
 

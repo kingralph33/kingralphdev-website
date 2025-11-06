@@ -265,15 +265,35 @@ build: {
 ```
 
 ### CI/CD
-GitHub Actions runs tests on push/PR to `main`/`dev`:
+
+**Hybrid Workflow System** - Combines automatic validation with on-demand assistance:
+
+#### 1. Automatic Testing (`test.yml`)
+Runs on **ready PRs** to `main`/`dev`:
 1. Setup Node 22.x + pnpm 10
 2. Install deps + Playwright Chromium with `--with-deps`
-3. Run `pnpm test` (must pass to merge)
+3. Run unit tests (`pnpm test:unit`)
+4. Run E2E tests (`pnpm test:e2e`)
+5. Must pass before merging
 
-**Workflow Conditions**: Tests run automatically for ready PRs but skip:
-- Draft PRs (`github.event.pull_request.draft == true`)
+**Conditions**: Automatically runs but skips:
+- Draft PRs (`github.event.pull_request.draft != true`)
 - Branches starting with `copilot/` or `copilot-` (AI-generated branches)
-- This ensures tests only run when human review is intended
+- Triggers: `opened`, `synchronize`, `reopened`, `ready_for_review`
+
+#### 2. On-Demand Assistance (`claude-assist.yml`)
+Triggered by `@claude` mentions in PR/issue comments:
+
+**Available Commands**:
+- `@claude test` - Run full test suite
+- `@claude lint` - Run ESLint
+- `@claude build` - Verify production build
+- `@claude help` - Show available commands
+
+**Pattern**: Inspired by [Anthropic's workflow](https://github.com/anthropics/claude-code/blob/main/.github/workflows/claude.yml)
+- Explicit opt-in vs automatic execution
+- Saves CI minutes on active repos
+- Provides fine-grained control over when automation runs
 
 ## Common Pitfalls
 

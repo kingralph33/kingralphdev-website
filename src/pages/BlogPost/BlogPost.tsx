@@ -105,7 +105,7 @@ const BlogPost = () => {
 
       <article className="bg-white dark:bg-gray-800 p-6 lg:p-10 rounded-lg border-2 border-blue-900 dark:border-gray-200">
         <header className="mb-8 pb-8 border-b-2 border-gray-200 dark:border-gray-700">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white leading-tight text-left">
             {post.title}
           </h1>
           <div className="flex flex-wrap items-center gap-3 text-sm lg:text-base text-gray-600 dark:text-gray-400 mb-5">
@@ -113,7 +113,7 @@ const BlogPost = () => {
             <span aria-hidden="true">•</span>
             <span>{post.readingTime} min read</span>
           </div>
-          <p className="text-base lg:text-lg text-gray-700 dark:text-gray-100 dark:font-semibold mb-5 leading-relaxed">
+          <p className="text-base lg:text-lg text-gray-700 dark:text-gray-100 dark:font-semibold mb-5 leading-relaxed text-left">
             {post.excerpt}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -128,17 +128,17 @@ const BlogPost = () => {
           </div>
         </header>
 
-        <div className="prose dark:prose-invert max-w-none
-                       prose-headings:text-blue-900 dark:prose-headings:text-white prose-headings:font-bold
+        <div className="prose dark:prose-invert max-w-none text-left
+                       prose-headings:text-blue-900 dark:prose-headings:text-white prose-headings:font-bold prose-headings:text-left
                        prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:mb-4
                        prose-h2:text-xl lg:prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-8
                        prose-h3:text-lg lg:prose-h3:text-xl prose-h3:mb-2 prose-h3:mt-6
-                       prose-p:text-gray-700 dark:prose-p:text-gray-100 dark:prose-p:font-semibold prose-p:leading-relaxed prose-p:mb-4
+                       prose-p:text-gray-700 dark:prose-p:text-gray-100 dark:prose-p:font-semibold prose-p:leading-relaxed prose-p:mb-4 prose-p:text-left
                        prose-a:text-green-600 dark:prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-a:font-medium
                        prose-strong:text-blue-900 dark:prose-strong:text-white prose-strong:font-bold
-                       prose-ul:my-4 prose-ol:my-4 prose-li:text-gray-700 dark:prose-li:text-gray-100 dark:prose-li:font-semibold prose-li:mb-2
+                       prose-ul:my-4 prose-ul:text-left prose-ol:my-4 prose-ol:text-left prose-li:text-gray-700 dark:prose-li:text-gray-100 dark:prose-li:font-semibold prose-li:mb-2
                        prose-blockquote:border-l-4 prose-blockquote:border-green-600 dark:prose-blockquote:border-green-400
-                       prose-blockquote:bg-gray-100 dark:prose-blockquote:bg-gray-700 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:my-4
+                       prose-blockquote:bg-gray-100 dark:prose-blockquote:bg-gray-700 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:my-4 prose-blockquote:text-left
                        prose-code:text-green-600 dark:prose-code:text-green-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-700
                        prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
                        prose-pre:bg-transparent prose-pre:p-0

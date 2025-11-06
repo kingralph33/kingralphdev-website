@@ -61,23 +61,23 @@ Launch **5 concurrent search strategies** using different approaches to maximize
 
 **Strategy 1: Direct keyword search**
 - Use exact technical terms from the issue (error messages, function names)
-- Example: `gh search issues "TypeError: Cannot read property" repo:kingralph33/kingralphdev-react`
+- Example: `gh search issues "TypeError: Cannot read property" repo:kingralph33/kingralphdev-website`
 
 **Strategy 2: Symptom-based search**
 - Search for described behaviors or symptoms
-- Example: `gh search issues "navigation broken after update" repo:kingralph33/kingralphdev-react`
+- Example: `gh search issues "navigation broken after update" repo:kingralph33/kingralphdev-website`
 
 **Strategy 3: Component/feature search**
 - Focus on affected components or features mentioned
-- Example: `gh search issues "SearchBar component" repo:kingralph33/kingralphdev-react`
+- Example: `gh search issues "SearchBar component" repo:kingralph33/kingralphdev-website`
 
 **Strategy 4: Broad semantic search**
 - Use generalized terms related to the problem domain
-- Example: `gh search issues "search functionality not working" repo:kingralph33/kingralphdev-react`
+- Example: `gh search issues "search functionality not working" repo:kingralph33/kingralphdev-website`
 
 **Strategy 5: Similar issue patterns**
 - Search for common patterns or related issues
-- Example: `gh search issues "state not updating" repo:kingralph33/kingralphdev-react`
+- Example: `gh search issues "state not updating" repo:kingralph33/kingralphdev-website`
 
 **Important:** Each search should use `is:issue` to filter only issues (not PRs).
 
@@ -121,13 +121,10 @@ gh issue comment <issue-number> --body "$(cat <<'EOF'
 - #<issue-number> - <Brief description>
 - #<issue-number> - <Brief description>
 
-**This issue will be automatically closed in 3 days** unless action is taken.
-
-To prevent automatic closure:
-- Close this issue yourself if you agree it's a duplicate
-- Add a 👍 reaction to this comment if you believe it's NOT a duplicate
-
-If you have additional information not covered in the duplicate issues, please add it as a comment there instead.
+**Next Steps:**
+- If you agree this is a duplicate, please close this issue
+- If you believe this is NOT a duplicate, add a 👍 reaction to this comment and explain why
+- If you have additional information not covered in the duplicate issues, please add it as a comment there instead
 
 ---
 🤖 Automated duplicate detection via Claude Code
@@ -139,7 +136,7 @@ EOF
 - List 1-3 duplicates maximum (most relevant first)
 - Include issue numbers as `#123` format for auto-linking
 - Include brief descriptions so users understand the match
-- Always include the 3-day warning and prevention instructions
+- Provide clear next steps for users to take action
 - Include the automation footer
 
 **If no duplicates found:**
@@ -151,7 +148,7 @@ EOF
 ## Example Usage
 
 ```bash
-# User invokes: /dedupe https://github.com/kingralph33/kingralphdev-react/issues/42
+# User invokes: /dedupe https://github.com/kingralph33/kingralphdev-website/issues/42
 
 # Stage 1: Check if issue #42 is valid for processing
 gh issue view 42
@@ -160,11 +157,11 @@ gh issue view 42
 # (Creates internal summary)
 
 # Stage 3: Run 5 parallel searches
-gh search issues "SearchBar debouncing" repo:kingralph33/kingralphdev-react is:issue
-gh search issues "input lag typing" repo:kingralph33/kingralphdev-react is:issue
-gh search issues "SearchBar component" repo:kingralph33/kingralphdev-react is:issue
-gh search issues "performance search input" repo:kingralph33/kingralphdev-react is:issue
-gh search issues "state update delay" repo:kingralph33/kingralphdev-react is:issue
+gh search issues "SearchBar debouncing" repo:kingralph33/kingralphdev-website is:issue
+gh search issues "input lag typing" repo:kingralph33/kingralphdev-website is:issue
+gh search issues "SearchBar component" repo:kingralph33/kingralphdev-website is:issue
+gh search issues "performance search input" repo:kingralph33/kingralphdev-website is:issue
+gh search issues "state update delay" repo:kingralph33/kingralphdev-website is:issue
 
 # Stage 4: Review results and identify #18 and #31 as duplicates
 

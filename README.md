@@ -73,12 +73,12 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production
 - `pnpm preview` - Preview production build
-- `pnpm test` - Run all tests (unit + E2E)
-- `pnpm test:unit` - Run Vitest unit tests
+- `pnpm test` - **Run all tests** (runs both unit tests via Vitest and E2E tests via Playwright)
+- `pnpm test:unit` - Run Vitest unit tests only
 - `pnpm test:unit:watch` - Run unit tests in watch mode
 - `pnpm test:unit:ui` - Open Vitest UI
 - `pnpm test:unit:coverage` - Generate unit test coverage report
-- `pnpm test:e2e` - Run Playwright E2E tests
+- `pnpm test:e2e` - Run Playwright E2E tests only
 - `pnpm test:e2e:ui` - Run E2E tests in Playwright UI mode
 - `pnpm test:e2e:headed` - Run E2E tests with browser visible
 - `pnpm test:e2e:debug` - Run E2E tests in debug mode

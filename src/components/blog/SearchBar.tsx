@@ -34,8 +34,6 @@ const SearchBar = ({ value, onChange, placeholder = 'Search posts...' }: SearchB
     };
   }, []);
 
-  // Cleanup debounced function on unmount
-  // Cleanup handled in the effect above
 
   // Sync input value when external value changes (e.g., from clear button)
   useEffect(() => {

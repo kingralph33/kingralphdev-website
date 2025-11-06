@@ -18,7 +18,7 @@ const Home = memo(() => (
       Software Engineer
     </h2>
     <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-      Building cloud-native infrastructure and developer tooling for mission-critical government systems.
+      Building cloud-native infrastructure and developer tooling for mission-critical government systems. 5+ years of experience in platform engineering.
     </p>
     <div className="flex flex-wrap justify-center gap-3">
       <a href="/about" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to About page">

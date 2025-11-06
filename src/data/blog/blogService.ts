@@ -217,6 +217,7 @@ export async function getPublishedPostPreviews(): Promise<BlogPostPreview[]> {
     });
 
     const previews: BlogPostPreview[] = [];
+    const errors: string[] = [];
 
     for (const [path, loadPost] of Object.entries(postModules)) {
       try {
@@ -230,16 +231,31 @@ export async function getPublishedPostPreviews(): Promise<BlogPostPreview[]> {
           previews.push(preview);
         }
       } catch (error) {
-        console.error(`Error loading post preview from ${path}:`, error);
+        const errorMsg = `Failed to load ${path}: ${error instanceof Error ? error.message : String(error)}`;
+        console.error(errorMsg);
+        errors.push(errorMsg);
         // Continue loading other posts even if one fails
         continue;
       }
     }
 
+    // If all posts failed to load, throw an error
+    if (previews.length === 0 && errors.length > 0) {
+      // Limit error details to first 3 errors for better UX
+      const errorSummary = errors.length > 3 
+        ? `${errors.slice(0, 3).join('; ')} (and ${errors.length - 3} more)`
+        : errors.join('; ');
+      throw new Error(`Failed to load any blog posts. Errors: ${errorSummary}`);
+    }
+
     return previews;
   } catch (error) {
     console.error('Error loading post previews:', error);
-    return [];
+    // Re-throw with more context instead of returning empty array
+    if (error instanceof Error) {
+      throw new Error(`Unable to load blog posts: ${error.message}`);
+    }
+    throw new Error('Unable to load blog posts due to an unknown error');
   }
 }
 
@@ -255,6 +271,8 @@ export async function getPostById(id: string): Promise<BlogPost | null> {
     return parseMarkdownPost(id, content.default);
   } catch (error) {
     console.error(`Error loading post with id "${id}":`, error);
+    // Return null for not found instead of throwing
+    // This allows the calling component to handle the missing post gracefully
     return null;
   }
 }

@@ -15,10 +15,10 @@ const Home = memo(() => (
       Ralph King Jr
     </h1>
     <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-blue-900 dark:text-gray-300">
-      Software Engineer
+      Internal Tools & Platform Engineer
     </h2>
     <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-      Building cloud-native infrastructure and developer tooling for mission-critical government systems. 5+ years of experience in platform engineering.
+      Building automation and developer tooling that enable teams to ship faster. Specializing in Kubernetes, CI/CD automation, and self-service platforms for government systems.
     </p>
     <div className="flex flex-wrap justify-center gap-3">
       <a href="/about" className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition" aria-label="Go to About page">

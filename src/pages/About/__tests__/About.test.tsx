@@ -50,7 +50,7 @@ describe('About Page Component', () => {
 
     it('renders professional summary', () => {
       render(<About />);
-      expect(screen.getByText(/software engineer with 5\+ years/)).toBeInTheDocument();
+      expect(screen.getByText(/internal tools and platform engineer with 5\+ years/)).toBeInTheDocument();
       expect(screen.getByText(/Kubernetes \(OpenShift\)/)).toBeInTheDocument();
     });
 

@@ -25,13 +25,13 @@ const About = () => {
           My journey into tech wasn't typical. I started in retail banking, but I was always fascinated by how technology could solve problems and make operations more efficient. In 2016, I made the career change that would define my next chapter.
         </p>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed">
-          I immersed myself in coding, completed an intensive bootcamp, and quickly progressed from software quality assurance to full-stack development, and eventually to platform engineering. This non-traditional path gave me a unique perspective: I understand both the business problems that technology solves and the technical systems needed to deliver reliable infrastructure.
+          I immersed myself in coding, completed an intensive bootcamp, and quickly progressed from software quality assurance to full-stack development, and eventually to internal tools and platform engineering. This non-traditional path gave me a unique perspective: I understand both the business problems that technology solves and the developer experience challenges that slow teams down.
         </p>
       </div>
 
       {/* Current Professional Summary */}
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        Today, I'm a software engineer with 5+ years of experience building cloud-native infrastructure and developer tooling in high-stakes government environments. I specialize in Kubernetes (OpenShift), CI/CD automation, and infrastructure as code, creating platforms that enable development teams to ship faster and more reliably.
+        Today, I'm an internal tools and platform engineer with 5+ years of experience building developer productivity infrastructure and automation in high-stakes government environments. I specialize in Kubernetes (OpenShift), CI/CD automation, and self-service tooling, creating platforms that enable development teams to ship faster and more reliably. My focus is on developer experience: removing friction, automating toil, and building tools that let engineers focus on delivering value instead of fighting infrastructure.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
         I currently architect and operate OpenShift infrastructure serving 7,500+ users across 9 enterprise applications. My work focuses on building self-service deployment capabilities, establishing engineering standards, and creating automation that eliminates manual toil. I've reduced release cycles by 70% and enabled teams to deploy independently through platform tooling.
@@ -52,7 +52,7 @@ const About = () => {
           In my spare time, I love unwinding with PlayStation games—<span className="italic">Ghost of Tsushima</span> is a particular favorite. There's something therapeutic about exploring those beautiful landscapes and perfecting combat mechanics after a long day of debugging infrastructure issues.
         </p>
         <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed">
-          I used to be big into working out, hitting the gym regularly for strength training and cardio. Lately though, learning new technologies has taken priority in my free time. The tech landscape moves fast, and I find the challenge of mastering new tools and frameworks just as rewarding as physical fitness. Who knows—maybe I'll find a way to balance both again soon!
+          I used to be big into working out, hitting the gym regularly for strength training and cardio. Lately though, I've been investing my free time in deepening my expertise in cloud-native technologies and infrastructure automation. The tech landscape moves fast, and I find the challenge of mastering new tools and frameworks just as rewarding as physical fitness.
         </p>
       </div>
 
@@ -67,9 +67,9 @@ const About = () => {
             Technical Interests
           </h2>
           <ul className="space-y-1.5 text-gray-700 dark:text-gray-100 text-sm">
-            <li>Platform Engineering</li>
-            <li>Infrastructure as Code</li>
-            <li>Developer Experience & Tooling</li>
+            <li>Internal Tools & Developer Productivity</li>
+            <li>Platform Automation & Self-Service Infrastructure</li>
+            <li>CI/CD Architecture & Developer Experience</li>
           </ul>
         </div>
 
@@ -160,10 +160,10 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-              OpenShift Platform Infrastructure
+              Platform Operations & Internal Tools
             </h3>
             <p className="text-sm text-gray-700 dark:text-white dark:font-semibold mb-3">
-              Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines and self-service deployment capabilities
+              Architected and operate container platform serving 7,500+ users across 9 enterprise applications with automated CI/CD pipelines, self-service deployment capabilities, and internal tooling that enables developers to deploy independently
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               {["OpenShift", "Kubernetes", "CI/CD", "Azure DevOps", "Python"].map((tech) => (
@@ -175,10 +175,10 @@ const About = () => {
           </div>
           <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-              Enterprise DevOps Migration
+              Developer Productivity Initiative
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
-              Led platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines that reduced release cycles by 70%
+              Led enterprise platform migration from TFS to Azure DevOps for multiple teams, building automated deployment pipelines and self-service workflows that reduced release cycles by 70% and eliminated platform team bottlenecks
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               {["Azure DevOps", "CI/CD", "Automation", "Infrastructure as Code"].map((tech) => (

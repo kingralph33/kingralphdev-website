@@ -13,8 +13,8 @@ test.describe('Homepage', () => {
 
   test('renders the hero', async ({ page }) => {
     await expect(page.getByRole('heading', { name: 'Ralph King Jr', level: 1 })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Software Engineer', level: 2 })).toBeVisible();
-    await expect(page.getByText(/Building cloud-native infrastructure and developer tooling for mission-critical government systems\./)).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Internal Tools & Platform Engineer', level: 2 })).toBeVisible();
+    await expect(page.getByText(/Building automation and developer tooling that enable teams to ship faster\./)).toBeVisible();
   });
 
   test('shows primary CTAs', async ({ page }) => {

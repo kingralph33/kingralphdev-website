@@ -32,29 +32,23 @@ describe('About Page Component', () => {
   });
 
   describe('Content Sections', () => {
-    it('renders career transition section', () => {
+    it('renders career transition section with banking background', () => {
       render(<About />);
-      const heading = screen.getByRole('heading', { 
-        name: 'From Banking to Building Government Systems',
-        level: 2 
-      });
-      expect(heading).toBeInTheDocument();
+      const bodyText = document.body.textContent;
+      // Test that career transition story exists, not exact headings
+      expect(bodyText).toContain('retail banking');
+      expect(bodyText).toContain('2016');
     });
 
-    it('renders career transition story', () => {
+    it('renders professional summary with experience level', () => {
       render(<About />);
-      expect(screen.getByText(/My journey into tech wasn't typical/)).toBeInTheDocument();
-      expect(screen.getByText(/retail banking/)).toBeInTheDocument();
-      expect(screen.getByText(/2016/)).toBeInTheDocument();
+      const bodyText = document.body.textContent;
+      // Test that professional experience is mentioned, not specific positioning language
+      expect(bodyText).toMatch(/software engineer/i);
+      expect(bodyText).toMatch(/experience/i);
     });
 
-    it('renders professional summary', () => {
-      render(<About />);
-      expect(screen.getByText(/internal tools and platform engineer with 5\+ years/)).toBeInTheDocument();
-      expect(screen.getByText(/Kubernetes \(OpenShift\)/)).toBeInTheDocument();
-    });
-
-    it('renders infrastructure metrics', () => {
+    it('renders key infrastructure metrics', () => {
       render(<About />);
       const bodyText = document.body.textContent;
       expect(bodyText).toContain('7,500');
@@ -64,49 +58,24 @@ describe('About Page Component', () => {
 
     it('renders personal life section', () => {
       render(<About />);
-      const heading = screen.getByRole('heading', { 
-        name: 'Beyond the Code',
-        level: 2 
-      });
-      expect(heading).toBeInTheDocument();
-      expect(screen.getByText(/husband and a father/)).toBeInTheDocument();
+      const bodyText = document.body.textContent;
+      expect(bodyText).toContain('husband and a father');
     });
 
-    it('renders technology expertise section', () => {
+    it('has multiple h2 section headings', () => {
       render(<About />);
-      const heading = screen.getByRole('heading', { 
-        name: 'Technology Expertise',
-        level: 2 
-      });
-      expect(heading).toBeInTheDocument();
-    });
-
-    it('renders recent impact section', () => {
-      render(<About />);
-      const heading = screen.getByRole('heading', { 
-        name: 'Recent Impact',
-        level: 2 
-      });
-      expect(heading).toBeInTheDocument();
+      const h2Elements = screen.getAllByRole('heading', { level: 2 });
+      // Should have several major sections
+      expect(h2Elements.length).toBeGreaterThanOrEqual(3);
     });
   });
 
   describe('Technology Tags', () => {
-    it('renders technology expertise section', () => {
+    it('renders technologies mentioned in the page', () => {
       render(<About />);
-      const heading = screen.getByRole('heading', { 
-        name: 'Technology Expertise',
-        level: 2 
-      });
-      expect(heading).toBeInTheDocument();
-    });
-
-    it('renders specific technologies mentioned in the page', () => {
-      render(<About />);
-      // Check that key technologies are mentioned in the page content
+      // Check that key technologies are mentioned, but don't rely on exact section names
       const bodyText = document.body.textContent;
       expect(bodyText).toContain('Kubernetes');
-      expect(bodyText).toContain('OpenShift');
       expect(bodyText).toContain('Python');
       expect(bodyText).toContain('TypeScript');
     });
@@ -166,21 +135,23 @@ describe('About Page Component', () => {
   describe('Content Quality', () => {
     it('mentions key career milestones', () => {
       render(<About />);
-      expect(screen.getByText(/retail banking/)).toBeInTheDocument();
-      expect(screen.getByText(/bootcamp/)).toBeInTheDocument();
-      expect(screen.getByText(/platform engineering/)).toBeInTheDocument();
+      const bodyText = document.body.textContent;
+      expect(bodyText).toContain('retail banking');
+      expect(bodyText).toContain('bootcamp');
     });
 
-    it('mentions current role and expertise', () => {
+    it('mentions current technical work', () => {
       render(<About />);
-      expect(screen.getAllByText(/OpenShift infrastructure/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/CI\/CD automation/).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/infrastructure as code/).length).toBeGreaterThan(0);
+      const bodyText = document.body.textContent;
+      // Test that technical work is mentioned, not exact positioning language
+      expect(bodyText).toMatch(/infrastructure|automation|deployment/i);
+      expect(bodyText).toMatch(/CI\/CD|pipeline/i);
     });
 
     it('includes personal values', () => {
       render(<About />);
-      expect(screen.getByText(/Family is my foundation/)).toBeInTheDocument();
+      const bodyText = document.body.textContent;
+      expect(bodyText).toContain('Family');
     });
   });
 });

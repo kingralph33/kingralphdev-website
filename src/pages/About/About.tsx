@@ -31,7 +31,7 @@ const About = () => {
 
       {/* Current Professional Summary */}
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        Today, I'm a software engineer with 5+ years of experience building systems in government environments. I work on whatever needs to be built: backend services, automation tools, deployment pipelines, infrastructure, and the occasional frontend interface. I value solving real problems over technical specialization—if learning a new tool or domain helps ship better software, I'll learn it.
+        Today, I'm a software engineer with nearly a decade of experience building systems in government environments. I work on whatever needs to be built: backend services, automation tools, deployment pipelines, infrastructure, and the occasional frontend interface. I value solving real problems over technical specialization—if learning a new tool or domain helps ship better software, I'll learn it.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
         Much of my recent work has focused on developer productivity—building tools and infrastructure that let teams ship faster and more reliably. I've built CI/CD pipelines, deployment automation, self-service platforms, and internal tooling. I currently help operate infrastructure serving 7,500+ users across 9 enterprise applications, work that's reduced release cycles by 70% and enabled teams to deploy independently.

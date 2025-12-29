@@ -31,13 +31,13 @@ const About = () => {
 
       {/* Current Professional Summary */}
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        Today, I'm a software engineer with nearly a decade of experience building systems in government environments. I work on whatever needs to be built: backend services, automation tools, deployment pipelines, infrastructure, and the occasional frontend interface. I value solving real problems over technical specialization—if learning a new tool or domain helps ship better software, I'll learn it.
+        Today, I'm a software engineer with 8+ years of experience building and shipping web applications end-to-end for mission-critical government systems. I combine hands-on development with product ownership—working directly with stakeholders to identify requirements, making technical and product decisions, and delivering solutions from problem definition to production.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-4">
-        Much of my recent work has focused on developer productivity—building tools and infrastructure that let teams ship faster and more reliably. I've built CI/CD pipelines, deployment automation, self-service platforms, and internal tooling. I currently help operate infrastructure serving 7,500+ users across 9 enterprise applications, work that's reduced release cycles by 70% and enabled teams to deploy independently.
+        Much of my recent work has focused on building web applications using Python, Django, JavaScript, and React, alongside platform engineering—architecting CI/CD automation infrastructure, managing container orchestration with OpenShift/Kubernetes, and creating deployment automation that enables teams to ship faster and more reliably.
       </p>
       <p className="text-sm lg:text-base text-gray-700 dark:text-gray-100 dark:font-semibold text-left md:text-justify leading-relaxed mb-8">
-        I'm comfortable across the stack. I write Python and TypeScript, work with databases, deploy on AWS and Azure, configure Kubernetes clusters, and build frontend interfaces when needed. I don't consider myself a specialist in any one area—I'm more interested in understanding the full picture of how software gets built and shipped, and jumping in wherever there's a problem to solve.
+        I'm comfortable across the stack and beyond. I write Python and JavaScript, build with Django and React, work with PostgreSQL and Elasticsearch, deploy on Azure and AWS, manage Kubernetes clusters, and create CI/CD pipelines. I value solving real problems over technical specialization—if learning a new tool or domain helps ship better software, I'll learn it.
       </p>
 
       {/* Personal Life Section */}
@@ -109,7 +109,7 @@ const About = () => {
               Languages & Frameworks
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {["Python", "TypeScript", "JavaScript", "Node.js", "React"].map((tech) => (
+              {["Python", "JavaScript", "TypeScript", "Django", "Flask", "React", "Node.js"].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
@@ -121,10 +121,10 @@ const About = () => {
           </div>
           <div className="mb-5">
             <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-              Infrastructure & Cloud
+              Platform & Infrastructure
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {["AWS", "Azure", "Kubernetes", "Docker", "Terraform"].map((tech) => (
+              {["Kubernetes", "OpenShift", "Docker", "Azure", "AWS"].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs lg:text-sm"
@@ -136,10 +136,10 @@ const About = () => {
           </div>
           <div>
             <h3 className="text-base font-semibold mb-2 text-center text-blue-900 dark:text-gray-400">
-              Tools & Platforms
+              CI/CD & Databases
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {["Git", "CI/CD", "Databases", "Linux", "Azure DevOps"].map((tech) => (
+              {["Azure DevOps", "GitHub Actions", "PostgreSQL", "MySQL", "Elasticsearch"].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs lg:text-sm"
@@ -160,13 +160,13 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-              Enterprise Infrastructure & Tooling
+              Web Applications & Product Development
             </h3>
             <p className="text-sm text-gray-700 dark:text-white dark:font-semibold mb-3">
-              Built and operate container infrastructure serving 7,500+ users across 9 enterprise applications. Created deployment automation, self-service tools, and CI/CD pipelines that let development teams ship independently without waiting on platform teams.
+              Build and ship Django-based web applications end-to-end for federal agency operations, working directly with stakeholders to identify requirements and make product decisions. Shipped workflow automation application that achieved immediate adoption, reducing approval times from weeks to same-day turnaround.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
-              {["Kubernetes", "Python", "CI/CD", "Azure DevOps", "Automation"].map((tech) => (
+              {["Python", "Django", "JavaScript", "React", "PostgreSQL"].map((tech) => (
                 <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
                   {tech}
                 </span>
@@ -175,13 +175,13 @@ const About = () => {
           </div>
           <div className="p-5 border-2 border-blue-900 dark:border-gray-200 rounded-lg hover:shadow-lg transition-shadow duration-200">
             <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-white">
-              Platform Migration & Automation
+              Platform Engineering & Infrastructure
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-100 dark:font-semibold mb-3">
-              Migrated multiple teams from legacy TFS to Azure DevOps. Built automated deployment pipelines and self-service workflows that reduced release cycles by 70%. Turned what used to require manual platform team intervention into fully automated processes.
+              Manage OpenShift deployment infrastructure for mission-critical enterprise applications, including namespace management across multiple environments. Architected CI/CD automation infrastructure for nine applications, creating deployment pipelines and self-service workflows that enable teams to ship independently.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
-              {["Azure DevOps", "Automation", "CI/CD", "TypeScript", "Infrastructure as Code"].map((tech) => (
+              {["Kubernetes", "OpenShift", "CI/CD", "Azure DevOps", "Docker"].map((tech) => (
                 <span key={tech} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
                   {tech}
                 </span>

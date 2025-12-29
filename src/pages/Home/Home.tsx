@@ -1,0 +1,48 @@
+import { memo } from 'react';
+
+/**
+ * Home page component - Hero section with CTA buttons
+ * Displays the main landing page with introduction and navigation links
+ */
+const Home = memo(() => (
+  <div className="max-w-4xl mx-auto px-4 py-16 lg:py-24 text-center">
+    <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-blue-900 dark:text-white">
+      Ralph King Jr
+    </h1>
+    <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-blue-900 dark:text-gray-300">
+      Software Engineer
+    </h2>
+    <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+      I build software that solves problems. Backend services, automation tools, infrastructure, frontend interfaces—whatever it takes to ship products that work. Comfortable working across the stack and learning what's needed to get things done.
+    </p>
+    <div className="flex flex-wrap justify-center gap-3">
+      <a
+        href="/about"
+        className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition"
+        aria-label="Go to About page"
+      >
+        About
+      </a>
+      <a
+        href="https://kingralphresume.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition"
+        aria-label="Hero resume link, opens in new tab"
+      >
+        Resume
+      </a>
+      <a
+        href="/posts"
+        className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-400 text-blue-900 dark:text-white hover:text-green-600 dark:hover:text-green-600 hover:shadow-sm transition"
+        aria-label="Go to Posts page"
+      >
+        Posts
+      </a>
+    </div>
+  </div>
+));
+
+Home.displayName = 'Home';
+
+export default Home;

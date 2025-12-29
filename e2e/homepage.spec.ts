@@ -11,13 +11,16 @@ test.describe('Homepage', () => {
     await expect(page.getByTestId('desktop-resume-link')).toBeVisible();
   });
 
-  test('renders the hero', async ({ page }) => {
+  test('renders the hero with name and role', async ({ page }) => {
+    // Verify the main heading shows the name
     await expect(page.getByRole('heading', { name: 'Ralph King Jr', level: 1 })).toBeVisible();
-    // Test that hero section exists with proper structure, not exact copy
-    await expect(page.getByRole('heading', { level: 2 })).toBeVisible();
-    // Verify key messaging themes are present
-    await expect(page.getByText(/software/i)).toBeVisible();
-    await expect(page.getByText(/build/i)).toBeVisible();
+
+    // Verify the role/subtitle is displayed
+    await expect(page.getByRole('heading', { name: 'Software Engineer', level: 2 })).toBeVisible();
+
+    // Verify introduction paragraph exists (not testing exact copy, just that it's present)
+    const introParagraph = page.locator('p').filter({ hasText: /build software/i });
+    await expect(introParagraph).toBeVisible();
   });
 
   test('shows primary CTAs', async ({ page }) => {

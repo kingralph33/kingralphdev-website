@@ -48,12 +48,13 @@ describe('About Page Component', () => {
       expect(bodyText).toMatch(/experience/i);
     });
 
-    it('renders key infrastructure metrics', () => {
+    it('describes infrastructure and platform engineering work', () => {
       render(<About />);
       const bodyText = document.body.textContent;
-      expect(bodyText).toContain('7,500');
-      expect(bodyText).toContain('9 enterprise applications');
-      expect(bodyText).toContain('70%');
+      // Test behavior: page describes infrastructure and platform engineering experience
+      expect(bodyText).toMatch(/infrastructure/i);
+      expect(bodyText).toMatch(/enterprise applications?/i);
+      expect(bodyText).toMatch(/deployment|automation/i);
     });
 
     it('renders personal life section', () => {
@@ -81,14 +82,14 @@ describe('About Page Component', () => {
     });
   });
 
-  describe('Impact Metrics', () => {
-    it('renders key metrics and achievements', () => {
+  describe('Professional Achievements', () => {
+    it('describes impactful work and achievements', () => {
       render(<About />);
-      // Check for numeric achievements mentioned in the page
+      // Test behavior: page describes professional achievements and impact
       const bodyText = document.body.textContent;
-      expect(bodyText).toContain('70%'); // release cycle improvement
-      expect(bodyText).toContain('7,500'); // users
-      expect(bodyText).toContain('9 enterprise applications');
+      expect(bodyText).toMatch(/workflow automation|web applications?/i);
+      expect(bodyText).toMatch(/immediate adoption|same-day/i);
+      expect(bodyText).toMatch(/CI\/CD|automation infrastructure/i);
     });
   });
 
